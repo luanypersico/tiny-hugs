@@ -110,6 +110,7 @@ const ShaderBackground = () => {
   // Helper function to compile shader
   const loadShader = (gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null => {
     const shader = gl.createShader(type);
+    if (!shader) return null;
     gl.shaderSource(shader, source);
     gl.compileShader(shader);
 
@@ -128,8 +129,10 @@ const ShaderBackground = () => {
     const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
 
     const shaderProgram = gl.createProgram();
+    if (!shaderProgram || !vertexShader || !fragmentShader) return null;
     gl.attachShader(shaderProgram, vertexShader);
     gl.attachShader(shaderProgram, fragmentShader);
+
     gl.linkProgram(shaderProgram);
 
     if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
