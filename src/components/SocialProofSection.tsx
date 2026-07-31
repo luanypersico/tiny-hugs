@@ -102,12 +102,12 @@ const SocialProofSection: React.FC = () => {
                 {/* Content */}
                 <div className="absolute inset-0">
                   <img 
-                    src={socialProofs[currentIndex].image} 
-                    alt={`Conversa com ${socialProofs[currentIndex].name}`}
+                    src={socialProofs[currentIndex]!.image} 
+                    alt={`Conversa com ${socialProofs[currentIndex]!.name}`}
                     className="w-full h-full object-contain object-center bg-black"
                     loading="lazy"
                     onError={(e) => {
-                      console.error('Erro ao carregar imagem:', socialProofs[currentIndex].image);
+                      console.error('Erro ao carregar imagem:', socialProofs[currentIndex]!.image);
                       e.currentTarget.style.display = 'none';
                     }}
                   />
