@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 const ShaderBackground = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Vertex shader source code
   const vsSource = `
