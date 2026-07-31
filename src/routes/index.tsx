@@ -1,24 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import AppLanding from "@/AppLanding";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "ME AMO, MAS ME ODEIO™ — 14 dias pra se confrontar" },
+      {
+        name: "description",
+        content:
+          "Processo de 14 dias pra quebrar a procrastinação emocional, encarar seus ciclos e sair do papel de 'mulher legal que sempre acaba sozinha'.",
+      },
+      { property: "og:title", content: "ME AMO, MAS ME ODEIO™ — 14 dias pra se confrontar" },
+      {
+        property: "og:description",
+        content:
+          "Não é um planner. É um processo de ressurreição em 14 dias pra parar de fingir.",
+      },
+      { property: "og:type", content: "website" },
+      {
+        property: "og:image",
+        content:
+          "https://fimdosciclos.com/wp-content/uploads/2025/09/Design-sem-nome-40.png",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:image",
+        content:
+          "https://fimdosciclos.com/wp-content/uploads/2025/09/Design-sem-nome-40.png",
+      },
+    ],
+  }),
+  component: AppLanding,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
