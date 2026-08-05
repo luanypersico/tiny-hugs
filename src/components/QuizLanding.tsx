@@ -1057,25 +1057,32 @@ export default function QuizLanding() {
                           RECOMEÇAR O CONFRONTO
                         </button>
                       </div>
-                      <header className="space-y-6 text-center">
-                         <span className="kicker !text-[#8f2f3f]">Seu Perfil Revelado</span>
-                         <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase leading-[0.8] tracking-tighter">
+                      <header className="space-y-6 text-left">
+                         <span className="text-[11px] font-black uppercase tracking-widest text-[#A8283D]">Seu Perfil Revelado</span>
+                         <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">
                            {result.name}
                          </h2>
                          {secondaryResult && (
-                           <div className="space-y-2 mt-4">
-                             <p className="text-[10px] uppercase tracking-[0.3em] text-[#8f2f3f] font-black">Você também apresenta traços fortes de:</p>
-                             <p className="text-xl md:text-2xl text-white/60 font-black italic uppercase tracking-tighter">
-                               {secondaryResult === "ML" && "A MULHER LEGAL QUE SE ABANDONA"}
-                               {secondaryResult === "IF" && "A INDEPENDENTE FERIDA"}
+                           <div className="space-y-1 mt-6">
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">Traços fortes de:</p>
+                             <p className="text-lg md:text-xl text-white/50 font-black italic uppercase tracking-tighter">
+                               {secondaryResult === "ML" && "A ARQUITETA DE SEGUNDA-FEIRA"}
+                               {secondaryResult === "IF" && "A PERFECCIONISTA PARALISADA"}
                                {secondaryResult === "SE" && "A SALVADORA EXAUSTA"}
                                {secondaryResult === "FE" && "A FUGITIVA EMOCIONAL"}
                              </p>
                            </div>
                          )}
-                         <p className="text-2xl md:text-3xl text-white/90 italic font-light max-w-2xl mx-auto leading-tight pt-4">
-                           “{result.headline}”
-                         </p>
+                         <div className="pt-6 space-y-1">
+                            <p className="text-2xl md:text-4xl text-white font-black italic uppercase leading-none tracking-tighter">
+                              {result.headline_l1 || result.headline}
+                            </p>
+                            {result.headline_l2 && (
+                              <p className="text-2xl md:text-4xl text-[#A8283D] font-black italic uppercase leading-none tracking-tighter">
+                                {result.headline_l2}
+                              </p>
+                            )}
+                         </div>
                       </header>
 
                      <div className="grid md:grid-cols-2 gap-8">
