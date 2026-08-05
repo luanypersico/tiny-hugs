@@ -518,10 +518,10 @@ const TRANSITIONS = [
   {
     afterQuestion: 4,
     title:
-      "VOCÊ NÃO RESPONDEU SOBRE AMOR. RESPONDEU SOBRE O QUE FAZ QUANDO ELE CHEGA PERTO.",
+      "VOCÊ NÃO ESTÁ COM FALTA DE PLANO. ESTÁ USANDO O PLANO PARA NÃO ENCOSTAR NA EXECUÇÃO.",
     text:
-      "Até aqui já apareceu uma coisa importante: quando existe risco de alguém conhecer você de verdade, você tenta agradar, controlar, salvar ou sumir. Agora a desculpa começa a ficar mais difícil.",
-    button: "CONTINUAR",
+      "Até aqui já apareceu uma coisa feia: Você planeja para sentir que está avançando. Adia para sentir alívio. E recomeça para fingir que o abandono anterior nunca aconteceu. Agora vamos descobrir onde sua palavra começou a perder valor.",
+    button: "CONTINUAR O CONFRONTO",
   },
   {
     afterQuestion: 8,
