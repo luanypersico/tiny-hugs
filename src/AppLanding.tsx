@@ -557,7 +557,7 @@ function App() {
 
             <div className="max-w-3xl mx-auto">
               {/* Versão Única */}
-              <Reveal from="bottom">
+              <Reveal from="up">
                 <div className="group relative surface-noir rounded-3xl border-2 border-[#d4726a]/30 hover:border-[#d4726a]/50 transition-all duration-700 hover:-translate-y-1 overflow-hidden">
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#a9414a]/15 via-[#5b3a63]/10 to-[#a9414a]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
