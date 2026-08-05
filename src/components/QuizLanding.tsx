@@ -594,7 +594,7 @@ export default function QuizLanding() {
       .sort((a, b) => b[1] - a[1]);
 
     const runnerUp = remainingProfiles[0];
-    if (runnerUp && finalScores[winner] - runnerUp[1] <= 2) {
+    if (runnerUp && (finalScores[winner] || 0) - runnerUp[1] <= 2) {
       setSecondaryResult(runnerUp[0]);
     } else {
       setSecondaryResult(null);
