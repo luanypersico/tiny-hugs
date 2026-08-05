@@ -541,6 +541,63 @@ export default function QuizLanding() {
   const [secondaryResult, setSecondaryResult] = useState<ScoredProfile | null>(null);
 
   const [activeTransition, setActiveTransition] = useState<any>(null);
+  const [hasRestoredProgress, setHasRestoredProgress] = useState(false);
+
+  const restartQuiz = useCallback(() => {
+    if (window.confirm("Isso apagará suas respostas e reiniciará o confronto. Continuar?")) {
+      localStorage.removeItem(STORAGE_KEY);
+      setStep("intro");
+      setFormData({ name: "", contact: "" });
+      setCurrentQuestion(0);
+      setSelectedOption(null);
+      setAnswers([]);
+      setScores({ ML: 0, IF: 0, SE: 0, FE: 0 });
+      setRegulatedCount(0);
+      setPrimaryResult(null);
+      setSecondaryResult(null);
+      setActiveTransition(null);
+    }
+  }, []);
+
+  // RESTAURAÇÃO
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const progress = JSON.parse(saved) as QuizProgress;
+        if (progress && typeof progress === "object" && progress.step) {
+          setStep(progress.step);
+          setCurrentQuestion(progress.currentQuestion ?? 0);
+          setSelectedOption(progress.selectedOption ?? null);
+          setAnswers(progress.answers ?? []);
+          setScores(progress.scores ?? { ML: 0, IF: 0, SE: 0, FE: 0 });
+          setRegulatedCount(progress.regulatedCount ?? 0);
+          setPrimaryResult(progress.primaryResult ?? null);
+          setSecondaryResult(progress.secondaryResult ?? null);
+        }
+      } catch (e) {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+    setHasRestoredProgress(true);
+  }, []);
+
+  // SALVAMENTO
+  useEffect(() => {
+    if (hasRestoredProgress) {
+      const progress: QuizProgress = {
+        step,
+        currentQuestion,
+        selectedOption,
+        answers,
+        scores,
+        regulatedCount,
+        primaryResult,
+        secondaryResult
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+  }, [step, currentQuestion, selectedOption, answers, scores, regulatedCount, primaryResult, secondaryResult, hasRestoredProgress]);
 
   const calculateQuizResult = (
     finalAnswers: QuizAnswer[],
