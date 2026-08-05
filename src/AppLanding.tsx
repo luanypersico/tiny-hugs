@@ -199,7 +199,6 @@ function App() {
               <Reveal><SectionKicker index="02" label="O método" /></Reveal>
               <Reveal delay={60}>
                 <div className="flex items-center justify-center gap-4">
-                  <Zap className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#c9a227]" />
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                     O QUE É O ME AMO, MAS ME ODEIO™
                   </h2>
