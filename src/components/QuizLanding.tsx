@@ -756,27 +756,27 @@ export default function QuizLanding() {
           {step === "intro" && (
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-10 max-w-2xl px-4">
               <div className="space-y-4">
-                <span className="kicker !text-[#8f2f3f]">Diagnóstico Comportamental</span>
+                <span className="kicker !text-[#8f2f3f]">UM CONFRONTO PARA QUEM ESTÁ CANSADA DE RECOMEÇAR</span>
                 <h1 className="text-4xl md:text-7xl font-black text-white italic uppercase leading-[0.85] tracking-tighter">
-                  Você é realmente independente… <br />
-                  <span className="text-white/40">ou só aprendeu a fugir antes que alguém pudesse abandoná-la?</span>
+                  VOCÊ MONTA UMA VIDA NOVA TODA SEGUNDA-FEIRA. <br />
+                  <span className="text-white/40">E ENTERRA A PORRA TODA ANTES DE CHEGAR NO FIM DA SEMANA.</span>
                 </h1>
               </div>
               
               <div className="space-y-6 max-w-lg mx-auto">
                 <p className="text-lg md:text-xl italic text-white/70 leading-tight">
-                  Talvez todo mundo ache você forte, segura e resolvida. Mas ninguém vê o que acontece quando você começa a gostar de alguém.
+                  Você planeja. Organiza. Salva vídeo. Monta rotina. Promete que agora vai. Então chega a hora de fazer. Você adia por dez minutos. Pega o celular. Espera a vontade aparecer. Perde um dia. E transforma um dia ruim em mais uma semana jogada no lixo.
                 </p>
                 <p className="text-sm uppercase tracking-widest text-[#8f2f3f] font-black">
-                  Este teste vai revelar qual personagem emocional você criou para sobreviver.
+                  Depois diz que está sem autoestima. Mas como você vai confiar em si mesma se vive quebrando a própria palavra? Este quiz não vai perguntar qual rotina combina com sua personalidade. Ele vai mostrar qual hábito podre continua enterrando seus planos.
                 </p>
               </div>
 
               <div className="pt-6 space-y-4">
                 <button onClick={() => setStep("quiz")} className="w-full md:w-auto bg-[#8f2f3f] text-white px-12 py-7 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]">
-                  COMEÇAR O CONFRONTO
+                  DESCOBRIR QUAL MERDA EU REPITO
                 </button>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white/20">Leva menos de 4 minutos. As respostas são confidenciais.</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/20">14 situações reais. Menos de quatro minutos. Isso não é avaliação psicológica ou médica.</p>
               </div>
             </motion.div>
           )}
