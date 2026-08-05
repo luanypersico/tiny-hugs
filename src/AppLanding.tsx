@@ -42,30 +42,34 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black relative overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#040308] relative overflow-x-hidden">
       {/* Animated Shader Background */}
       <ShaderBackground />
-      
+
+      {/* Cinematic overlays */}
+      <div aria-hidden className="vignette-overlay" />
+      <div aria-hidden className="grain-overlay" />
+
       {/* Hero Image at Very Top */}
       <div className="relative z-10 pt-4 sm:pt-6 lg:pt-8 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-2xl">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#b98aa8]/20 to-[#d4726a]/20 rounded-2xl blur-xl"></div>
-            <img 
-              src="https://fimdosciclos.com/wp-content/uploads/2025/09/Design-sem-nome-40.png" 
+            <div className="absolute -inset-6 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.18),transparent_70%)] blur-2xl"></div>
+            <img
+              src={heroCover}
               alt="ME AMO, MAS ME ODEIO™"
-              className="relative w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+              width={1280}
+              height={1280}
+              className="relative w-full h-auto rounded-2xl border border-white/10 edge-hairline"
               loading="eager"
-              onError={(e) => {
-                console.error('Erro ao carregar imagem hero');
-                e.currentTarget.style.display = 'none';
-              }}
             />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-[#040308] via-transparent to-transparent"></div>
           </div>
         </div>
       </div>
-      
-      <div className="relative z-10 bg-gradient-to-b from-black/80 via-black/60 to-black/80">
+
+      <div className="relative z-10 bg-gradient-to-b from-[#040308]/85 via-[#050308]/70 to-[#040308]/90">
+
       {/* Header */}
       <header className="relative overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a0d1c]/20 via-black/40 to-[#210d15]/20"></div>
