@@ -1038,17 +1038,19 @@ export default function QuizLanding() {
                      cta: "PARAR DE ENTERRAR TUDO DEPOIS DE UM ERRO",
                      icon: <X className="w-12 h-12 text-[#8f2f3f]" />
                    },
-                   ER: {
-                     name: "A MULHER EM RECONSTRUÇÃO",
-                     headline: "Você já começou a desmontar a personagem. Agora evite que ela assuma o controle.",
-                     desc: "Você reconhece necessidades, estabelece limites e aceita apoio. Não significa que os padrões sumiram, mas que você já tem consciência para escolher diferente.",
-                     pattern: "Você está deixando de reagir automaticamente e começando a agir com intenção.",
-                     price: "Voltar aos comportamentos antigos quando estiver cansada ou sobrecarregada.",
-                     confront: "Observe quais situações fazem você voltar a agradar ou fugir. A recaída começa antes da decisão final.",
-                     punch: "Você não precisa voltar a ser quem foi apenas porque essa versão ainda parece familiar.",
-                     cta: "CONSOLIDAR MINHA NOVA IDENTIDADE",
-                     icon: <CheckCircle className="w-12 h-12 text-[#8f2f3f]" />
-                   }
+                    ER: {
+                      name: "A MULHER QUE ESTÁ RECONSTRUINDO A PRÓPRIA PALAVRA",
+                      headline: "VOCÊ ESTÁ COMEÇANDO A PROVAR QUE SUA PALAVRA AINDA VALE ALGUMA COISA.",
+                      headline_l1: "VOCÊ ESTÁ COMEÇANDO A PROVAR",
+                      headline_l2: "QUE SUA PALAVRA AINDA VALE ALGUMA COISA.",
+                      desc: "Suas respostas mostram que você já consegue começar sem motivação perfeita.\n\nRetomar depois de falhar.\n\nFazer uma versão pequena.\n\nE continuar mesmo quando a novidade acaba.\n\nIsso não significa que a autossabotagem desapareceu.\n\nSignifica que ela já não consegue convencer você com qualquer desculpa barata.",
+                      pattern: "“Quando eu escorrego, ainda sinto vontade de voltar aos hábitos antigos.”",
+                      price: "A sequência de pequenas promessas cumpridas.\n\nÉ ela que está reconstruindo sua confiança.\n\nE é ela que precisa ser protegida quando o cansaço, a pressão e a vontade de desistir voltarem.",
+                      confront: "Identifique qual desculpa antiga reaparece primeiro nos dias ruins.\n\nCrie uma resposta pequena, específica e impossível de negociar para ela.",
+                      punch: "Sua autoestima não precisa de outro discurso.\n\nPrecisa de mais provas de que você faz o que diz.",
+                      cta: "FAZER MINHA PALAVRA VALER DE NOVO",
+                      icon: <CheckCircle className="w-12 h-12 text-[#8f2f3f]" />
+                    }
                  };
 
                  const result = content[resCode] || content.ER;
@@ -1068,12 +1070,16 @@ export default function QuizLanding() {
                          </h2>
                          {secondaryResult && (
                            <div className="space-y-1 mt-6">
-                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">Traços fortes de:</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">VOCÊ TAMBÉM CARREGA UM SEGUNDO HÁBITO PODRE:</p>
                              <p className="text-lg md:text-xl text-white/50 font-black italic uppercase tracking-tighter">
                                {secondaryResult === "ML" && "A ARQUITETA DE SEGUNDA-FEIRA"}
                                {secondaryResult === "IF" && "A PERFECCIONISTA PARALISADA"}
-                               {secondaryResult === "SE" && "A SALVADORA EXAUSTA"}
-                               {secondaryResult === "FE" && "A FUGITIVA EMOCIONAL"}
+                               {secondaryResult === "SE" && "A VICIADA EM ALÍVIO IMEDIATO"}
+                               {secondaryResult === "FE" && "A RECOMEÇADORA COMPULSIVA"}
+                             </p>
+                             <p className="text-sm text-white/30 italic max-w-md">
+                               Ele não manda em você o tempo inteiro.
+                               Mas costuma aparecer quando a pressão aumenta e sua disciplina diminui.
                              </p>
                            </div>
                          )}
@@ -1123,49 +1129,48 @@ export default function QuizLanding() {
 
                      <section className="space-y-8 py-10">
                         <div className="text-center">
-                          <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">TRÊS RESPOSTAS QUE ENTREGARAM VOCÊ</h3>
+                          <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">TRÊS RESPOSTAS QUE ENTREGARAM SUA AUTOSSABOTAGEM</h3>
                         </div>
                         <div className="grid gap-4">
                           {(() => {
-                            const primaryAnswers = answers.filter(a => a.profile === primaryResult);
-                            let displayedAnswers = [...primaryAnswers];
-                            
-                            if (primaryResult === "ER") {
-                              const regulated = answers.filter(a => a.regulated);
-                              const nonRegulated = answers.filter(a => !a.regulated);
-                              displayedAnswers = [...regulated];
-                              if (displayedAnswers.length < 3) {
-                                nonRegulated.forEach(item => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                    displayedAnswers.push({...item, secondaryLabel: "Padrão que ainda aparece"} as any);
-                                  }
-                                });
-                              }
-                            } else {
-                              if (displayedAnswers.length < 3 && secondaryResult) {
-                                answers.filter(a => a.profile === secondaryResult).forEach(item => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                    displayedAnswers.push({...item, secondaryLabel: "Traço secundário"} as any);
-                                  }
-                                });
-                              }
-                              if (displayedAnswers.length < 3) {
-                                answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(item => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                    displayedAnswers.push(item);
-                                  }
-                                });
-                              }
-                            }
+                             const primaryAnswers = answers.filter(a => a.profile === primaryResult);
+                             let displayedAnswers = [...primaryAnswers].map(a => ({...a, label: "VOCÊ ADMITIU QUE:"}));
+                             
+                             if (primaryResult === "ER") {
+                               const regulated = answers.filter(a => a.regulated);
+                               const nonRegulated = answers.filter(a => !a.regulated);
+                               displayedAnswers = regulated.map(a => ({...a, label: "VOCÊ ADMITIU QUE:"}));
+                               if (displayedAnswers.length < 3) {
+                                 nonRegulated.forEach(item => {
+                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                     displayedAnswers.push({...item, label: "UMA DESCULPA QUE AINDA TENTA VOLTAR:"} as any);
+                                   }
+                                 });
+                               }
+                             } else {
+                               if (displayedAnswers.length < 3 && secondaryResult) {
+                                 answers.filter(a => a.profile === secondaryResult).forEach(item => {
+                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                     displayedAnswers.push({...item, label: "OUTRO HÁBITO QUE APARECEU:"} as any);
+                                   }
+                                 });
+                               }
+                               if (displayedAnswers.length < 3) {
+                                 answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(item => {
+                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                     displayedAnswers.push({...item, label: "UMA DESCULPA QUE AINDA TENTA VOLTAR:"});
+                                   }
+                                 });
+                               }
+                             }
 
                             return displayedAnswers.slice(0, 3).map((ans, idx) => (
-                              <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
-                                {(ans as any).secondaryLabel && (
-                                  <span className="text-[9px] uppercase tracking-widest text-[#8f2f3f] font-black italic">
-                                    {(ans as any).secondaryLabel}
-                                  </span>
-                                )}
-                                <p className="text-sm text-white/40 uppercase tracking-widest font-bold">Você marcou que…</p>
+                               <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
+                                 {(ans as any).label && (
+                                   <p className="text-sm text-white/40 uppercase tracking-widest font-bold">
+                                     {(ans as any).label}
+                                   </p>
+                                 )}
                                 <p className="text-white italic text-lg leading-tight">“{ans.answer}”</p>
                               </div>
                             ));
