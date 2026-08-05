@@ -38,6 +38,10 @@ type QuizAnswer = {
   regulated: boolean;
 };
 
+type DisplayedAnswer = QuizAnswer & {
+  label: string;
+};
+
 const PROFILE_NAMES: Record<Profile, string> = {
   ML: "A ARQUITETA DE SEGUNDA-FEIRA",
   IF: "A PERFECCIONISTA PARALISADA",
@@ -1072,10 +1076,7 @@ export default function QuizLanding() {
                            <div className="space-y-1 mt-6">
                              <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">VOCÊ TAMBÉM CARREGA UM SEGUNDO HÁBITO PODRE:</p>
                              <p className="text-lg md:text-xl text-white/50 font-black italic uppercase tracking-tighter">
-                               {secondaryResult === "ML" && "A ARQUITETA DE SEGUNDA-FEIRA"}
-                               {secondaryResult === "IF" && "A PERFECCIONISTA PARALISADA"}
-                               {secondaryResult === "SE" && "A VICIADA EM ALÍVIO IMEDIATO"}
-                               {secondaryResult === "FE" && "A RECOMEÇADORA COMPULSIVA"}
+                               {PROFILE_NAMES[secondaryResult]}
                              </p>
                              <p className="text-sm text-white/30 italic max-w-md">
                                Ele não manda em você o tempo inteiro.
@@ -1134,7 +1135,7 @@ export default function QuizLanding() {
                         <div className="grid gap-4">
                           {(() => {
                              const primaryAnswers = answers.filter(a => a.profile === primaryResult);
-                             let displayedAnswers = [...primaryAnswers].map(a => ({...a, label: "VOCÊ ADMITIU QUE:"}));
+                             let displayedAnswers: DisplayedAnswer[] = primaryAnswers.map(a => ({...a, label: "VOCÊ ADMITIU QUE:"}));
                              
                              if (primaryResult === "ER") {
                                const regulated = answers.filter(a => a.regulated);
@@ -1143,7 +1144,7 @@ export default function QuizLanding() {
                                if (displayedAnswers.length < 3) {
                                  nonRegulated.forEach(item => {
                                    if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                     displayedAnswers.push({...item, label: "UMA DESCULPA QUE AINDA TENTA VOLTAR:"} as any);
+                                     displayedAnswers.push({...item, label: "UMA DESCULPA QUE AINDA TENTA VOLTAR:"});
                                    }
                                  });
                                }
@@ -1151,7 +1152,7 @@ export default function QuizLanding() {
                                if (displayedAnswers.length < 3 && secondaryResult) {
                                  answers.filter(a => a.profile === secondaryResult).forEach(item => {
                                    if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                     displayedAnswers.push({...item, label: "OUTRO HÁBITO QUE APARECEU:"} as any);
+                                     displayedAnswers.push({...item, label: "OUTRO HÁBITO QUE APARECEU:"});
                                    }
                                  });
                                }
@@ -1164,16 +1165,14 @@ export default function QuizLanding() {
                                }
                              }
 
-                            return displayedAnswers.slice(0, 3).map((ans, idx) => (
-                               <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
-                                 {(ans as any).label && (
-                                   <p className="text-sm text-white/40 uppercase tracking-widest font-bold">
-                                     {(ans as any).label}
-                                   </p>
-                                 )}
-                                <p className="text-white italic text-lg leading-tight">“{ans.answer}”</p>
-                              </div>
-                            ));
+                             return displayedAnswers.slice(0, 3).map((ans) => (
+                               <div key={ans.questionId} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
+                                 <p className="text-sm text-white/40 uppercase tracking-widest font-bold">
+                                   {ans.label}
+                                 </p>
+                                 <p className="text-white italic text-lg leading-tight">“{ans.answer}”</p>
+                               </div>
+                             ));
                           })()}
                         </div>
                      </section>
