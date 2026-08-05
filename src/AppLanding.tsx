@@ -154,7 +154,6 @@ function App() {
 
             <Reveal delay={60}>
               <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
-                <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#c9a227]" />
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.85] tracking-tighter">
                   TODO MUNDO TE ACHA FODA.
                 </h2>
