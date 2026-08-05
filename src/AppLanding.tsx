@@ -404,7 +404,7 @@ function App() {
                     <X className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#c2534a]">
-                    QUEM NÃO PODE BAIXAR
+                    QUEM NÃO PODE TER ACESSO
                   </h3>
                 </div>
 
