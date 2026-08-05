@@ -76,9 +76,7 @@ function App() {
           <div className="text-center max-w-6xl mx-auto">
             <Reveal from="none">
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5b3a63]/20 to-[#a9414a]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-10 sm:mb-14 border border-white/10">
-                <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" />
                 <span className="text-white font-semibold text-sm sm:text-base tracking-[0.22em]">ME AMO, MAS ME ODEIO™</span>
-                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#d4726a]" />
               </div>
             </Reveal>
 
