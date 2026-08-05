@@ -1,336 +1,251 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ShieldAlert, Zap, CheckCircle, ChevronRight, Brain, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronRight, Sparkles, CheckCircle } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
 
 const QUESTIONS = [
   {
     id: 1,
-    question: "Como você reage quando algo começa a dar 'certo demais' na sua vida?",
+    question: "Quando alguém começa a gostar de você de verdade, qual é a sua reação mais comum?",
     options: [
-      { label: "Sinto um frio na barriga e espero o desastre acontecer", value: "fear" },
-      { label: "Encontro um defeito ou motivo para me afastar", value: "sabotage" },
-      { label: "Fico paralisada sem saber como agir", value: "freeze" },
-      { label: "Aproveito, mas sempre com um pé atrás", value: "anxious" }
-    ]
+      { label: "Eu viro a versão mais fácil, agradável e conveniente de mim mesma.", code: "ML", points: 3 },
+      { label: "Começo a procurar defeitos na pessoa e motivos para não confiar.", code: "IF", points: 3 },
+      { label: "Tento descobrir tudo o que a pessoa precisa para me tornar indispensável.", code: "SE", points: 3 },
+      { label: "Sinto vontade de me afastar antes que a relação fique séria.", code: "FE", points: 3 },
+      { label: "Continuo sendo eu mesma, comunico meus limites e deixo a conexão crescer no ritmo certo.", code: "ER", points: 0 },
+    ],
   },
   {
     id: 2,
-    question: "Qual dessas frases mais ressoa com o seu silêncio?",
+    question: "Quando você está emocionalmente destruída, o que costuma fazer?",
     options: [
-      { label: "'Eu não sou tão boa quanto eles pensam'", value: "imposter" },
-      { label: "'Sempre acabo sozinha, não importa o que eu faça'", value: "lonely" },
-      { label: "'Se eles souberem quem eu sou de verdade, vão embora'", value: "mask" },
-      { label: "'Eu prefiro sofrer sozinha do que ser rejeitada'", value: "avoidant" }
-    ]
+      { label: "Sorrio, continuo ajudando todo mundo e digo que está tudo bem.", code: "ML", points: 3 },
+      { label: "Eu me isolo e digo que só preciso da minha própria companhia.", code: "IF", points: 2 },
+      { label: "Procuro alguém com um problema maior que o meu para tentar resolver.", code: "SE", points: 3 },
+      { label: "Desapareço das conversas e evito explicar o que está acontecendo.", code: "FE", points: 3 },
+      { label: "Reconheço que não estou bem e procuro apoio em alguém de confiança.", code: "ER", points: 0 },
+    ],
   },
   {
     id: 3,
-    question: "Sobre a 'Mulher Legal': você sente que...",
+    question: "Quando surge um conflito em uma relação, você geralmente…",
     options: [
-      { label: "Sufoca suas vontades para não desagradar", value: "pleaser" },
-      { label: "Aceita menos do que merece por medo de perder", value: "low-worth" },
-      { label: "É a conselheira de todos, mas ninguém te ouve", value: "invisible" },
-      { label: "Atrai sempre o mesmo tipo de homem problemático", value: "cycle" }
-    ]
+      { label: "Pede desculpas rapidamente, mesmo quando não fez nada errado.", code: "ML", points: 3 },
+      { label: "Fica fria, racional e evita demonstrar que aquilo machucou.", code: "IF", points: 3 },
+      { label: "Assume a responsabilidade de resolver o conflito pelas duas pessoas.", code: "SE", points: 2 },
+      { label: "Corta o contato, demora para responder ou simplesmente desaparece.", code: "FE", points: 3 },
+      { label: "Explica o que sentiu, escuta a outra pessoa e estabelece um limite claro.", code: "ER", points: 0 },
+    ],
   },
   {
     id: 4,
-    question: "O que você faz quando sente que está sendo 'demais' para alguém?",
+    question: "Como você reage quando alguém demonstra carinho sem pedir nada em troca?",
     options: [
-      { label: "Me diminuo para caber no espaço do outro", value: "shrink" },
-      { label: "Peço desculpas por existir ou sentir", value: "apologize" },
-      { label: "Sumo antes que a pessoa me mande embora", value: "ghost" },
-      { label: "Finjo que não me importo", value: "numb" }
-    ]
+      { label: "Sinto que preciso retribuir imediatamente e fazer ainda mais pela pessoa.", code: "ML", points: 2 },
+      { label: "Desconfio e começo a pensar no que a pessoa realmente quer de mim.", code: "IF", points: 3 },
+      { label: "Uso isso como sinal de que devo cuidar, orientar ou salvar aquela pessoa.", code: "SE", points: 2 },
+      { label: "Fico desconfortável e começo a perder o interesse.", code: "FE", points: 3 },
+      { label: "Aceito o carinho sem sentir que preciso pagar por ele.", code: "ER", points: 0 },
+    ],
   },
   {
     id: 5,
-    question: "Se você pudesse parar de fingir hoje, qual seria o seu maior medo?",
+    question: "Por que você acredita que já se envolveu com pessoas emocionalmente indisponíveis?",
     options: [
-      { label: "Ser julgada como egoísta ou 'louca'", value: "judgment" },
-      { label: "Ficar completamente sozinha", value: "abandonment" },
-      { label: "Descobrir que não sei quem eu sou sem a máscara", value: "identity" },
-      { label: "O peso da responsabilidade de ser livre", value: "freedom" }
-    ]
-  }
+      { label: "Porque eu achava que precisava me adaptar para finalmente ser escolhida.", code: "ML", points: 3 },
+      { label: "Porque pessoas indisponíveis nunca conseguem chegar perto demais de mim.", code: "IF", points: 3 },
+      { label: "Porque eu acreditava que conseguiria curar ou transformar aquela pessoa.", code: "SE", points: 3 },
+      { label: "Porque era mais seguro desejar alguém que nunca exigiria presença emocional real.", code: "FE", points: 3 },
+      { label: "Quando percebo indisponibilidade constante, eu me afasto e preservo meus limites.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 6,
+    question: "Qual destas possibilidades assusta você mais?",
+    options: [
+      { label: "Decepcionar alguém e deixar de ser considerada uma pessoa boa.", code: "ML", points: 3 },
+      { label: "Precisar emocionalmente de outra pessoa.", code: "IF", points: 3 },
+      { label: "Descobrir que alguém consegue viver perfeitamente sem a minha ajuda.", code: "SE", points: 3 },
+      { label: "Ser conhecida por inteiro e depois rejeitada.", code: "FE", points: 3 },
+      { label: "Nenhuma delas controla minhas decisões como já controlou no passado.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 7,
+    question: "Quando algo começa a dar certo na sua vida afetiva, você…",
+    options: [
+      { label: "Começa a esconder suas necessidades para não estragar a relação.", code: "ML", points: 3 },
+      { label: "Procura sinais de perigo e imagina tudo o que pode dar errado.", code: "IF", points: 2 },
+      { label: "Cria problemas para resolver e provar o seu valor.", code: "SE", points: 3 },
+      { label: "Fica distante, demora para responder ou reduz o contato.", code: "FE", points: 3 },
+      { label: "Tolera a insegurança inicial sem sabotar aquilo que está funcionando.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 8,
+    question: "Qual frase parece ter sido arrancada de dentro da sua cabeça?",
+    options: [
+      { label: "“Eu não quero dar trabalho para ninguém.”", code: "ML", points: 3 },
+      { label: "“Eu não preciso de ninguém.”", code: "IF", points: 3 },
+      { label: "“Eu consigo consertar essa pessoa.”", code: "SE", points: 3 },
+      { label: "“É melhor ir embora antes que piore.”", code: "FE", points: 3 },
+      { label: "“Eu posso precisar de alguém sem abandonar quem eu sou.”", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 9,
+    question: "Depois de uma rejeição, qual é a sua reação mais comum?",
+    options: [
+      { label: "Tento descobrir o que deveria mudar em mim para ser escolhida.", code: "ML", points: 3 },
+      { label: "Finjo que não me importo e tento apagar qualquer sentimento.", code: "IF", points: 3 },
+      { label: "Tento provar que a pessoa perdeu alguém incrível.", code: "SE", points: 2 },
+      { label: "Fecho todas as portas e evito novas conexões por muito tempo.", code: "FE", points: 3 },
+      { label: "Permito que a rejeição doa sem transformá-la em uma sentença sobre meu valor.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 10,
+    question: "O que acontece quando você precisa estabelecer um limite?",
+    options: [
+      { label: "Eu digo “sim” para evitar culpa, discussão ou desapontamento.", code: "ML", points: 3 },
+      { label: "Transformo o limite em uma muralha e não permito nenhuma aproximação.", code: "IF", points: 2 },
+      { label: "Estabeleço o limite, mas volto atrás quando a pessoa demonstra sofrimento.", code: "SE", points: 3 },
+      { label: "Eu desapareço porque explicar o limite parece difícil demais.", code: "FE", points: 3 },
+      { label: "Digo “não” de maneira clara sem atacar a pessoa nem me abandonar.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 11,
+    question: "O que você costuma chamar de independência?",
+    options: [
+      { label: "Resolver tudo sozinha para nunca incomodar ninguém.", code: "ML", points: 2 },
+      { label: "Recusar apoio mesmo quando estou exausta.", code: "IF", points: 3 },
+      { label: "Controlar todos os detalhes porque acredito que ninguém fará direito.", code: "SE", points: 2 },
+      { label: "Evitar vínculos que possam exigir vulnerabilidade.", code: "FE", points: 3 },
+      { label: "Ter autonomia sem precisar viver emocionalmente isolada.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 12,
+    question: "Qual imagem você sente que precisa sustentar diante das outras pessoas?",
+    options: [
+      { label: "A mulher agradável, leve e que nunca cria problemas.", code: "ML", points: 3 },
+      { label: "A mulher fria, forte e impossível de ferir.", code: "IF", points: 3 },
+      { label: "A mulher que sempre sabe o que fazer e salva todo mundo.", code: "SE", points: 3 },
+      { label: "A mulher desapegada que pode ir embora a qualquer momento.", code: "FE", points: 3 },
+      { label: "Não preciso parecer perfeita para ser respeitada.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 13,
+    question: "Quando você comete um erro, o que normalmente acontece?",
+    options: [
+      { label: "Eu me culpo, exagero no pedido de desculpas e tento compensar.", code: "ML", points: 3 },
+      { label: "Crio justificativas para não precisar admitir que fui afetada.", code: "IF", points: 2 },
+      { label: "Desvio minha atenção para os problemas de outra pessoa.", code: "SE", points: 2 },
+      { label: "Abandono o projeto, a conversa ou a relação por vergonha.", code: "FE", points: 3 },
+      { label: "Assumo o erro, reparo o que for possível e continuo avançando.", code: "ER", points: 0 },
+    ],
+  },
+  {
+    id: 14,
+    question: "Qual confronto você mais precisa viver neste momento?",
+    options: [
+      { label: "Parar de pedir permissão para existir e decepcionar algumas pessoas.", code: "ML", points: 4 },
+      { label: "Admitir que existe medo escondido debaixo da minha armadura.", code: "IF", points: 4 },
+      { label: "Parar de salvar todo mundo para finalmente cuidar da minha própria vida.", code: "SE", points: 4 },
+      { label: "Continuar presente quando minha vontade automática é fugir.", code: "FE", points: 4 },
+      { label: "Consolidar a mulher que estou construindo sem voltar aos padrões antigos.", code: "ER", points: 0 },
+    ],
+  },
 ];
 
-interface QuizResult {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}
-
-const RESULTS_DATA = {
-  sabotage: {
-    title: "A AUTO-SABOTADORA DIPLOMATA",
-    description: "Você construiu uma vida onde o sucesso é um perigo. Sempre que a felicidade se aproxima, você 'diplomaticamente' cria um caos para restaurar o desconforto familiar. Você se ama, mas odeia o risco de ser vulnerável.",
-    icon: <Brain className="w-12 h-12 text-[#8f2f3f]" />
-  },
-  mask: {
-    title: "A REFÉM DA PERSONAGEM",
-    description: "Você é a 'mulher legal' perfeita. Todos te admiram, mas ninguém te conhece. Você está exausta de sustentar uma máscara que não te deixa respirar, e por isso seus ciclos sempre terminam em vazio.",
-    icon: <ShieldAlert className="w-12 h-12 text-[#8f2f3f]" />
-  },
-  generic: {
-    title: "O CICLO DA MULHER INVISÍVEL",
-    description: "Você se tornou mestre em se diminuir. Seu maior medo não é a solidão, mas sim ser vista de verdade e não ser o suficiente. Você está presa em um ciclo de auto-anulação que precisa ser quebrado hoje.",
-    icon: <Sparkles className="w-12 h-12 text-[#8f2f3f]" />
-  }
-};
+const TRANSITIONS = [
+  { after: 4, title: "A primeira máscara já caiu.", text: "Até aqui, você respondeu sobre aquilo que mostra para os outros. Agora vamos entrar no padrão que você tenta esconder até de si mesma." },
+  { after: 8, title: "Seu padrão já apareceu.", text: "Talvez você ainda esteja tentando justificar algumas respostas. Continue. A parte que mais incomoda geralmente é a que mais precisa ser observada." },
+  { after: 12, title: "Faltam duas perguntas.", text: "Você já passou da parte confortável. Agora responda sem escolher aquilo que parece bonito. Escolha aquilo que acontece de verdade." }
+];
 
 export default function QuizLanding() {
-  const [step, setStep] = useState<"intro" | "quiz" | "calculating" | "result">("intro");
+  const [step, setStep] = useState<"intro" | "quiz" | "transition" | "processing" | "lead" | "result">("intro");
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scores, setScores] = useState({ ML: 0, IF: 0, SE: 0, FE: 0, ER: 0 });
+  const [activeTransition, setActiveTransition] = useState<any>(null);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const handleAnswer = (value: string) => {
-    const newAnswers = [...answers, value];
-    setAnswers(newAnswers);
+  const handleAnswer = (option: any) => {
+    setScores(prev => ({ ...prev, [option.code]: (prev as any)[option.code] + option.points }));
     
-    if (currentQuestion < QUESTIONS.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+    const nextQ = currentQuestion + 1;
+    const transition = TRANSITIONS.find(t => t.after === nextQ);
+
+    if (transition) {
+      setActiveTransition(transition);
+      setStep("transition");
+    } else if (nextQ >= QUESTIONS.length) {
+      setStep("processing");
+      setTimeout(() => setStep("lead"), 3000);
     } else {
-      setStep("calculating");
-      setTimeout(() => setStep("result"), 3000);
+      setCurrentQuestion(nextQ);
     }
   };
 
-  const getResult = (): QuizResult => {
-    const counts = answers.reduce((acc, val) => {
-      acc[val] = (acc[val] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+  const getResult = () => {
+    const { ML, IF, SE, FE } = scores;
+    const max = Math.max(ML, IF, SE, FE);
+    if (scores.ER >= 8 || (ML + IF + SE + FE) <= 10) return "ER";
     
-    if ((counts["sabotage"] || 0) > 0) return RESULTS_DATA.sabotage;
-    if ((counts["mask"] || 0) > 0) return RESULTS_DATA.mask;
-    return RESULTS_DATA.generic;
+    // Find highest
+    const profiles = [{code: "ML", val: ML}, {code: "IF", val: IF}, {code: "SE", val: SE}, {code: "FE", val: FE}];
+    const sorted = profiles.sort((a,b) => b.val - a.val);
+    return sorted[0]?.code || "ER";
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0807] text-[#c8c0ba] font-sans selection:bg-[#8f2f3f] selection:text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#0a0807] text-[#c8c0ba] font-sans selection:bg-[#8f2f3f] selection:text-white">
       <ShaderBackground />
-      
-      <div 
-        className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-1000 opacity-40 lg:opacity-60"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(143, 47, 63, 0.15), transparent 80%)`
-        }}
-      />
-
-      <main className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
+      <main className="relative z-10 min-h-screen flex items-center justify-center p-6">
         <AnimatePresence mode="wait">
           {step === "intro" && (
-            <motion.div 
-              key="intro"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="max-w-4xl text-center space-y-12"
-            >
-              <div className="space-y-6">
-                <span className="text-[#8f2f3f] font-black tracking-[0.4em] uppercase text-sm block mb-4">
-                  DIAGNÓSTICO DE AUTO-SABOTAGEM
-                </span>
-                <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black text-white leading-[0.8] tracking-tighter uppercase italic">
-                  O FIM DA <br /> PERSONAGEM
-                </h1>
-                <p className="text-xl md:text-2xl text-[#c8c0ba]/80 font-light max-w-2xl mx-auto leading-relaxed italic">
-                  "Descubra qual o nível de sabotagem emocional que está travando sua vida e impedindo você de ser irreconhecível."
-                </p>
-              </div>
-
-              <button
-                onClick={() => setStep("quiz")}
-                className="group relative inline-flex items-center gap-6 bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black px-12 py-8 rounded-full text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center gap-4">
-                  DESCOBRIR MEU PERFIL
-                  <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform duration-500" />
-                </span>
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </button>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-8 max-w-2xl">
+              <h1 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-none tracking-tighter">QUAL PERSONAGEM EMOCIONAL ESTÁ SABOTANDO A SUA VIDA?</h1>
+              <p className="text-xl italic text-white/70">Responda 14 perguntas e descubra o padrão que faz você se abandonar.</p>
+              <button onClick={() => setStep("quiz")} className="bg-[#8f2f3f] text-white px-12 py-6 rounded-full text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all">COMEÇAR O CONFRONTO</button>
             </motion.div>
           )}
 
           {step === "quiz" && (
-            <motion.div 
-              key="quiz"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              className="w-full max-w-2xl"
-            >
-              <div className="mb-12">
-                <div className="flex justify-between items-end mb-4">
-                  <span className="text-xs font-black tracking-widest text-[#8f2f3f] uppercase">
-                    Pergunta {currentQuestion + 1} de {QUESTIONS.length}
-                  </span>
-                  <span className="text-3xl font-black text-white/20 italic">
-                    {Math.round(((currentQuestion + 1) / QUESTIONS.length) * 100)}%
-                  </span>
-                </div>
-                <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
-                    className="h-full bg-[#8f2f3f]"
-                  />
-                </div>
-              </div>
-
-              {QUESTIONS[currentQuestion] && (
-                <div className="space-y-10">
-                  <h2 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight uppercase italic">
-                    {QUESTIONS[currentQuestion].question}
-                  </h2>
-
-                  <div className="grid gap-4">
-                    {QUESTIONS[currentQuestion].options.map((option, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleAnswer(option.value)}
-                        className="group relative w-full text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-[#8f2f3f]/10 hover:border-[#8f2f3f]/50 transition-all duration-300 flex items-center justify-between"
-                      >
-                        <span className="text-lg font-light text-[#c8c0ba] group-hover:text-white transition-colors">
-                          {option.label}
-                        </span>
-                        <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-8">
+               <div className="text-center space-y-2">
+                 <p className="text-xs uppercase tracking-widest text-[#8f2f3f] font-black">Nível de Autoengano</p>
+                 <div className="h-1 bg-white/10 w-full rounded-full overflow-hidden">
+                   <div className="h-full bg-[#8f2f3f]" style={{ width: `${(currentQuestion/QUESTIONS.length)*100}%` }} />
+                 </div>
+               </div>
+               <h2 className="text-3xl font-black text-white italic uppercase">{QUESTIONS[currentQuestion]?.question}</h2>
+               <div className="space-y-4">
+                 {QUESTIONS[currentQuestion]?.options.map((opt: any, i: number) => (
+                   <button key={i} onClick={() => handleAnswer(opt)} className="w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f] transition-all rounded-xl">{opt.label}</button>
+                 ))}
+               </div>
             </motion.div>
           )}
 
-          {step === "calculating" && (
-            <motion.div 
-              key="calculating"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center space-y-8"
-            >
-              <div className="relative">
-                <div className="w-24 h-24 border-2 border-white/10 border-t-[#8f2f3f] rounded-full animate-spin mx-auto" />
-                <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-[#8f2f3f] animate-pulse" />
-              </div>
-              <h3 className="text-2xl font-black text-white uppercase tracking-tighter italic">
-                Processando suas respostas...
-              </h3>
+          {step === "transition" && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-8 max-w-xl">
+              <h2 className="text-4xl font-black text-white uppercase italic">{activeTransition?.title}</h2>
+              <p className="text-lg italic text-white/80">{activeTransition?.text}</p>
+              <button onClick={() => { setStep("quiz"); setCurrentQuestion(currentQuestion + 1); }} className="bg-[#8f2f3f] px-12 py-4 rounded-full text-white uppercase font-black">CONTINUAR O CONFRONTO</button>
             </motion.div>
           )}
 
-          {step === "result" && (
-            <motion.div 
-              key="result"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="max-w-5xl w-full"
-            >
-              {(() => {
-                const result = getResult();
-                return (
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
-                      <div className="space-y-4">
-                        <span className="inline-block bg-[#8f2f3f]/20 text-[#d4726a] px-4 py-1 rounded-full text-xs font-black tracking-[0.2em] uppercase">
-                          DIAGNÓSTICO CONCLUÍDO
-                        </span>
-                        <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
-                          {result.title}
-                        </h2>
-                      </div>
-                      
-                      <div className="flex gap-6 items-start">
-                        <div className="flex-shrink-0 p-4 bg-[#8f2f3f]/10 rounded-2xl">
-                          {result.icon}
-                        </div>
-                        <p className="text-xl md:text-2xl text-[#c8c0ba] font-light leading-relaxed italic">
-                          {result.description}
-                        </p>
-                      </div>
-
-                      <div className="p-8 border border-[#8f2f3f]/30 bg-[#8f2f3f]/5 rounded-3xl space-y-4">
-                        <h4 className="text-[#d4726a] font-black uppercase text-sm tracking-widest">⚠️ VEREDITO CRÍTICO:</h4>
-                        <p className="text-white text-lg font-bold leading-snug">
-                          Seus ciclos não vão mudar enquanto você não matar a personagem que criou para ser aceita. Você está a um passo da ressurreição.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="relative">
-                      <Reveal from="right">
-                        <div className="surface-noir p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_100px_-30px_rgba(143,47,63,0.4)] relative overflow-hidden group">
-                          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8f2f3f]/30 to-transparent blur-3xl opacity-50" />
-                          
-                          <div className="relative space-y-10">
-                            <div className="space-y-2">
-                              <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
-                                A SOLUÇÃO PARA O SEU PERFIL:
-                              </h3>
-                              <p className="text-[#8f2f3f] font-black tracking-widest text-xs uppercase">PLANO DE 14 DIAS COMPLETO</p>
-                            </div>
-
-                            <div className="space-y-4">
-                              {[
-                                "Plano + comandos diários (100+ págs)",
-                                "Acesso vitalício ao conteúdo",
-                                "Esmurre sua insegurança emocional",
-                                "Método para parar de fugir"
-                              ].map((f, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                  <CheckCircle className="w-5 h-5 text-[#8f2f3f]" />
-                                  <span className="text-lg font-light">{f}</span>
-                                </div>
-                              ))}
-                            </div>
-
-                            <div className="pt-6 border-t border-white/5">
-                              <div className="flex items-center gap-4 mb-6">
-                                <span className="text-white/30 text-2xl line-through italic">R$ 97,00</span>
-                                <span className="text-6xl font-black text-white tracking-tighter ember-glow">R$ 29,90</span>
-                              </div>
-
-                              <button
-                                onClick={() => window.open('https://pay.hotmart.com/YOUR_LINK', '_blank')}
-                                className="group relative w-full overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 rounded-2xl text-xl md:text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter"
-                              >
-                                <span className="relative z-10 flex items-center justify-center gap-4">
-                                  QUERO MINHA RESSURREIÇÃO
-                                  <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
-                                </span>
-                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </Reveal>
-                    </div>
-                  </div>
-                );
-              })()}
-            </motion.div>
+          {step === "processing" && (
+            <div className="text-center">
+              <h2 className="text-4xl font-black text-white italic">ANALISANDO A PERSONAGEM…</h2>
+            </div>
           )}
         </AnimatePresence>
       </main>
-
-      <div className="fixed bottom-10 left-10 pointer-events-none opacity-[0.02] select-none">
-        <h2 className="text-[20rem] font-black leading-none uppercase italic tracking-tighter">
-          CONFRONTO
-        </h2>
-      </div>
     </div>
   );
 }
