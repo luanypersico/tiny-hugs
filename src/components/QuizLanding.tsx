@@ -215,7 +215,7 @@ export default function QuizLanding() {
           )}
 
           {step === "quiz" && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-8">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-8 px-4 md:px-0">
                <div className="text-center space-y-2">
                  <p className="text-xs uppercase tracking-widest text-[#8f2f3f] font-black">Nível de Autoengano</p>
                  <div className="h-1 bg-white/10 w-full rounded-full overflow-hidden">
