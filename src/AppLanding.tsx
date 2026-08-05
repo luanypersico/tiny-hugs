@@ -85,7 +85,7 @@ function App() {
               <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#d4726a]" />
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 sm:mb-8 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight tracking-tight">
               <span className="block mb-2 sm:mb-4">14 dias pra se confrontar,</span>
               <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b98aa8] via-[#d4726a] to-[#b98aa8]">
