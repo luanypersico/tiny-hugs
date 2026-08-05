@@ -132,25 +132,22 @@ function App() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <button
                   onClick={scrollToAction}
-                  className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20"
+                  className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20 w-full sm:w-auto"
                 >
-                  <span className="relative z-10 flex items-center gap-3">
+                  <span className="relative z-10 flex items-center justify-center gap-3">
                     QUERO ME CONFRONTAR AGORA
                     <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
                   </span>
                   <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
-                <button
-                  onClick={async () => {
-                    const pdfLib = await import('./lib/pdf-generator');
-                    const doc = pdfLib.generateProfessionalPDF(EBOOK_CONTENT);
-                    doc.save("ME_AMO_MAS_ME_ODEIO_PLANO_104_PAGINAS.pdf");
-                  }}
-                  className="group relative bg-white/5 hover:bg-white/10 text-white font-medium py-6 px-12 rounded-full text-lg transition-all duration-500 border border-white/10 flex items-center gap-3"
+                <a
+                  href="/ebook/ME_AMO_MAS_ME_ODEIO_PLANO_104_PAGINAS.txt"
+                  download="ME_AMO_MAS_ME_ODEIO_PLANO_104_PAGINAS.txt"
+                  className="group relative bg-white/5 hover:bg-white/10 text-white font-medium py-6 px-12 rounded-full text-lg transition-all duration-500 border border-white/10 flex items-center justify-center gap-3 w-full sm:w-auto"
                 >
-                  <FileText className="w-5 h-5 text-[#d4726a]" />
-                  VER PDF PROFISSIONAL (DEMO)
-                </button>
+                  <Download className="w-5 h-5 text-[#d4726a]" />
+                  BAIXAR PDF PRONTO (104 PÁGINAS)
+                </a>
               </div>
             </Reveal>
 
