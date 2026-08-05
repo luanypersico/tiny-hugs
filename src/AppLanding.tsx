@@ -114,11 +114,9 @@ function App() {
             <Reveal delay={80}>
               <div className="surface-noir rounded-3xl p-6 sm:p-8 lg:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto">
                 <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-                  <Diamond className="w-6 h-6 sm:w-8 sm:h-8 text-[#b98aa8]" />
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
                     Oi, eu sou você.
                   </h2>
-                  <Diamond className="w-6 h-6 sm:w-8 sm:h-8 text-[#d4726a]" />
                 </div>
                 <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed">
                   <strong className="text-white drop-shadow-sm">Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir.</strong>
