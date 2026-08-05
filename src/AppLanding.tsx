@@ -4,6 +4,7 @@ import ShaderBackground from '@/components/ShaderBackground';
 import SocialProofSection from '@/components/SocialProofSection';
 import Reveal from '@/components/Reveal';
 import StickyCta from '@/components/StickyCta';
+import { EbookDownloader } from '@/components/EbookDownloader';
 import heroCover from '@/assets/hero-cover.jpg';
 import bonusEbook from '@/assets/bonus-ebook.jpg';
 import finalCta from '@/assets/final-cta.jpg';
@@ -127,16 +128,19 @@ function App() {
             </Reveal>
 
             <Reveal delay={40}>
-              <button
-                onClick={scrollToAction}
-                className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20"
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  QUERO ME CONFRONTAR AGORA
-                  <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
-                <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button
+                  onClick={scrollToAction}
+                  className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    QUERO ME CONFRONTAR AGORA
+                    <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
+                  </span>
+                  <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </button>
+                <EbookDownloader />
+              </div>
             </Reveal>
 
             <div aria-hidden className="mt-12 sm:mt-16 flex justify-center">

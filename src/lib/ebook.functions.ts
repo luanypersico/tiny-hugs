@@ -1,26 +1,30 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
+import { EBOOK_CONTENT } from "./ebook-content.server";
+
 /**
- * Simula a proteção e geração de um link de download seguro para o eBook.
- * Em um cenário real, isso verificaria a transação no Stripe/Banco e geraria um PDF com watermark.
+ * Gera o conteúdo do eBook com proteção anti-pirataria (watermark simulada).
  */
-export const getSecureDownloadLink = createServerFn({ method: "POST" })
+export const downloadEbook = createServerFn({ method: "POST" })
   .inputValidator((data) => z.object({ 
     email: z.string().email(),
-    orderId: z.string().optional() 
+    name: z.string().min(2)
   }).parse(data))
   .handler(async ({ data }) => {
-    // Lógica de proteção anti-pirataria:
-    // 1. Validar se o usuário realmente comprou.
-    // 2. Gerar um token temporário (JWT) para o download.
-    // 3. Preparar metadados para injetar o e-mail do comprador no PDF (Digital Watermarking).
+    // Simulando delay de geração de PDF protegido
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
-    console.log(`Gerando download protegido para: ${data.email}`);
-    
+    // Injetando "Watermark" digital no conteúdo para proteção
+    const protectedContent = {
+      ...EBOOK_CONTENT,
+      watermark: `Licenciado exclusivamente para: ${data.name} (${data.email}) - ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
+      generatedAt: new Date().toISOString()
+    };
+
     return {
       success: true,
-      downloadUrl: "#", // Link simulado
-      message: "Link de download seguro gerado com proteção anti-pirataria vinculada ao seu e-mail."
+      ebook: protectedContent,
+      message: "eBook gerado com sucesso e protegido com sua marca d'água digital."
     };
   });

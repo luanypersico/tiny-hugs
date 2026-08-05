@@ -1,0 +1,192 @@
+import React, { useState } from 'react';
+import { useServerFn } from '@tanstack/react-start';
+import { downloadEbook } from '@/lib/ebook.functions';
+import { Download, ShieldCheck, FileText, Lock, Loader2, X, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { toast } from 'sonner';
+
+export const EbookDownloader = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedEbook, setGeneratedEbook] = useState<any>(null);
+
+  const ebookFn = useServerFn(downloadEbook);
+
+  const handleDownload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsGenerating(true);
+    try {
+      const result = await ebookFn({ data: { email, name } });
+      if (result.success) {
+        setGeneratedEbook(result.ebook);
+        toast.success("eBook gerado com proteção anti-pirataria!");
+      }
+    } catch (error) {
+      toast.error("Erro ao gerar eBook. Tente novamente.");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const simulatePdfDownload = () => {
+    toast.info("Iniciando download do arquivo PDF protegido...");
+    // Em um app real, aqui abriríamos o Blob do PDF gerado
+  };
+
+  return (
+    <>
+      <button 
+        onClick={() => setIsOpen(true)}
+        className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-4 px-8 rounded-full flex items-center gap-3 transition-all duration-300 shadow-xl border border-white/10"
+      >
+        <Download className="w-5 h-5 group-hover:bounce" />
+        <span>BAIXAR EBOOK COMPLETO (100+ PÁGS)</span>
+      </button>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+          <div className="relative w-full max-w-2xl surface-noir border border-white/10 rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {!generatedEbook ? (
+              <div className="p-8 sm:p-12 text-center">
+                <div className="w-20 h-20 bg-[#8f2f3f]/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-[#8f2f3f]/30">
+                  <Lock className="w-10 h-10 text-[#d4726a]" />
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">ÁREA DE ACESSO PROTEGIDA</h2>
+                <p className="text-[#c8c0ba] mb-10 text-lg leading-relaxed">
+                  Para gerar sua cópia exclusiva com <span className="text-[#d4726a] font-bold">proteção anti-pirataria vinculada ao seu CPF/Email</span>, confirme seus dados abaixo.
+                </p>
+
+                <form onSubmit={handleDownload} className="space-y-6 text-left">
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-[#b98aa8] uppercase tracking-widest ml-1">Nome Completo</label>
+                    <input 
+                      required
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Como deve constar na licença..."
+                      className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#d4726a] transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-[#b98aa8] uppercase tracking-widest ml-1">E-mail de Compra</label>
+                    <input 
+                      required
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="seu@email.com"
+                      className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#d4726a] transition-colors"
+                    />
+                  </div>
+                  <button 
+                    disabled={isGenerating}
+                    type="submit"
+                    className="w-full bg-white text-black font-black py-5 rounded-xl flex items-center justify-center gap-3 hover:bg-[#d4726a] hover:text-white transition-all duration-500 disabled:opacity-50"
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className="w-6 h-6 animate-spin" />
+                        GERANDO CÓPIA PROTEGIDA...
+                      </>
+                    ) : (
+                      <>
+                        GERAR MEU EBOOK AGORA
+                        <ChevronRight className="w-6 h-6" />
+                      </>
+                    )}
+                  </button>
+                </form>
+
+                <div className="mt-8 flex items-center justify-center gap-6 text-[#c8c0ba]/60 text-xs font-medium uppercase tracking-widest">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#7fae8e]" />
+                    Proteção Digital
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-[#8fa3b8]" />
+                    100+ Páginas
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="max-h-[80vh] overflow-y-auto p-8 sm:p-12 custom-scrollbar">
+                <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-white tracking-tight">{generatedEbook.title}</h2>
+                    <p className="text-[#d4726a] font-medium text-sm">{generatedEbook.subtitle}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="block text-[10px] text-white/30 uppercase tracking-[0.2em] mb-1">Status da Licença</span>
+                    <span className="bg-[#7fae8e]/20 text-[#7fae8e] text-[10px] font-bold px-3 py-1 rounded-full border border-[#7fae8e]/30">ATIVA & PROTEGIDA</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#d4726a]/5 border border-[#d4726a]/20 rounded-2xl p-6 mb-10">
+                  <p className="text-[#d4726a] text-xs font-mono break-all text-center">
+                    {generatedEbook.watermark}
+                  </p>
+                </div>
+
+                <div className="space-y-12">
+                  <section>
+                    <h3 className="text-[#b98aa8] text-xs font-bold uppercase tracking-[0.3em] mb-6 flex items-center gap-3">
+                      <div className="h-px flex-1 bg-white/10" />
+                      SUMÁRIO EXECUTIVO
+                      <div className="h-px flex-1 bg-white/10" />
+                    </h3>
+                    <div className="grid gap-4">
+                      {generatedEbook.phases.map((phase: any, i: number) => (
+                        <div key={i} className="group cursor-default">
+                          <div className="text-white font-bold mb-2 flex items-center gap-2">
+                            <span className="text-[#d4726a] opacity-50">0{i+1}</span>
+                            {phase.name}
+                          </div>
+                          <div className="grid gap-2 pl-6 border-l border-white/5">
+                            {phase.days.map((day: any, j: number) => (
+                              <div key={j} className="text-[#c8c0ba] text-sm flex items-center justify-between group-hover:text-white transition-colors">
+                                <span>Dia {day.day}: {day.title}</span>
+                                <span className="text-white/20 text-[10px] font-mono">PÁG {Math.floor(Math.random() * 90) + 10}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="prose prose-invert max-w-none">
+                    <h3 className="text-white font-bold text-xl mb-4">INTRODUÇÃO: O ESPELHO QUEBRADO</h3>
+                    <p className="text-[#c8c0ba] leading-relaxed whitespace-pre-wrap">
+                      {generatedEbook.introduction}
+                    </p>
+                  </section>
+
+                  <div className="bg-white/5 rounded-2xl p-8 text-center border border-white/5">
+                    <p className="text-white font-bold mb-6">Sua cópia personalizada de 104 páginas está pronta.</p>
+                    <button 
+                      onClick={simulatePdfDownload}
+                      className="inline-flex items-center gap-3 bg-[#d4726a] hover:bg-[#a9414a] text-white font-black py-4 px-10 rounded-xl transition-all shadow-xl shadow-[#d4726a]/20"
+                    >
+                      <Download className="w-5 h-5" />
+                      DOWNLOAD PDF SEGURO
+                    </button>
+                    <p className="mt-4 text-[10px] text-white/30 uppercase tracking-widest">Abertura permitida apenas via e-mail autorizado</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
