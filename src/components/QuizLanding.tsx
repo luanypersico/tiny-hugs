@@ -223,7 +223,7 @@ export default function QuizLanding() {
                </div>
                <h2 className="text-3xl font-black text-white italic uppercase">{QUESTIONS[currentQuestion].question}</h2>
                <div className="space-y-4">
-                 {QUESTIONS[currentQuestion].options.map((opt, i) => (
+                 {QUESTIONS[currentQuestion].options.map((opt: any, i: number) => (
                    <button key={i} onClick={() => handleAnswer(opt)} className="w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f] transition-all rounded-xl">{opt.label}</button>
                  ))}
                </div>
@@ -232,8 +232,8 @@ export default function QuizLanding() {
 
           {step === "transition" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-8 max-w-xl">
-              <h2 className="text-4xl font-black text-white uppercase italic">{activeTransition.title}</h2>
-              <p className="text-lg italic text-white/80">{activeTransition.text}</p>
+              <h2 className="text-4xl font-black text-white uppercase italic">{activeTransition?.title}</h2>
+              <p className="text-lg italic text-white/80">{activeTransition?.text}</p>
               <button onClick={() => { setStep("quiz"); setCurrentQuestion(currentQuestion + 1); }} className="bg-[#8f2f3f] px-12 py-4 rounded-full text-white uppercase font-black">CONTINUAR O CONFRONTO</button>
             </motion.div>
           )}
