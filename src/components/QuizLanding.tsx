@@ -1074,7 +1074,7 @@ export default function QuizLanding() {
                               if (displayedAnswers.length < 3) {
                                 nonRegulated.forEach(a => {
                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
-                                    displayedAnswers.push({...a, secondaryLabel: "Padrão que ainda aparece"} as any);
+                                    displayedAnswers.push({...ans, secondaryLabel: "Padrão que ainda aparece"} as any);
                                   }
                                 });
                               }
@@ -1082,7 +1082,7 @@ export default function QuizLanding() {
                               if (displayedAnswers.length < 3 && secondaryResult) {
                                 answers.filter(a => a.profile === secondaryResult).forEach(a => {
                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
-                                    displayedAnswers.push({...a, secondaryLabel: "Traço secundário"} as any);
+                                    displayedAnswers.push({...ans, secondaryLabel: "Traço secundário"} as any);
                                   }
                                 });
                               }
