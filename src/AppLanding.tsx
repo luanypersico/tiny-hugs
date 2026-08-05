@@ -545,12 +545,12 @@ function App() {
               </Reveal>
               <Reveal delay={60}>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-                DUAS FORMAS DE COMEÇAR:
+                QUERO ME TORNAR IRRECONHECÍVEL:
                 </h2>
               </Reveal>
               <Reveal delay={120}>
                 <p className="text-lg sm:text-xl text-[#c8c0ba] max-w-3xl mx-auto">
-                  Escolha como você quer enfrentar seus monstros. Ambas vão te confrontar, mas uma vai mais fundo.
+                  Acesso total ao Plano de 14 dias mais visceral que você já viu.
                 </p>
               </Reveal>
             </div>
