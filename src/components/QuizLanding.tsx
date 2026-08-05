@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldAlert, Zap, CheckCircle, ChevronRight, Brain, Sparkles } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
@@ -57,7 +57,13 @@ const QUESTIONS = [
   }
 ];
 
-const RESULTS = {
+interface QuizResult {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const RESULTS: Record<string, QuizResult> = {
   sabotage: {
     title: "A AUTO-SABOTADORA DIPLOMATA",
     description: "Você construiu uma vida onde o sucesso é um perigo. Sempre que a felicidade se aproxima, você 'diplomaticamente' cria um caos para restaurar o desconforto familiar. Você se ama, mas odeia o risco de ser vulnerável.",
@@ -101,7 +107,7 @@ export default function QuizLanding() {
     }
   };
 
-  const getResult = (): { title: string; description: string; icon: JSX.Element } => {
+  const getResult = (): QuizResult => {
     const counts = answers.reduce((acc, val) => {
       acc[val] = (acc[val] || 0) + 1;
       return acc;
