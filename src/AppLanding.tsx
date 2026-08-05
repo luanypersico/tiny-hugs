@@ -804,12 +804,15 @@ function App() {
             </Reveal>
 
             <Reveal delay={40}>
-              <button className="group relative bg-gradient-to-r from-[#8f2f3f] via-[#4a2350] to-[#8f2f3f] hover:from-[#a9414a] hover:via-[#5b3a63] hover:to-[#a9414a] text-white font-bold py-6 sm:py-8 px-8 sm:px-16 rounded-full text-xl sm:text-2xl transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-[#a9414a]/50 mb-10 sm:mb-14 border border-[#d4726a]/30">
-                <span className="relative z-10 flex items-center gap-3 sm:gap-4">
+              <button 
+                onClick={scrollToAction}
+                className="group relative overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 sm:py-10 px-12 sm:px-20 rounded-2xl text-xl sm:text-3xl transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_80px_-10px_rgba(143,47,63,0.5)] border border-white/20 w-full sm:w-auto uppercase tracking-tighter"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-4">
                   ME ENTREGA ESSE ESTALO AGORA
-                  <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 group-hover:translate-x-3 transition-transform duration-300" />
+                  <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
                 </span>
-                <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#d4726a]/30 to-[#b98aa8]/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
             </Reveal>
 
