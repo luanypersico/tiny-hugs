@@ -560,7 +560,7 @@ export default function QuizLanding() {
     const maxScore = first[1];
     const tiedProfiles = sortedProfiles.filter(([_, score]) => score === maxScore).map(([p, _]) => p);
 
-    let winner: ScoredProfile;
+    let winner: ScoredProfile = tiedProfiles[0];
 
     if (tiedProfiles.length === 1) {
       winner = tiedProfiles[0];
