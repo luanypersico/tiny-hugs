@@ -545,102 +545,23 @@ function App() {
               </Reveal>
               <Reveal delay={60}>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-                DUAS FORMAS DE COMEÇAR:
+                QUERO ME TORNAR IRRECONHECÍVEL:
                 </h2>
               </Reveal>
               <Reveal delay={120}>
                 <p className="text-lg sm:text-xl text-[#c8c0ba] max-w-3xl mx-auto">
-                  Escolha como você quer enfrentar seus monstros. Ambas vão te confrontar, mas uma vai mais fundo.
+                  Acesso total ao Plano de 14 dias mais visceral que você já viu.
                 </p>
               </Reveal>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto items-start">
-              {/* Versão Básica */}
-              <Reveal from="left">
-                <div className="group relative surface-noir rounded-3xl transition-all duration-700 hover:-translate-y-1 overflow-hidden">
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#5b3a63]/10 via-transparent to-[#4a5a6b]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-                  <div className="relative p-8 sm:p-10 lg:p-12">
-                    {/* Header */}
-                    <div className="text-center mb-8 sm:mb-10">
-                      <div className="relative mb-6 sm:mb-8">
-                        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#4a5a6b]/20 to-[#5b3a63]/20 rounded-full blur-xl"></div>
-                        <Download className="relative w-16 h-16 sm:w-20 sm:h-20 text-[#8fa3b8] mx-auto" />
-                      </div>
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                        VERSÃO "AINDA TEM MEDO"
-                      </h3>
-                      <p className="text-base sm:text-lg text-[#9a908a] mb-6 sm:mb-8">Para quem quer começar devagar</p>
-
-                      {/* Price */}
-                      <div className="relative">
-                        <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8fa3b8] to-[#b98aa8] mb-2">
-                          R$ 37,00
-                        </div>
-                        <div className="text-sm sm:text-base text-[#7a716c] tracking-[0.18em] uppercase">pagamento único</div>
-                      </div>
-                    </div>
-
-                    <div aria-hidden className="ember-rule mb-8" />
-
-                    {/* Features */}
-                    <div className="space-y-4 sm:space-y-5 mb-8 sm:mb-10">
-                      {[
-                        "Plano + comandos diários (100+ págs)",
-                        "Acesso vitalício com proteção digital",
-                        "Guia de reconstrução de autoestima"
-                      ].map((feature, index) => (
-                        <div key={index} className="flex items-start gap-3 sm:gap-4">
-                          <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-[#7fae8e] to-[#3f6b55] rounded-full flex items-center justify-center mt-0.5">
-                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                          </div>
-                          <span className="text-[#c8c0ba] text-base sm:text-lg leading-relaxed">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTA Button */}
-                    <button
-                      onClick={() => setSelectedVersion('digital')}
-                      className={`w-full relative overflow-hidden rounded-2xl font-bold text-base sm:text-lg py-4 sm:py-5 px-6 sm:px-8 transition-all duration-500 transform hover:scale-[1.02] ${
-                        selectedVersion === 'digital'
-                          ? 'bg-gradient-to-r from-[#4a5a6b] to-[#4a2350] text-white shadow-2xl shadow-[#4a5a6b]/50 scale-[1.02]'
-                          : 'bg-gradient-to-r from-[#39485a]/80 to-[#4a2350]/80 text-white hover:from-[#4a5a6b] hover:to-[#5b3a63] shadow-xl hover:shadow-[#4a5a6b]/30'
-                      }`}
-                    >
-                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
-                        {selectedVersion === 'digital' && <Check className="w-5 h-5" strokeWidth={2} />}
-                        {selectedVersion === 'digital' ? 'SELECIONADO!' : 'SIM, EU VOU TRANSFORMAR A DOR EM DISCIPLINA'}
-                      </span>
-                      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-
-                    {/* Footer */}
-                    <div className="mt-6 sm:mt-8 text-center border-t border-white/10 pt-6 sm:pt-8">
-                      <p className="text-[#9a908a] text-sm sm:text-base italic mb-3 sm:mb-4 leading-relaxed">
-                        "É o preço de um lanche. Mas você vai inventar que não tem dinheiro."
-                      </p>
-                      <div className="flex items-center justify-center gap-3 text-[#b98aa8] font-semibold text-sm sm:text-base">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Versão Premium */}
-              <Reveal from="right" delay={120}>
-                <div className="group relative surface-noir rounded-3xl border-2 border-[#d4726a]/30 hover:border-[#d4726a]/50 transition-all duration-700 hover:-translate-y-1 overflow-hidden mt-6 lg:mt-0">
-                  {/* Premium Badge */}
-                  <div className="absolute -top-2 sm:-top-4 left-1/2 transform -translate-x-1/2 z-20 px-4">
-                    <div className="bg-gradient-to-r from-[#a9414a] via-[#4a2350] to-[#a9414a] text-white text-xs sm:text-sm font-bold py-1.5 sm:py-3 px-2 sm:px-6 rounded-full shadow-2xl border border-[#d4726a]/30 whitespace-nowrap tracking-[0.18em]">
-                      MAIS COMPLETA
-                    </div>
-                  </div>
-
+            <div className="max-w-3xl mx-auto">
+              {/* Versão Única */}
+              <Reveal from="up">
+                <div className="group relative surface-noir rounded-3xl border-2 border-[#d4726a]/30 hover:border-[#d4726a]/50 transition-all duration-700 hover:-translate-y-1 overflow-hidden">
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#a9414a]/15 via-[#5b3a63]/10 to-[#a9414a]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-                  <div className="relative p-6 sm:p-10 lg:p-12 pt-10 sm:pt-14">
+                  <div className="relative p-8 sm:p-10 lg:p-12">
                     {/* Header */}
                     <div className="text-center mb-8 sm:mb-10">
                       <div className="relative mb-6 sm:mb-8">
@@ -648,14 +569,14 @@ function App() {
                         <BookOpen className="relative w-16 h-16 sm:w-20 sm:h-20 text-[#d4726a] mx-auto" />
                       </div>
                       <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                        VERSÃO "VOU MUDAR DE VERDADE"
+                        PLANO COMPLETO - 14 DIAS
                       </h3>
-                      <p className="text-base sm:text-lg text-[#9a908a] mb-6 sm:mb-8">Para quem não quer mais perder tempo</p>
+                      <p className="text-base sm:text-lg text-[#9a908a] mb-6 sm:mb-8">Para quem não aceita mais migalhas emocionais</p>
 
                       {/* Price */}
                       <div className="relative">
                         <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] via-[#b98aa8] to-[#d4726a] mb-2 ember-glow">
-                          R$ 47,00
+                          R$ 29,00
                         </div>
                         <div className="text-sm sm:text-base text-[#7a716c] tracking-[0.18em] uppercase">pagamento único</div>
                       </div>
@@ -664,18 +585,17 @@ function App() {
                     <div aria-hidden className="ember-rule mb-8" />
 
                     {/* Features */}
-                    <div className="space-y-4 sm:space-y-5 mb-8 sm:mb-10">
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-8 sm:mb-10">
                       {[
-                        "Tudo da versão básica",
-                        "Acesso vitalício ao Plano de 14 dias",
-                        "Reconstrução de autoestima em 5 dias",
-                        "14 dias pra esmurrar sua insegurança emocional",
-                        "Método pra parar de correr quando alguém gosta de você",
-                        "Tarefas pra não aceitar mais migalha e chamar de afeto",
-                        "Perguntas que desmontam seu medo de rejeição",
-                        "Ordens surpresa",
-                        "Reforço comportamental nos bastidores",
-                        "Declaração Final da Nova Identidade"
+                        "Plano + comandos diários (100+ págs)",
+                        "Acesso vitalício ao conteúdo",
+                        "Reconstruction de autoestima",
+                        "Esmurre sua insegurança emocional",
+                        "Método para parar de fugir",
+                        "Tarefas de alto impacto",
+                        "Perguntas que desmontam o medo",
+                        "Reforço comportamental",
+                        "Declaração da Nova Identidade"
                       ].map((feature, index) => (
                         <div key={index} className="flex items-start gap-3 sm:gap-4">
                           <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-[#d4726a] to-[#5b3a63] rounded-full flex items-center justify-center mt-0.5">
@@ -707,8 +627,6 @@ function App() {
                       <p className="text-[#9a908a] text-sm sm:text-base italic mb-3 sm:mb-4 leading-relaxed">
                         "Para quem não quer mais fingir que está bem."
                       </p>
-                      <div className="flex items-center justify-center gap-3 text-[#d4726a] font-semibold text-sm sm:text-base">
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -853,7 +771,7 @@ function App() {
             <Reveal delay={60}>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12 leading-tight">
                 Ou você toma vergonha...
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4 ember-glow italic"> ou você repete 2026 com maquiagem nova.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4 ember-glow italic"> ou você repete os mesmos erros com maquiagem nova.</span>
               </h2>
             </Reveal>
 
@@ -903,7 +821,7 @@ function App() {
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-[#7fae8e]/25 max-w-2xl mx-auto animate-fade-in">
                 <p className="text-[#7fae8e] font-bold text-lg sm:text-xl lg:text-2xl inline-flex items-center justify-center gap-2 flex-wrap">
                   <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
-                  Versão {selectedVersion === 'digital' ? 'Digital' : 'Impressa'} selecionada - R$ {selectedVersion === 'digital' ? '37' : '47'}
+                  Plano Selecionado - R$ 29,00
                 </p>
                 <p className="text-[#c8c0ba] mt-2 sm:mt-4 text-base sm:text-lg">
                   Clique no botão acima para finalizar sua compra
