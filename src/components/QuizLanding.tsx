@@ -203,8 +203,8 @@ export default function QuizLanding() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0807] text-[#c8c0ba] font-sans selection:bg-[#8f2f3f] selection:text-white overflow-x-hidden">
-      <ShaderBackground />
+    <div className="relative min-h-screen bg-[#0a0807] text-[#c8c0ba] font-sans selection:bg-[#8f2f3f] selection:text-white overflow-x-hidden overflow-y-auto">
+      <div className="fixed inset-0 z-0"><ShaderBackground /></div>
       <main className="relative z-10 min-h-screen flex items-center justify-center p-4 md:p-6 w-full max-w-full overflow-y-auto">
         <AnimatePresence mode="wait">
           {step === "intro" && (
