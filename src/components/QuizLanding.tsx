@@ -1129,7 +1129,7 @@ export default function QuizLanding() {
 
                      <section className="space-y-8 py-10">
                         <div className="text-center">
-                          <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">TRÊS RESPOSTAS QUE ENTREGARAM VOCÊ</h3>
+                          <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">TRÊS RESPOSTAS QUE ENTREGARAM SUA AUTOSSABOTAGEM</h3>
                         </div>
                         <div className="grid gap-4">
                           {(() => {
