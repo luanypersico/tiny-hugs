@@ -1089,9 +1089,9 @@ export default function QuizLanding() {
                        <div className="surface-noir p-8 rounded-3xl space-y-6 border-[#8f2f3f]/20">
                          <div className="flex items-center gap-4">
                            {result.icon}
-                           <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">O Diagnóstico</h4>
-                         </div>
-                         <p className="text-white/70 leading-relaxed italic">{result.desc}</p>
+                            <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">O TEXTO PRINCIPAL</h4>
+                          </div>
+                          <p className="text-white/70 leading-relaxed italic whitespace-pre-line">{result.desc}</p>
                          <div className="pt-6 border-t border-white/5 space-y-4">
                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Padrão Central</p>
                             <p className="text-white font-bold italic text-lg">{result.pattern}</p>
