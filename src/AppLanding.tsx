@@ -69,7 +69,7 @@ function App() {
       {/* Header */}
       <header className="relative overflow-hidden min-h-screen flex items-center">
         <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#1a0d1c]/25 via-black/50 to-[#210d15]/25"></div>
-        <div aria-hidden className="absolute left-1/2 top-1/3 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(143,47,63,0.22),transparent_65%)] blur-3xl ember-breathe"></div>
+        <div aria-hidden className="absolute left-1/2 top-1/3 h-[50rem] w-[50rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(143,47,63,0.35),transparent_70%)] blur-[120px] ember-breathe"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative">
           <div className="text-center max-w-6xl mx-auto">
             <Reveal from="none">
