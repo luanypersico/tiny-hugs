@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain } from "lucide-react";
+import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain, RotateCcw } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
+
+const STORAGE_KEY = "me-amo-quiz-progress";
 
 type Profile = "ML" | "IF" | "SE" | "FE" | "ER";
 
@@ -34,6 +36,17 @@ type QuizAnswer = {
   profile: Profile;
   points: number;
   regulated: boolean;
+};
+
+type QuizProgress = {
+  step: "intro" | "quiz" | "transition" | "processing" | "lead" | "result";
+  currentQuestion: number;
+  selectedOption: QuizOption | null;
+  answers: QuizAnswer[];
+  scores: Scores;
+  regulatedCount: number;
+  primaryResult: Profile | null;
+  secondaryResult: ScoredProfile | null;
 };
 
 const QUESTIONS: QuizQuestion[] = [
@@ -528,6 +541,63 @@ export default function QuizLanding() {
   const [secondaryResult, setSecondaryResult] = useState<ScoredProfile | null>(null);
 
   const [activeTransition, setActiveTransition] = useState<any>(null);
+  const [hasRestoredProgress, setHasRestoredProgress] = useState(false);
+
+  const restartQuiz = useCallback(() => {
+    if (window.confirm("Isso apagará suas respostas e reiniciará o confronto. Continuar?")) {
+      localStorage.removeItem(STORAGE_KEY);
+      setStep("intro");
+      setFormData({ name: "", contact: "" });
+      setCurrentQuestion(0);
+      setSelectedOption(null);
+      setAnswers([]);
+      setScores({ ML: 0, IF: 0, SE: 0, FE: 0 });
+      setRegulatedCount(0);
+      setPrimaryResult(null);
+      setSecondaryResult(null);
+      setActiveTransition(null);
+    }
+  }, []);
+
+  // RESTAURAÇÃO
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const progress = JSON.parse(saved) as QuizProgress;
+        if (progress && typeof progress === "object" && progress.step) {
+          setStep(progress.step);
+          setCurrentQuestion(progress.currentQuestion ?? 0);
+          setSelectedOption(progress.selectedOption ?? null);
+          setAnswers(progress.answers ?? []);
+          setScores(progress.scores ?? { ML: 0, IF: 0, SE: 0, FE: 0 });
+          setRegulatedCount(progress.regulatedCount ?? 0);
+          setPrimaryResult(progress.primaryResult ?? null);
+          setSecondaryResult(progress.secondaryResult ?? null);
+        }
+      } catch (e) {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+    setHasRestoredProgress(true);
+  }, []);
+
+  // SALVAMENTO
+  useEffect(() => {
+    if (hasRestoredProgress) {
+      const progress: QuizProgress = {
+        step,
+        currentQuestion,
+        selectedOption,
+        answers,
+        scores,
+        regulatedCount,
+        primaryResult,
+        secondaryResult
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+  }, [step, currentQuestion, selectedOption, answers, scores, regulatedCount, primaryResult, secondaryResult, hasRestoredProgress]);
 
   const calculateQuizResult = (
     finalAnswers: QuizAnswer[],
@@ -697,6 +767,12 @@ export default function QuizLanding() {
 
           {step === "quiz" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-10 px-4 md:px-0">
+               <div className="flex justify-between items-center">
+                 <button onClick={restartQuiz} className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/30 hover:text-[#8f2f3f] transition-colors font-black">
+                   <RotateCcw className="w-3 h-3" />
+                   RECOMEÇAR O CONFRONTO
+                 </button>
+               </div>
                <div className="text-center space-y-3">
                  <div className="flex justify-between items-end">
                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">
@@ -922,16 +998,33 @@ export default function QuizLanding() {
                  const result = content[resCode] || content.ER;
 
                  return (
-                   <div className="space-y-16">
-                     <header className="space-y-6 text-center">
-                        <span className="kicker !text-[#8f2f3f]">Seu Perfil Revelado</span>
-                        <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase leading-[0.8] tracking-tighter">
-                          {result.name}
-                        </h2>
-                        <p className="text-2xl md:text-3xl text-white/90 italic font-light max-w-2xl mx-auto leading-tight">
-                          “{result.headline}”
-                        </p>
-                     </header>
+                    <div className="space-y-16">
+                      <div className="flex justify-center">
+                        <button onClick={restartQuiz} className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/30 hover:text-[#8f2f3f] transition-colors font-black">
+                          <RotateCcw className="w-3 h-3" />
+                          RECOMEÇAR O CONFRONTO
+                        </button>
+                      </div>
+                      <header className="space-y-6 text-center">
+                         <span className="kicker !text-[#8f2f3f]">Seu Perfil Revelado</span>
+                         <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase leading-[0.8] tracking-tighter">
+                           {result.name}
+                         </h2>
+                         {secondaryResult && (
+                           <div className="space-y-2 mt-4">
+                             <p className="text-[10px] uppercase tracking-[0.3em] text-[#8f2f3f] font-black">Você também apresenta traços fortes de:</p>
+                             <p className="text-xl md:text-2xl text-white/60 font-black italic uppercase tracking-tighter">
+                               {secondaryResult === "ML" && "A MULHER LEGAL QUE SE ABANDONA"}
+                               {secondaryResult === "IF" && "A INDEPENDENTE FERIDA"}
+                               {secondaryResult === "SE" && "A SALVADORA EXAUSTA"}
+                               {secondaryResult === "FE" && "A FUGITIVA EMOCIONAL"}
+                             </p>
+                           </div>
+                         )}
+                         <p className="text-2xl md:text-3xl text-white/90 italic font-light max-w-2xl mx-auto leading-tight pt-4">
+                           “{result.headline}”
+                         </p>
+                      </header>
 
                      <div className="grid md:grid-cols-2 gap-8">
                        <div className="surface-noir p-8 rounded-3xl space-y-6 border-[#8f2f3f]/20">
@@ -964,6 +1057,58 @@ export default function QuizLanding() {
                         </p>
                         <div className="ember-rule" />
                      </div>
+
+                     <section className="space-y-8 py-10">
+                        <div className="text-center">
+                          <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">TRÊS RESPOSTAS QUE ENTREGARAM VOCÊ</h3>
+                        </div>
+                        <div className="grid gap-4">
+                          {(() => {
+                            const primaryAnswers = answers.filter(a => a.profile === primaryResult);
+                            let displayedAnswers = [...primaryAnswers];
+                            
+                            if (primaryResult === "ER") {
+                              const regulated = answers.filter(a => a.regulated);
+                              const nonRegulated = answers.filter(a => !a.regulated);
+                              displayedAnswers = [...regulated];
+                              if (displayedAnswers.length < 3) {
+                                nonRegulated.forEach(item => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                    displayedAnswers.push({...item, secondaryLabel: "Padrão que ainda aparece"} as any);
+                                  }
+                                });
+                              }
+                            } else {
+                              if (displayedAnswers.length < 3 && secondaryResult) {
+                                answers.filter(a => a.profile === secondaryResult).forEach(item => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                    displayedAnswers.push({...item, secondaryLabel: "Traço secundário"} as any);
+                                  }
+                                });
+                              }
+                              if (displayedAnswers.length < 3) {
+                                answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(item => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                    displayedAnswers.push(item);
+                                  }
+                                });
+                              }
+                            }
+
+                            return displayedAnswers.slice(0, 3).map((ans, idx) => (
+                              <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
+                                {(ans as any).secondaryLabel && (
+                                  <span className="text-[9px] uppercase tracking-widest text-[#8f2f3f] font-black italic">
+                                    {(ans as any).secondaryLabel}
+                                  </span>
+                                )}
+                                <p className="text-sm text-white/40 uppercase tracking-widest font-bold">Você marcou que…</p>
+                                <p className="text-white italic text-lg leading-tight">“{ans.answer}”</p>
+                              </div>
+                            ));
+                          })()}
+                        </div>
+                     </section>
 
                      <section className="surface-noir p-10 md:p-16 rounded-[3rem] text-center space-y-10 relative overflow-hidden group">
                         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#8f2f3f]/10 to-transparent pointer-events-none" />
