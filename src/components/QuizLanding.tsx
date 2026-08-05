@@ -1100,8 +1100,8 @@ export default function QuizLanding() {
 
                        <div className="space-y-8">
                          <div className="p-8 bg-white/5 rounded-3xl space-y-4 border border-white/5">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Preço Silencioso</p>
-                            <p className="text-white/80 italic">{result.price}</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">O QUE ELA ESTÁ ENTERRANDO</p>
+                             <p className="text-white/80 italic">{result.price}</p>
                          </div>
                          <div className="p-8 bg-[#8f2f3f]/5 rounded-3xl space-y-4 border border-[#8f2f3f]/10">
                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#d4726a] font-black">Primeiro Confronto</p>
