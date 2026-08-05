@@ -557,6 +557,7 @@ export default function QuizLanding() {
   const restartQuiz = useCallback(() => {
     if (window.confirm("Isso apagará suas respostas e reiniciará o confronto. Continuar?")) {
       localStorage.removeItem(STORAGE_KEY);
+      answerLockRef.current = false;
       setStep("intro");
       setFormData({ name: "", contact: "" });
       setCurrentQuestion(0);
@@ -576,13 +577,32 @@ export default function QuizLanding() {
       try {
         const progress = JSON.parse(saved) as QuizProgress;
         if (progress && typeof progress === "object" && progress.step) {
+          const restoredAnswers: QuizAnswer[] = Array.isArray(progress.answers)
+            ? progress.answers
+            : [];
+          
+          setAnswers(restoredAnswers);
           setStep(progress.step);
           setCurrentQuestion(progress.currentQuestion ?? 0);
-          setAnswers(progress.answers ?? []);
           setScores(progress.scores ?? { ML: 0, IF: 0, SE: 0, FE: 0 });
           setRegulatedCount(progress.regulatedCount ?? 0);
           setPrimaryResult(progress.primaryResult ?? null);
           setSecondaryResult(progress.secondaryResult ?? null);
+
+          if (progress.step === "transition") {
+            const restoredTransition = TRANSITIONS.find(
+              (transition) => transition.afterQuestion === restoredAnswers.length
+            );
+            if (restoredTransition) {
+              setActiveTransition(restoredTransition);
+              setStep("transition");
+              setCurrentQuestion(restoredAnswers.length - 1);
+            } else {
+              setActiveTransition(null);
+              setStep("quiz");
+              setCurrentQuestion(Math.min(restoredAnswers.length, QUESTIONS.length - 1));
+            }
+          }
         }
       } catch (e) {
         localStorage.removeItem(STORAGE_KEY);
@@ -590,6 +610,21 @@ export default function QuizLanding() {
     }
     setHasRestoredProgress(true);
   }, []);
+
+  // NOVO UE DE PROCESSING
+  useEffect(() => {
+    if (!hasRestoredProgress || step !== "processing") {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setStep("lead");
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [step, hasRestoredProgress]);
 
   // SALVAMENTO
   useEffect(() => {
@@ -727,7 +762,6 @@ export default function QuizLanding() {
     if (nextQ >= QUESTIONS.length) {
       calculateQuizResult(nextAnswers, nextScores, nextRegulatedCount);
       setStep("processing");
-      setTimeout(() => setStep("lead"), 3000);
       
       window.setTimeout(() => {
         answerLockRef.current = false;
@@ -859,7 +893,12 @@ export default function QuizLanding() {
               </div>
               <p className="text-lg md:text-xl italic text-white/80 leading-tight whitespace-pre-line">{activeTransition?.text}</p>
               <button 
-                onClick={() => { setStep("quiz"); setCurrentQuestion(answers.length); }} 
+                type="button"
+                onClick={() => { 
+                  setCurrentQuestion(answers.length); 
+                  setActiveTransition(null);
+                  setStep("quiz"); 
+                }} 
                  className="w-full md:w-auto bg-[#8f2f3f] px-12 py-6 rounded-2xl text-white uppercase font-black tracking-tighter shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)] active:scale-95"
                >
                  {activeTransition?.button || "CONTINUAR"}
