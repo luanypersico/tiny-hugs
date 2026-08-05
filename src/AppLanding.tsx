@@ -82,7 +82,7 @@ function App() {
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-8 sm:mb-12 leading-[0.95] tracking-tight">
               <Reveal delay={60}>
-                <span className="block mb-2 sm:mb-4">Plano de 14 dias para se confrontar,</span>
+                <span className="block mb-2 sm:mb-4">O plano de 14 dias para se confrontar,</span>
               </Reveal>
               <Reveal delay={160}>
                 <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
@@ -129,13 +129,13 @@ function App() {
             <Reveal delay={40}>
               <button
                 onClick={scrollToAction}
-                className="group relative bg-gradient-to-r from-[#4a2350] via-[#8f2f3f] to-[#4a2350] hover:from-[#5b3a63] hover:via-[#a9414a] hover:to-[#5b3a63] text-white font-bold py-4 sm:py-6 px-8 sm:px-14 rounded-full text-lg sm:text-xl transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-[#5b3a63]/50 border border-white/15"
+                className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-5 sm:py-7 px-10 sm:px-16 rounded-full text-xl sm:text-2xl transition-all duration-500 transform hover:scale-105 shadow-[0_0_40px_-10px_rgba(143,47,63,0.5)] border border-white/10"
               >
                 <span className="relative z-10 flex items-center gap-3">
-                  Quero Começar Agora
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  QUERO ME CONFRONTAR AGORA
+                  <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
-                <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#b98aa8]/25 to-[#d4726a]/25 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
             </Reveal>
 
@@ -155,7 +155,7 @@ function App() {
             <Reveal delay={60}>
               <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
                 <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#c9a227]" />
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight">
                   TODO MUNDO TE ACHA FODA.
                 </h2>
               </div>
