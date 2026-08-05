@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check, FileText } from 'lucide-react';
+import { EBOOK_CONTENT } from '@/lib/ebook-content.server';
 import ShaderBackground from '@/components/ShaderBackground';
 import SocialProofSection from '@/components/SocialProofSection';
 import Reveal from '@/components/Reveal';
@@ -139,7 +140,17 @@ function App() {
                   </span>
                   <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
-                {/* Removed direct ebook download button as per user request */}
+                <button
+                  onClick={async () => {
+                    const { generateProfessionalPDF } = await import('@/lib/pdf-generator.client');
+                    const doc = generateProfessionalPDF(EBOOK_CONTENT);
+                    doc.save("ME_AMO_MAS_ME_ODEIO_PLANO_104_PAGINAS.pdf");
+                  }}
+                  className="group relative bg-white/5 hover:bg-white/10 text-white font-medium py-6 px-12 rounded-full text-lg transition-all duration-500 border border-white/10 flex items-center gap-3"
+                >
+                  <FileText className="w-5 h-5 text-[#d4726a]" />
+                  VER PDF PROFISSIONAL (DEMO)
+                </button>
               </div>
             </Reveal>
 
