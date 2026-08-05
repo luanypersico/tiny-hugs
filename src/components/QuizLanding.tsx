@@ -1058,6 +1058,58 @@ export default function QuizLanding() {
                         <div className="ember-rule" />
                      </div>
 
+                     <section className="space-y-8 py-10">
+                        <div className="text-center">
+                          <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">TRÊS RESPOSTAS QUE ENTREGARAM VOCÊ</h3>
+                        </div>
+                        <div className="grid gap-4">
+                          {(() => {
+                            const primaryAnswers = answers.filter(a => a.profile === primaryResult);
+                            let displayedAnswers = [...primaryAnswers];
+                            
+                            if (primaryResult === "ER") {
+                              const regulated = answers.filter(a => a.regulated);
+                              const nonRegulated = answers.filter(a => !a.regulated);
+                              displayedAnswers = [...regulated];
+                              if (displayedAnswers.length < 3) {
+                                nonRegulated.forEach(a => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
+                                    displayedAnswers.push({...a, secondaryLabel: "Padrão que ainda aparece"});
+                                  }
+                                });
+                              }
+                            } else {
+                              if (displayedAnswers.length < 3 && secondaryResult) {
+                                answers.filter(a => a.profile === secondaryResult).forEach(a => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
+                                    displayedAnswers.push({...a, secondaryLabel: "Traço secundário"});
+                                  }
+                                });
+                              }
+                              if (displayedAnswers.length < 3) {
+                                answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(a => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
+                                    displayedAnswers.push(a);
+                                  }
+                                });
+                              }
+                            }
+
+                            return displayedAnswers.slice(0, 3).map((ans, idx) => (
+                              <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
+                                {(ans as any).secondaryLabel && (
+                                  <span className="text-[9px] uppercase tracking-widest text-[#8f2f3f] font-black italic">
+                                    {(ans as any).secondaryLabel}
+                                  </span>
+                                )}
+                                <p className="text-sm text-white/40 uppercase tracking-widest font-bold">Você marcou que…</p>
+                                <p className="text-white italic text-lg leading-tight">“{ans.answer}”</p>
+                              </div>
+                            ));
+                          })()}
+                        </div>
+                     </section>
+
                      <section className="surface-noir p-10 md:p-16 rounded-[3rem] text-center space-y-10 relative overflow-hidden group">
                         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#8f2f3f]/10 to-transparent pointer-events-none" />
                         
