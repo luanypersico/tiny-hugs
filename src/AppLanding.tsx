@@ -210,8 +210,8 @@ function App() {
 
             <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
               <div className="space-y-6 sm:space-y-8 text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed">
-                <Reveal delay={0}><p>É um método de <span className="text-white font-bold text-xl sm:text-2xl ember-glow">14 dias</span> criado pra te confrontar.</p></Reveal>
-                <Reveal delay={60}><p>Pra rasgar a mulher que você inventou pra sobreviver.</p></Reveal>
+                <Reveal delay={0}><p>É um método de <span className="text-white font-bold text-xl sm:text-2xl ember-glow">14 dias</span> criado para te confrontar.</p></Reveal>
+                <Reveal delay={60}><p>Para rasgar a mulher que você inventou para sobreviver.</p></Reveal>
                 <Reveal delay={120}><p className="text-[#d4726a] font-semibold text-lg sm:text-xl">E reconstruir a mulher que você nunca teve coragem de ser.</p></Reveal>
                 <Reveal delay={180}><p>Com perguntas que doem. Com frases que você não vai querer ler em voz alta.</p></Reveal>
                 <Reveal delay={240}><p className="text-[#b98aa8] font-semibold text-lg sm:text-xl">Com tarefas que você tem evitado há anos.</p></Reveal>
