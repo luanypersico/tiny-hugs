@@ -80,7 +80,7 @@ function App() {
               </div>
             </Reveal>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-8 sm:mb-12 leading-[0.95] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-8 sm:mb-12 leading-[0.9] tracking-tighter">
               <Reveal delay={60}>
                 <span className="block mb-2 sm:mb-4">O plano de 14 dias para se confrontar,</span>
               </Reveal>
@@ -129,7 +129,7 @@ function App() {
             <Reveal delay={40}>
               <button
                 onClick={scrollToAction}
-                className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-5 sm:py-7 px-10 sm:px-16 rounded-full text-xl sm:text-2xl transition-all duration-500 transform hover:scale-105 shadow-[0_0_40px_-10px_rgba(143,47,63,0.5)] border border-white/10"
+                className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20"
               >
                 <span className="relative z-10 flex items-center gap-3">
                   QUERO ME CONFRONTAR AGORA
@@ -155,13 +155,13 @@ function App() {
             <Reveal delay={60}>
               <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
                 <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#c9a227]" />
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.85] tracking-tighter">
                   TODO MUNDO TE ACHA FODA.
                 </h2>
               </div>
             </Reveal>
             <Reveal delay={140}>
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] mb-14 sm:mb-20 ember-glow">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] mb-14 sm:mb-20 ember-glow tracking-tight italic">
                 MAS NINGUÉM TE VIU CHORANDO LAVANDO LOUÇA.
               </h3>
             </Reveal>
@@ -346,7 +346,7 @@ function App() {
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 mb-14 sm:mb-20">
                 <div className="flex items-center gap-4 mb-6 sm:mb-8">
                   <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#b98aa8]/25 bg-[#b98aa8]/10">
-                    <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" strokeWidth={1.5} />
+                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" strokeWidth={1.5} />
                   </div>
                   <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold leading-tight">
                     Você não tá comprando um arquivo.
@@ -397,7 +397,7 @@ function App() {
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 border-[#c2534a]/25">
                 <div className="flex items-center gap-4 mb-6 sm:mb-8">
                   <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#c2534a]/30 bg-[#c2534a]/10">
-                    <Ban className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
+                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#c2534a]">
                     QUEM NÃO PODE BAIXAR
@@ -406,7 +406,7 @@ function App() {
 
                 <div className="mb-8 sm:mb-10">
                   <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <ShieldAlert className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#c2534a]" strokeWidth={1.5} />
+                    <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#c2534a]" strokeWidth={1.5} />
                     <p className="text-lg sm:text-xl text-white font-semibold">
                       Esse material não é pra quem quer uma dose de dopamina e vai embora.
                     </p>
