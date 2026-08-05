@@ -190,26 +190,28 @@ export default function QuizLanding() {
                 </div>
               </div>
 
-              <div className="space-y-10">
-                <h2 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight uppercase italic">
-                  {QUESTIONS[currentQuestion].question}
-                </h2>
+              {QUESTIONS[currentQuestion] && (
+                <div className="space-y-10">
+                  <h2 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight uppercase italic">
+                    {QUESTIONS[currentQuestion].question}
+                  </h2>
 
-                <div className="grid gap-4">
-                  {QUESTIONS[currentQuestion].options.map((option, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleAnswer(option.value)}
-                      className="group relative w-full text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-[#8f2f3f]/10 hover:border-[#8f2f3f]/50 transition-all duration-300 flex items-center justify-between"
-                    >
-                      <span className="text-lg font-light text-[#c8c0ba] group-hover:text-white transition-colors">
-                        {option.label}
-                      </span>
-                      <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
-                    </button>
-                  ))}
+                  <div className="grid gap-4">
+                    {QUESTIONS[currentQuestion].options.map((option, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleAnswer(option.value)}
+                        className="group relative w-full text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-[#8f2f3f]/10 hover:border-[#8f2f3f]/50 transition-all duration-300 flex items-center justify-between"
+                      >
+                        <span className="text-lg font-light text-[#c8c0ba] group-hover:text-white transition-colors">
+                          {option.label}
+                        </span>
+                        <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all" />
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           )}
 
