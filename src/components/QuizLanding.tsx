@@ -197,61 +197,62 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 5,
     question:
-      "Pense na última pessoa emocionalmente indisponível que mexeu com você. O que prendia você ali?",
+      "Quando você vê outra pessoa avançando em algo que também queria fazer, o que acontece?",
     options: [
       {
-        text: "A sensação de que, comigo, ela poderia mudar.",
-        profile: "SE",
-        points: 3,
-      },
-      {
-        text: "A vontade de finalmente ser escolhida.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Era confortável querer alguém que nunca chegaria perto demais.",
+        text: "“Penso que ela provavelmente tinha mais preparo, dinheiro ou oportunidade.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Quando percebo indisponibilidade repetida, paro de romantizar e me afasto.",
-        profile: "ER",
-        points: 0,
+        text: "“Eu me comparo, me sinto uma merda e procuro alguma distração.”",
+        profile: "SE",
+        points: 3,
       },
       {
-        text: "Enquanto aquilo era impossível, eu não precisava viver uma relação de verdade.",
+        text: "“Salvo mais conteúdos e monto outro plano para recuperar o atraso.”",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "“Decido que amanhã vou mudar tudo de uma vez.”",
         profile: "FE",
         points: 3,
+      },
+      {
+        text: "“Uso o desconforto para escolher uma ação real que cabe no meu dia.”",
+        profile: "ER",
+        points: 0,
       },
     ],
   },
   {
     id: 6,
-    question: "Qual situação aperta um botão feio dentro de você?",
+    question:
+      "Qual é sua relação com planners, listas, aplicativos e métodos de produtividade?",
     options: [
       {
-        text: "Perceber que alguém ficou decepcionado comigo.",
+        text: "“Eu amo montar o sistema. Cumprir o sistema já é outra história.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Sentir que estou precisando emocionalmente de alguém.",
+        text: "“Continuo procurando o método perfeito que finalmente vai funcionar comigo.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Ver alguém de quem gosto tomando decisões sem pedir minha ajuda.",
+        text: "“Uso por alguns dias e abandono quando perde a novidade.”",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Perceber que a pessoa está começando a me conhecer de verdade.",
+        text: "“Compro ou crio outro toda vez que decido recomeçar.”",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Essas coisas ainda mexem comigo, mas não decidem tudo por mim.",
+        text: "“Uso somente o suficiente para lembrar o que precisa ser feito.”",
         profile: "ER",
         points: 0,
       },
@@ -259,31 +260,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 7,
-    question:
-      "Quando uma relação está tranquila demais, sem joguinho e sem caos, você:",
+    question: "O prazo ainda está longe. O que você costuma fazer?",
     options: [
       {
-        text: "Começo a achar que tem alguma coisa errada.",
-        profile: "IF",
-        points: 3,
-      },
-      {
-        text: "Perco intensidade e confundo paz com falta de química.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Encontro algum problema para resolver.",
+        text: "“Escolho o alívio de agora e deixo a pressão para minha versão do futuro.”",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Faço de tudo para não criar incômodo e estragar aquilo.",
+        text: "“Espero ter clareza suficiente para fazer sem errar.”",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "“Divido a tarefa em tantas partes que gasto mais tempo planejando do que fazendo.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Estranho um pouco, mas não invento problema só para sentir alguma coisa.",
+        text: "“Deixo acumular até precisar de um recomeço desesperado.”",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "“Faço uma parte pequena enquanto ainda existe espaço para respirar.”",
         profile: "ER",
         points: 0,
       },
@@ -291,31 +291,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 8,
-    question:
-      "Qual frase você já pensou, mesmo que tenha vergonha de admitir?",
+    question: "Qual frase você já usou para encobrir sua procrastinação?",
     options: [
       {
-        text: "Quando a pessoa gosta demais de mim, eu brocho.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Talvez, se eu fosse mais fácil de lidar, ela ficaria.",
+        text: "“Eu só preciso me organizar melhor.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Eu sei que essa pessoa é complicada, mas comigo vai ser diferente.",
-        profile: "SE",
-        points: 3,
-      },
-      {
-        text: "Eu prefiro não depender de ninguém. Ninguém mesmo.",
+        text: "“Eu funciono melhor quando tenho certeza do que estou fazendo.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Eu posso gostar de alguém sem entregar minha vida inteira na mão dela.",
+        text: "“Depois eu faço. Agora estou cansada.”",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "“Na próxima semana vou começar direito.”",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "“Não estou motivada, mas ainda consigo fazer uma parte.”",
         profile: "ER",
         points: 0,
       },
