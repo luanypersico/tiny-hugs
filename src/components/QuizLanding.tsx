@@ -101,7 +101,7 @@ export default function QuizLanding() {
     }
   };
 
-  const getResult = () => {
+  const getResult = (): { title: string; description: string; icon: JSX.Element } => {
     const counts = answers.reduce((acc, val) => {
       acc[val] = (acc[val] || 0) + 1;
       return acc;
