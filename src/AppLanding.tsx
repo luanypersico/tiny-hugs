@@ -345,7 +345,9 @@ function App() {
             <Reveal>
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 mb-14 sm:mb-20">
                 <div className="flex items-center gap-4 mb-6 sm:mb-8">
-                  <div className="text-3xl sm:text-4xl">🧠</div>
+                  <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#b98aa8]/25 bg-[#b98aa8]/10">
+                    <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" strokeWidth={1.5} />
+                  </div>
                   <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold leading-tight">
                     Você não tá comprando um arquivo.
                   </p>
