@@ -577,77 +577,86 @@ function App() {
               </Reveal>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              {/* Versão Única */}
+            <div className="max-w-4xl mx-auto">
+              {/* Versão Única - Ultra Premium */}
               <Reveal from="up">
-                <div className="group relative surface-noir rounded-3xl border-2 border-[#d4726a]/30 hover:border-[#d4726a]/50 transition-all duration-700 hover:-translate-y-1 overflow-hidden">
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#a9414a]/15 via-[#5b3a63]/10 to-[#a9414a]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-                  <div className="relative p-8 sm:p-10 lg:p-12">
-                    {/* Header */}
-                    <div className="text-center mb-8 sm:mb-10">
-                      <div className="relative mb-6 sm:mb-8">
-                        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#a9414a]/30 to-[#5b3a63]/30 rounded-full blur-xl ember-breathe"></div>
-                        <BookOpen className="relative w-16 h-16 sm:w-20 sm:h-20 text-[#d4726a] mx-auto" />
-                      </div>
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                        PLANO COMPLETO - 14 DIAS
-                      </h3>
-                      <p className="text-base sm:text-lg text-[#9a908a] mb-6 sm:mb-8">Para quem não aceita mais migalhas emocionais</p>
-
-                      {/* Price */}
-                      <div className="relative">
-                        <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] via-[#b98aa8] to-[#d4726a] mb-2 ember-glow">
-                          R$ 29,90
-                        </div>
-                        <div className="text-sm sm:text-base text-[#7a716c] tracking-[0.18em] uppercase">pagamento único</div>
+                <div className="group/card relative surface-noir rounded-3xl border border-white/10 hover:border-[#8f2f3f]/50 transition-all duration-700 shadow-[0_0_100px_-30px_rgba(143,47,63,0.3)] overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8f2f3f]/30 to-transparent blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000" />
+                  
+                  <div className="relative p-8 sm:p-12 lg:p-16">
+                    {/* Badge */}
+                    <div className="absolute top-8 right-8 hidden sm:block">
+                      <div className="bg-[#8f2f3f] text-white px-6 py-2 rounded-full text-xs font-black tracking-[0.2em] uppercase shadow-2xl">
+                        OFERTA EXCLUSIVA
                       </div>
                     </div>
 
-                    <div aria-hidden className="ember-rule mb-8" />
+                    <div className="flex flex-col lg:flex-row gap-12 items-center">
+                      {/* Left: Product Info */}
+                      <div className="flex-1 text-center lg:text-left">
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 uppercase tracking-tighter leading-none">
+                          PLANO COMPLETO <br className="hidden lg:block" /> 14 DIAS
+                        </h3>
+                        <p className="text-[#c8c0ba] text-lg lg:text-xl mb-8 font-light italic">
+                          "O fim da personagem 'mulher legal'."
+                        </p>
 
-                    {/* Features */}
-                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-8 sm:mb-10">
-                      {[
-                        "Plano + comandos diários (100+ págs)",
-                        "Acesso vitalício ao conteúdo",
-                        "Reconstruction de autoestima",
-                        "Esmurre sua insegurança emocional",
-                        "Método para parar de fugir",
-                        "Tarefas de alto impacto",
-                        "Perguntas que desmontam o medo",
-                        "Reforço comportamental",
-                        "Declaração da Nova Identidade"
-                      ].map((feature, index) => (
-                        <div key={index} className="flex items-start gap-3 sm:gap-4">
-                          <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-[#d4726a] to-[#5b3a63] rounded-full flex items-center justify-center mt-0.5">
-                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                          </div>
-                          <span className="text-[#c8c0ba] text-base sm:text-lg leading-relaxed">{feature}</span>
+                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-2">
+                          <span className="text-[#c8c0ba] text-2xl line-through opacity-40">R$ 97,00</span>
+                          <span className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter ember-glow">
+                            R$ 29,90
+                          </span>
                         </div>
-                      ))}
+                        <div className="text-[#d4726a] font-black tracking-[0.3em] text-xs uppercase mb-10">pagamento único e acesso vitalício</div>
+                        
+                        <button
+                          onClick={() => window.open('https://pay.hotmart.com/YOUR_LINK', '_blank')}
+                          className="group relative w-full overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 rounded-2xl text-xl sm:text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter"
+                        >
+                          <span className="relative z-10 flex items-center justify-center gap-4">
+                            QUERO ME TORNAR IRRECONHECÍVEL
+                            <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
+                          </span>
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                        </button>
+                      </div>
+
+                      {/* Right: Feature List */}
+                      <div className="flex-1 w-full sm:w-auto">
+                        <div className="space-y-4">
+                          {[
+                            "Plano + comandos diários (100+ págs)",
+                            "Acesso vitalício ao conteúdo",
+                            "Reconstruction de autoestima",
+                            "Esmurre sua insegurança emocional",
+                            "Método para parar de fugir",
+                            "Tarefas de alto impacto",
+                            "Perguntas que desmontam o medo",
+                            "Reforço comportamental",
+                            "Declaração da Nova Identidade"
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-4 group/item">
+                              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#8f2f3f]/10 flex items-center justify-center group-hover/item:bg-[#8f2f3f]/30 transition-colors duration-500">
+                                <Check className="w-4 h-4 text-[#d4726a]" strokeWidth={3} />
+                              </div>
+                              <span className="text-[#c8c0ba] text-lg font-light group-hover/item:text-white transition-colors duration-300">
+                                {feature}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
 
-                    {/* CTA Button */}
-                    <button
-                      onClick={() => setSelectedVersion('print')}
-                      className={`w-full relative overflow-hidden rounded-2xl font-bold text-base sm:text-lg py-4 sm:py-5 px-6 sm:px-8 transition-all duration-500 transform hover:scale-[1.02] ${
-                        selectedVersion === 'print'
-                          ? 'bg-gradient-to-r from-[#a9414a] to-[#4a2350] text-white shadow-2xl shadow-[#a9414a]/50 scale-[1.02]'
-                          : 'bg-gradient-to-r from-[#8f2f3f]/80 to-[#4a2350]/80 text-white hover:from-[#a9414a] hover:to-[#5b3a63] shadow-xl hover:shadow-[#a9414a]/30'
-                      }`}
-                    >
-                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
-                        {selectedVersion === 'print' && <Check className="w-5 h-5" strokeWidth={2} />}
-                        {selectedVersion === 'print' ? 'SELECIONADO!' : 'QUERO ME TORNAR IRRECONHECÍVEL'}
-                      </span>
-                      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-
-                    {/* Footer */}
-                    <div className="mt-6 sm:mt-8 text-center border-t border-white/10 pt-6 sm:pt-8">
-                      <p className="text-[#9a908a] text-sm sm:text-base italic mb-3 sm:mb-4 leading-relaxed">
-                        "Para quem não quer mais fingir que está bem."
+                    {/* Trust Badges */}
+                    <div className="mt-16 flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-[#9a908a]">
+                      <div className="flex items-center gap-3"><ShieldAlert className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Pagamento 100% Seguro</span></div>
+                      <div className="flex items-center gap-3"><Zap className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Acesso Imediato</span></div>
+                      <div className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Garantia Incondicional</span></div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
                       </p>
                     </div>
                   </div>
