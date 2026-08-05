@@ -730,7 +730,6 @@ function App() {
                   </div>
                   <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-[#b98aa8]" />
                     <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Garantia Total</span>
                   </div>
                 </div>
