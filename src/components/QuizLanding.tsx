@@ -888,22 +888,51 @@ export default function QuizLanding() {
           )}
 
           {step === "processing" && (
-            <div className="text-center space-y-12 max-w-xl">
+            <div className="text-left space-y-12 max-w-[520px]">
               <div className="relative">
-                <div className="w-24 h-24 border-2 border-white/5 border-t-[#8f2f3f] rounded-full animate-spin mx-auto" />
-                <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-[#8f2f3f] animate-pulse" />
+                <div className="w-16 h-16 border border-white/5 border-t-[#A8283D] rounded-full animate-spin" />
               </div>
-              <motion.h2 
-                key={currentQuestion} // Reuse state for animation rhythm if needed
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                className="text-2xl md:text-3xl font-black text-white italic uppercase tracking-tighter"
-              >
-                ANALISANDO A PERSONAGEM QUE VOCÊ CRIOU…
-              </motion.h2>
-              <div className="space-y-4">
-                 <p className="text-[#8f2f3f] font-black tracking-widest text-xs uppercase animate-pulse">Identificando seus mecanismos de proteção…</p>
-                 <p className="text-white/40 text-xs uppercase tracking-widest">Analisando os padrões que você repete…</p>
+              
+              <div className="space-y-10">
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">1.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">Você respondeu 14 situações.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">2.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">Algumas desculpas apareceram mais vezes do que deveriam.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 2.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">3.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">Estamos cruzando como você planeja, adia, abandona e recomeça.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 3.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">4.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">O hábito podre que mais destrói sua palavra apareceu.</p>
+                </motion.div>
               </div>
             </div>
           )}
@@ -930,7 +959,7 @@ export default function QuizLanding() {
                   <label className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">E-mail ou WhatsApp</label>
                   <input 
                     type="text" 
-                    placeholder="Para onde enviamos seu diagnóstico?"
+                    placeholder="Para onde enviamos seu resultado?"
                     value={formData.contact}
                     onChange={(e) => setFormData({...formData, contact: e.target.value})}
                     className="w-full bg-white/5 border border-white/10 rounded-xl p-5 focus:border-[#8f2f3f] outline-none transition-all text-white"
@@ -957,28 +986,32 @@ export default function QuizLanding() {
                {(() => {
                  const resCode = getResult();
                  const content: any = {
-                   ML: {
-                     name: "A MULHER LEGAL QUE SE ABANDONA",
-                     headline: "Todo mundo gosta de você. O problema é que você aprendeu a desaparecer.",
-                     desc: "Você percebe rapidamente o que os outros esperam e se transforma na versão mais confortável para eles. Evita conflitos, esconde necessidades, pede desculpas por sentir.",
-                     pattern: "Você abandona a si mesma antes que alguém tenha a oportunidade de abandoná-la.",
-                     price: "Relações em que todos conhecem sua versão agradável, mas quase ninguém conhece você de verdade.",
-                     confront: "Antes de dizer “sim”, pergunte: “Eu realmente quero isso ou estou tentando impedir que alguém se decepcione?”",
-                     punch: "Você não precisa continuar sendo conveniente para merecer permanência.",
-                     cta: "PARAR DE ME ABANDONAR",
-                     icon: <ShieldAlert className="w-12 h-12 text-[#8f2f3f]" />
-                   },
-                   IF: {
-                     name: "A INDEPENDENTE FERIDA",
-                     headline: "Você chama de independência aquilo que nasceu do medo de precisar.",
-                     desc: "Você construiu uma armadura eficiente. Resolve problemas, evita demonstrar fragilidade e tenta manter controle. Quando alguém se aproxima, você procura o risco.",
-                     pattern: "Você se protege tanto contra a possibilidade de sofrer que também bloqueia a possibilidade de ser acolhida.",
-                     price: "Ser admirada pela força e, ao mesmo tempo, sentir que ninguém consegue chegar perto de verdade.",
-                     confront: "Na próxima vez que oferecerem ajuda, não responda que não precisa. Descubra se é autonomia ou apenas defesa.",
-                     punch: "Sua força não desaparece quando você permite que alguém esteja ao seu lado.",
-                     cta: "COMEÇAR A BAIXAR A ARMADURA",
-                     icon: <Brain className="w-12 h-12 text-[#8f2f3f]" />
-                   },
+                    ML: {
+                      name: "A ARQUITETA DE SEGUNDA-FEIRA",
+                      headline: "VOCÊ PLANEJA UMA VIDA FODA. E EXECUTA uma desculpa por dia.",
+                      headline_l1: "VOCÊ PLANEJA UMA VIDA FODA.",
+                      headline_l2: "E EXECUTA UMA DESCULPA POR DIA.",
+                      desc: "Você sabe montar rotina. Criar lista. Organizar aplicativo. Escolher horário. Separar material. O problema começa quando planejar precisa virar execução. Enquanto estrutura tudo, você sente que está avançando. Mas no final do dia a tarefa importante continua intacta. Você não está sem capacidade. Está usando organização para fugir da parte em que pode falhar.",
+                      pattern: "“Eu só preciso me organizar melhor.”",
+                      price: "Projetos que nunca passam da preparação. Dias inteiros ocupados sem nada realmente importante concluído. E uma autoestima que não entende por que você trabalha tanto e continua parada.",
+                      confront: "Durante sete dias, você está proibida de criar um sistema novo antes de executar dez minutos da tarefa principal. Primeiro faz. Depois organiza.",
+                      punch: "Seu próximo plano não precisa ser melhor. Precisa sobreviver à primeira terça-feira.",
+                      cta: "PARAR DE DECORAR A MINHA FUGA",
+                      icon: <ShieldAlert className="w-12 h-12 text-[#A8283D]" />
+                    },
+                    IF: {
+                      name: "A PERFECCIONISTA PARALISADA",
+                      headline: "VOCÊ CHAMA DE PERFECCIONISMO. MUITAS VEZES É MEDO USANDO ROUPA BONITA.",
+                      headline_l1: "VOCÊ CHAMA DE PERFECCIONISMO.",
+                      headline_l2: "MUITAS VEZES É MEDO USANDO ROUPA BONITA.",
+                      desc: "Você não adia porque não se importa. Você adia porque se importa tanto com o resultado que prefere não produzir nada a produzir algo imperfeito. Espera segurança. Clareza. Preparação. Confiança. E enquanto espera se sentir pronta, a vida continua andando sem você.",
+                      pattern: "“Eu começo quando souber fazer direito.”",
+                      price: "Experiência que só viria depois da prática. Confiança que só nasceria depois da exposição. E projetos que morrem perfeitos dentro da sua cabeça.",
+                      confront: "Escolha uma tarefa e produza deliberadamente a primeira versão mais simples e imperfeita possível. Não corrija enquanto estiver criando.",
+                      punch: "A perfeição não está protegendo seu talento. Está impedindo que ele exista fora da sua cabeça.",
+                      cta: "PARAR DE USAR PERFEIÇÃO COMO ESCONDERIJO",
+                      icon: <Brain className="w-12 h-12 text-[#A8283D]" />
+                    },
                    SE: {
                      name: "A SALVADORA EXAUSTA",
                      headline: "Você se tornou necessária para todo mundo. E ficou ausente da própria vida.",
@@ -1024,54 +1057,61 @@ export default function QuizLanding() {
                           RECOMEÇAR O CONFRONTO
                         </button>
                       </div>
-                      <header className="space-y-6 text-center">
-                         <span className="kicker !text-[#8f2f3f]">Seu Perfil Revelado</span>
-                         <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase leading-[0.8] tracking-tighter">
+                      <header className="space-y-6 text-left">
+                         <span className="text-[11px] font-black uppercase tracking-widest text-[#A8283D]">Seu Perfil Revelado</span>
+                         <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">
                            {result.name}
                          </h2>
                          {secondaryResult && (
-                           <div className="space-y-2 mt-4">
-                             <p className="text-[10px] uppercase tracking-[0.3em] text-[#8f2f3f] font-black">Você também apresenta traços fortes de:</p>
-                             <p className="text-xl md:text-2xl text-white/60 font-black italic uppercase tracking-tighter">
-                               {secondaryResult === "ML" && "A MULHER LEGAL QUE SE ABANDONA"}
-                               {secondaryResult === "IF" && "A INDEPENDENTE FERIDA"}
+                           <div className="space-y-1 mt-6">
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">Traços fortes de:</p>
+                             <p className="text-lg md:text-xl text-white/50 font-black italic uppercase tracking-tighter">
+                               {secondaryResult === "ML" && "A ARQUITETA DE SEGUNDA-FEIRA"}
+                               {secondaryResult === "IF" && "A PERFECCIONISTA PARALISADA"}
                                {secondaryResult === "SE" && "A SALVADORA EXAUSTA"}
                                {secondaryResult === "FE" && "A FUGITIVA EMOCIONAL"}
                              </p>
                            </div>
                          )}
-                         <p className="text-2xl md:text-3xl text-white/90 italic font-light max-w-2xl mx-auto leading-tight pt-4">
-                           “{result.headline}”
-                         </p>
+                         <div className="pt-6 space-y-1">
+                            <p className="text-2xl md:text-4xl text-white font-black italic uppercase leading-none tracking-tighter">
+                              {result.headline_l1 || result.headline}
+                            </p>
+                            {result.headline_l2 && (
+                              <p className="text-2xl md:text-4xl text-[#A8283D] font-black italic uppercase leading-none tracking-tighter">
+                                {result.headline_l2}
+                              </p>
+                            )}
+                         </div>
                       </header>
 
                      <div className="grid md:grid-cols-2 gap-8">
                        <div className="surface-noir p-8 rounded-3xl space-y-6 border-[#8f2f3f]/20">
                          <div className="flex items-center gap-4">
                            {result.icon}
-                           <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">O Diagnóstico</h4>
-                         </div>
-                         <p className="text-white/70 leading-relaxed italic">{result.desc}</p>
+                            <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">O TEXTO PRINCIPAL</h4>
+                          </div>
+                          <p className="text-white/70 leading-relaxed italic whitespace-pre-line">{result.desc}</p>
                          <div className="pt-6 border-t border-white/5 space-y-4">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Padrão Central</p>
-                            <p className="text-white font-bold italic text-lg">{result.pattern}</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">A DESCULPA PODRE</p>
+                             <p className="text-white font-bold italic text-lg">{result.pattern}</p>
                          </div>
                        </div>
 
                        <div className="space-y-8">
                          <div className="p-8 bg-white/5 rounded-3xl space-y-4 border border-white/5">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Preço Silencioso</p>
-                            <p className="text-white/80 italic">{result.price}</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">O QUE ELA ESTÁ ENTERRANDO</p>
+                             <p className="text-white/80 italic">{result.price}</p>
                          </div>
                          <div className="p-8 bg-[#8f2f3f]/5 rounded-3xl space-y-4 border border-[#8f2f3f]/10">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-[#d4726a] font-black">Primeiro Confronto</p>
-                            <p className="text-white/80 italic">{result.confront}</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#d4726a] font-black">PRIMEIRA DESTRUIÇÃO</p>
+                             <p className="text-white/80 italic">{result.confront}</p>
                          </div>
                        </div>
                      </div>
 
                      <div className="text-center space-y-10 py-10">
-                        <p className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter ember-glow">
+                        <p className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter">
                           {result.punch}
                         </p>
                         <div className="ember-rule" />
