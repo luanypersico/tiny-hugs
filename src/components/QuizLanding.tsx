@@ -7,164 +7,475 @@ import Reveal from "@/components/Reveal";
 const QUESTIONS = [
   {
     id: 1,
-    question: "Quando alguém começa a gostar de você de verdade, qual é a sua reação mais comum?",
+    question:
+      "A conversa está boa. A pessoa deixa claro que está interessada em você. Qual merda começa a acontecer na sua cabeça?",
     options: [
-      { label: "Eu viro a versão mais fácil, agradável e conveniente de mim mesma.", code: "ML", points: 3 },
-      { label: "Começo a procurar defeitos na pessoa e motivos para não confiar.", code: "IF", points: 3 },
-      { label: "Tento descobrir tudo o que a pessoa precisa para me tornar indispensável.", code: "SE", points: 3 },
-      { label: "Sinto vontade de me afastar antes que a relação fique séria.", code: "FE", points: 3 },
-      { label: "Continuo sendo eu mesma, comunico meus limites e deixo a conexão crescer no ritmo certo.", code: "ER", points: 0 },
+      {
+        text: "Começo a pensar no que devo fazer para ela continuar gostando.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Desconfio. Ninguém se interessa assim sem querer alguma coisa.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Perco um pouco da vontade e começo a demorar para responder.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Tento descobrir os problemas dela e onde posso ser útil.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Fico ansiosa, mas não viro outra pessoa nem invento um teste.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 2,
-    question: "Quando você está emocionalmente destruída, o que costuma fazer?",
+    question:
+      "Você recebe uma mensagem carinhosa de alguém de quem gosta. O que costuma fazer?",
     options: [
-      { label: "Sorrio, continuo ajudando todo mundo e digo que está tudo bem.", code: "ML", points: 3 },
-      { label: "Eu me isolo e digo que só preciso da minha própria companhia.", code: "IF", points: 2 },
-      { label: "Procuro alguém com um problema maior que o meu para tentar resolver.", code: "SE", points: 3 },
-      { label: "Desapareço das conversas e evito explicar o que está acontecendo.", code: "FE", points: 3 },
-      { label: "Reconheço que não estou bem e procuro apoio em alguém de confiança.", code: "ER", points: 0 },
+      {
+        text: "Leio procurando uma intenção escondida.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Respondo do jeito mais agradável possível, mesmo sem estar bem.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Recebo o carinho sem transformar aquilo em dívida.",
+        profile: "ER",
+        points: 0,
+      },
+      {
+        text: "Já penso no que posso fazer para retribuir em dobro.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Gosto, mas deixo para responder depois porque ficou íntimo demais.",
+        profile: "FE",
+        points: 3,
+      },
     ],
   },
   {
     id: 3,
-    question: "Quando surge um conflito em uma relação, você geralmente…",
+    question:
+      "Alguma coisa incomodou você. A pessoa pergunta se está tudo bem. Sua resposta real costuma ser:",
     options: [
-      { label: "Pede desculpas rapidamente, mesmo quando não fez nada errado.", code: "ML", points: 3 },
-      { label: "Fica fria, racional e evita demonstrar que aquilo machucou.", code: "IF", points: 3 },
-      { label: "Assume a responsabilidade de resolver o conflito pelas duas pessoas.", code: "SE", points: 2 },
-      { label: "Corta o contato, demora para responder ou simplesmente desaparece.", code: "FE", points: 3 },
-      { label: "Explica o que sentiu, escuta a outra pessoa e estabelece um limite claro.", code: "ER", points: 0 },
+      {
+        text: "Está tudo bem.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Eu desapareço por algumas horas ou dias.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Digo que não foi nada e fico fria.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Não sei explicar perfeitamente, mas digo que alguma coisa me pegou.",
+        profile: "ER",
+        points: 0,
+      },
+      {
+        text: "Esqueço o que senti e começo a tentar entender o lado da pessoa.",
+        profile: "SE",
+        points: 3,
+      },
     ],
   },
   {
     id: 4,
-    question: "Como você reage quando alguém demonstra carinho sem pedir nada em troca?",
+    question:
+      "Quando você percebe que está gostando mais do que planejava, você:",
     options: [
-      { label: "Sinto que preciso retribuir imediatamente e fazer ainda mais pela pessoa.", code: "ML", points: 2 },
-      { label: "Desconfio e começo a pensar no que a pessoa realmente quer de mim.", code: "IF", points: 3 },
-      { label: "Uso isso como sinal de que devo cuidar, orientar ou salvar aquela pessoa.", code: "SE", points: 2 },
-      { label: "Fico desconfortável e começo a perder o interesse.", code: "FE", points: 3 },
-      { label: "Aceito o carinho sem sentir que preciso pagar por ele.", code: "ER", points: 0 },
+      {
+        text: "Reduzo o contato antes de parecer emocionada demais.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Começo a fazer muito pela pessoa.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Procuro um defeito que prove que isso vai acabar mal.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Escondo o que quero para não assustar.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Admito para mim mesma que estou envolvida e continuo observando os fatos.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 5,
-    question: "Por que você acredita que já se envolveu com pessoas emocionalmente indisponíveis?",
+    question:
+      "Pense na última pessoa emocionalmente indisponível que mexeu com você. O que prendia você ali?",
     options: [
-      { label: "Porque eu achava que precisava me adaptar para finalmente ser escolhida.", code: "ML", points: 3 },
-      { label: "Porque pessoas indisponíveis nunca conseguem chegar perto demais de mim.", code: "IF", points: 3 },
-      { label: "Porque eu acreditava que conseguiria curar ou transformar aquela pessoa.", code: "SE", points: 3 },
-      { label: "Porque era mais seguro desejar alguém que nunca exigiria presença emocional real.", code: "FE", points: 3 },
-      { label: "Quando percebo indisponibilidade constante, eu me afasto e preservo meus limites.", code: "ER", points: 0 },
+      {
+        text: "A sensação de que, comigo, ela poderia mudar.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "A vontade de finalmente ser escolhida.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Era confortável querer alguém que nunca chegaria perto demais.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Quando percebo indisponibilidade repetida, paro de romantizar e me afasto.",
+        profile: "ER",
+        points: 0,
+      },
+      {
+        text: "Enquanto aquilo era impossível, eu não precisava viver uma relação de verdade.",
+        profile: "FE",
+        points: 3,
+      },
     ],
   },
   {
     id: 6,
-    question: "Qual destas possibilidades assusta você mais?",
+    question: "Qual situação aperta um botão feio dentro de você?",
     options: [
-      { label: "Decepcionar alguém e deixar de ser considerada uma pessoa boa.", code: "ML", points: 3 },
-      { label: "Precisar emocionalmente de outra pessoa.", code: "IF", points: 3 },
-      { label: "Descobrir que alguém consegue viver perfeitamente sem a minha ajuda.", code: "SE", points: 3 },
-      { label: "Ser conhecida por inteiro e depois rejeitada.", code: "FE", points: 3 },
-      { label: "Nenhuma delas controla minhas decisões como já controlou no passado.", code: "ER", points: 0 },
+      {
+        text: "Perceber que alguém ficou decepcionado comigo.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Sentir que estou precisando emocionalmente de alguém.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Ver alguém de quem gosto tomando decisões sem pedir minha ajuda.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Perceber que a pessoa está começando a me conhecer de verdade.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Essas coisas ainda mexem comigo, mas não decidem tudo por mim.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 7,
-    question: "Quando algo começa a dar certo na sua vida afetiva, você…",
+    question:
+      "Quando uma relação está tranquila demais, sem joguinho e sem caos, você:",
     options: [
-      { label: "Começa a esconder suas necessidades para não estragar a relação.", code: "ML", points: 3 },
-      { label: "Procura sinais de perigo e imagina tudo o que pode dar errado.", code: "IF", points: 2 },
-      { label: "Cria problemas para resolver e provar o seu valor.", code: "SE", points: 3 },
-      { label: "Fica distante, demora para responder ou reduz o contato.", code: "FE", points: 3 },
-      { label: "Tolera a insegurança inicial sem sabotar aquilo que está funcionando.", code: "ER", points: 0 },
+      {
+        text: "Começo a achar que tem alguma coisa errada.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Perco intensidade e confundo paz com falta de química.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Encontro algum problema para resolver.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Faço de tudo para não criar incômodo e estragar aquilo.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Estranho um pouco, mas não invento problema só para sentir alguma coisa.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 8,
-    question: "Qual frase parece ter sido arrancada de dentro da sua cabeça?",
+    question:
+      "Qual frase você já pensou, mesmo que tenha vergonha de admitir?",
     options: [
-      { label: "“Eu não quero dar trabalho para ninguém.”", code: "ML", points: 3 },
-      { label: "“Eu não preciso de ninguém.”", code: "IF", points: 3 },
-      { label: "“Eu consigo consertar essa pessoa.”", code: "SE", points: 3 },
-      { label: "“É melhor ir embora antes que piore.”", code: "FE", points: 3 },
-      { label: "“Eu posso precisar de alguém sem abandonar quem eu sou.”", code: "ER", points: 0 },
+      {
+        text: "Quando a pessoa gosta demais de mim, eu brocho.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Talvez, se eu fosse mais fácil de lidar, ela ficaria.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Eu sei que essa pessoa é complicada, mas comigo vai ser diferente.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Eu prefiro não depender de ninguém. Ninguém mesmo.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Eu posso gostar de alguém sem entregar minha vida inteira na mão dela.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 9,
-    question: "Depois de uma rejeição, qual é a sua reação mais comum?",
+    question:
+      "Depois de uma rejeição, qual comportamento mais parece com você?",
     options: [
-      { label: "Tento descobrir o que deveria mudar em mim para ser escolhida.", code: "ML", points: 3 },
-      { label: "Finjo que não me importo e tento apagar qualquer sentimento.", code: "IF", points: 3 },
-      { label: "Tento provar que a pessoa perdeu alguém incrível.", code: "SE", points: 2 },
-      { label: "Fecho todas as portas e evito novas conexões por muito tempo.", code: "FE", points: 3 },
-      { label: "Permito que a rejeição doa sem transformá-la em uma sentença sobre meu valor.", code: "ER", points: 0 },
+      {
+        text: "Reviso tudo o que fiz procurando onde deixei de ser suficiente.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Finjo que não liguei e corto qualquer sinal de sentimento.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Fecho a porta para todo mundo por um bom tempo.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Tento mostrar para a pessoa tudo o que ela perdeu.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Eu sofro, mas não transformo a rejeição em prova de que não tenho valor.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 10,
-    question: "O que acontece quando você precisa estabelecer um limite?",
+    question:
+      "Alguém pede uma coisa que você não quer fazer. O que costuma acontecer?",
     options: [
-      { label: "Eu digo “sim” para evitar culpa, discussão ou desapontamento.", code: "ML", points: 3 },
-      { label: "Transformo o limite em uma muralha e não permito nenhuma aproximação.", code: "IF", points: 2 },
-      { label: "Estabeleço o limite, mas volto atrás quando a pessoa demonstra sofrimento.", code: "SE", points: 3 },
-      { label: "Eu desapareço porque explicar o limite parece difícil demais.", code: "FE", points: 3 },
-      { label: "Digo “não” de maneira clara sem atacar a pessoa nem me abandonar.", code: "ER", points: 0 },
+      {
+        text: "Eu aceito e fico com raiva de ter aceitado.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Digo não, mas volto atrás quando a pessoa faz cara de sofrimento.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Recuso de um jeito tão frio que ninguém tenta pedir novamente.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Demoro para responder até o assunto morrer.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Digo não sem escrever uma tese tentando justificar minha existência.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 11,
-    question: "O que você costuma chamar de independência?",
+    question:
+      "Você está mal e alguém oferece ajuda. Sua reação mais automática é:",
     options: [
-      { label: "Resolver tudo sozinha para nunca incomodar ninguém.", code: "ML", points: 2 },
-      { label: "Recusar apoio mesmo quando estou exausta.", code: "IF", points: 3 },
-      { label: "Controlar todos os detalhes porque acredito que ninguém fará direito.", code: "SE", points: 2 },
-      { label: "Evitar vínculos que possam exigir vulnerabilidade.", code: "FE", points: 3 },
-      { label: "Ter autonomia sem precisar viver emocionalmente isolada.", code: "ER", points: 0 },
+      {
+        text: "Não preciso. Eu resolvo.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Tem gente com problemas maiores. Não quero incomodar.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Começo a falar dos problemas da outra pessoa.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Mudo de assunto e desapareço depois.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Talvez eu diga que nem sei do que preciso, mas aceito companhia.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 12,
-    question: "Qual imagem você sente que precisa sustentar diante das outras pessoas?",
+    question: "Qual personagem as pessoas costumam conhecer primeiro?",
     options: [
-      { label: "A mulher agradável, leve e que nunca cria problemas.", code: "ML", points: 3 },
-      { label: "A mulher fria, forte e impossível de ferir.", code: "IF", points: 3 },
-      { label: "A mulher que sempre sabe o que fazer e salva todo mundo.", code: "SE", points: 3 },
-      { label: "A mulher desapegada que pode ir embora a qualquer momento.", code: "FE", points: 3 },
-      { label: "Não preciso parecer perfeita para ser respeitada.", code: "ER", points: 0 },
+      {
+        text: "A que resolve tudo e sempre sabe o que fazer.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "A agradável, leve e que nunca dá trabalho.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "A desapegada que vai embora sem olhar para trás.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "A forte que não precisa de porra nenhuma.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "A que não está sempre bem, mas também não transforma toda dor em espetáculo.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 13,
-    question: "Quando você comete um erro, o que normalmente acontece?",
+    question:
+      "Quando você percebe que errou com alguém, o que faz primeiro?",
     options: [
-      { label: "Eu me culpo, exagero no pedido de desculpas e tento compensar.", code: "ML", points: 3 },
-      { label: "Crio justificativas para não precisar admitir que fui afetada.", code: "IF", points: 2 },
-      { label: "Desvio minha atenção para os problemas de outra pessoa.", code: "SE", points: 2 },
-      { label: "Abandono o projeto, a conversa ou a relação por vergonha.", code: "FE", points: 3 },
-      { label: "Assumo o erro, reparo o que for possível e continuo avançando.", code: "ER", points: 0 },
+      {
+        text: "Peço desculpa dez vezes e tento compensar até a pessoa cansar.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Explico todos os motivos para não precisar admitir que doeu.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Evito a conversa porque estou com vergonha.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Começo a listar tudo o que já fiz de bom pela pessoa.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Assumo o que fiz, reparo o possível e não me transformo no pior ser humano da Terra.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
   {
     id: 14,
-    question: "Qual confronto você mais precisa viver neste momento?",
+    question:
+      "Qual dessas verdades você está mais cansada de fingir que não sabe?",
     options: [
-      { label: "Parar de pedir permissão para existir e decepcionar algumas pessoas.", code: "ML", points: 4 },
-      { label: "Admitir que existe medo escondido debaixo da minha armadura.", code: "IF", points: 4 },
-      { label: "Parar de salvar todo mundo para finalmente cuidar da minha própria vida.", code: "SE", points: 4 },
-      { label: "Continuar presente quando minha vontade automática é fugir.", code: "FE", points: 4 },
-      { label: "Consolidar a mulher que estou construindo sem voltar aos padrões antigos.", code: "ER", points: 0 },
+      {
+        text: "Eu me abandono para evitar que alguém me abandone.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Minha independência também virou uma desculpa para não confiar.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Eu ajudo todo mundo porque ser necessária me faz sentir segura.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Eu chamo de perda de interesse aquilo que muitas vezes é medo.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Eu já reconheço meus padrões, mas ainda preciso parar de voltar para eles quando estou frágil.",
+        profile: "ER",
+        points: 0,
+      },
     ],
   },
 ];
 
 const TRANSITIONS = [
-  { after: 4, title: "A primeira máscara já caiu.", text: "Até aqui, você respondeu sobre aquilo que mostra para os outros. Agora vamos entrar no padrão que você tenta esconder até de si mesma." },
-  { after: 8, title: "Seu padrão já apareceu.", text: "Talvez você ainda esteja tentando justificar algumas respostas. Continue. A parte que mais incomoda geralmente é a que mais precisa ser observada." },
-  { after: 12, title: "Faltam duas perguntas.", text: "Você já passou da parte confortável. Agora responda sem escolher aquilo que parece bonito. Escolha aquilo que acontece de verdade." }
+  {
+    afterQuestion: 4,
+    title:
+      "VOCÊ NÃO RESPONDEU SOBRE AMOR. RESPONDEU SOBRE O QUE FAZ QUANDO ELE CHEGA PERTO.",
+    text:
+      "Até aqui já apareceu uma coisa importante: quando existe risco de alguém conhecer você de verdade, você tenta agradar, controlar, salvar ou sumir. Agora a desculpa começa a ficar mais difícil.",
+    button: "CONTINUAR",
+  },
+  {
+    afterQuestion: 8,
+    title: "AGORA FICOU MENOS BONITO.",
+    text:
+      "Até aqui você já mostrou como costuma se defender: virando a mulher perfeita, virando pedra, virando enfermeira emocional ou virando fumaça. A próxima parte é sobre o que acontece depois que a merda já aconteceu.",
+    button: "EU NÃO VOU SUMIR AGORA",
+  },
+  {
+    afterQuestion: 12,
+    title: "FALTAM DUAS.",
+    text:
+      "Não escolhe a resposta mais madura. Escolhe a que você já fez e depois fingiu que não fez. A resposta bonita não muda sua vida. A resposta verdadeira talvez mude.",
+    button: "RASGAR A ÚLTIMA DESCULPA",
+  },
 ];
 
 export default function QuizLanding() {
@@ -175,10 +486,10 @@ export default function QuizLanding() {
   const [activeTransition, setActiveTransition] = useState<any>(null);
 
   const handleAnswer = (option: any) => {
-    setScores(prev => ({ ...prev, [option.code]: (prev as any)[option.code] + option.points }));
+    setScores(prev => ({ ...prev, [option.profile]: (prev as any)[option.profile] + option.points }));
     
     const nextQ = currentQuestion + 1;
-    const transition = TRANSITIONS.find(t => t.after === nextQ);
+    const transition = TRANSITIONS.find(t => t.afterQuestion === nextQ);
 
     if (transition) {
       setActiveTransition(transition);
@@ -261,7 +572,7 @@ export default function QuizLanding() {
                      onClick={() => handleAnswer(opt)} 
                      className="group w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f]/50 bg-white/[0.02] hover:bg-[#8f2f3f]/5 transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4"
                    >
-                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.label}</span>
+                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.text}</span>
                      <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 transition-all shrink-0" />
                    </button>
                  ))}
@@ -278,10 +589,10 @@ export default function QuizLanding() {
               <p className="text-lg md:text-xl italic text-white/80 leading-tight">{activeTransition?.text}</p>
               <button 
                 onClick={() => { setStep("quiz"); setCurrentQuestion(currentQuestion + 1); }} 
-                className="w-full md:w-auto bg-[#8f2f3f] px-12 py-6 rounded-2xl text-white uppercase font-black tracking-tighter shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)] active:scale-95"
-              >
-                CONTINUAR O CONFRONTO
-              </button>
+                 className="w-full md:w-auto bg-[#8f2f3f] px-12 py-6 rounded-2xl text-white uppercase font-black tracking-tighter shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)] active:scale-95"
+               >
+                 {activeTransition?.button || "CONTINUAR"}
+               </button>
             </motion.div>
           )}
 
