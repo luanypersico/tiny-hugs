@@ -26,7 +26,7 @@ const ShaderBackground = () => {
     const float minorLineFrequency = 1.0;
     const vec4 gridColor = vec4(0.5);
     const float scale = 5.0;
-    const vec4 lineColor = vec4(0.34, 0.09, 0.16, 1.0);
+    const vec4 lineColor = vec4(0.25, 0.06, 0.1, 0.8);
     const float minLineWidth = 0.006;
     const float maxLineWidth = 0.13;
     const float lineSpeed = 1.0 * overallSpeed;
