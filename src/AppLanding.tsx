@@ -228,7 +228,7 @@ function App() {
                   <div aria-hidden className="absolute -inset-8 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.18),transparent_70%)] blur-3xl ember-breathe" />
                   <div className="relative surface-noir rounded-3xl p-8 sm:p-10 lg:p-14">
                     <div className="text-center">
-                      <BookOpen className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-[#d4726a] mb-6 sm:mb-8 mx-auto" />
+                      <div className="ember-rule mb-6 sm:mb-8" />
                       <p className="text-[#c8c0ba] text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 italic">
                         "Por que eu não aguento quando começam a gostar de mim?"
                       </p>
