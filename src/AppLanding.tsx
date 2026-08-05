@@ -147,13 +147,14 @@ function App() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <button
                   onClick={scrollToAction}
-                  className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20 w-full sm:w-auto"
+                  className="group relative overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 sm:py-10 px-16 sm:px-24 rounded-2xl text-2xl sm:text-3xl transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_80px_-10px_rgba(143,47,63,0.5)] border border-white/20 w-full sm:w-auto uppercase tracking-tighter"
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    QUERO ME CONFRONTAR AGORA
-                    <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
+                  <span className="relative z-10 flex items-center justify-center gap-4">
+                    COMEÇAR O CONFRONTO
+                    <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
                   </span>
-                  <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  {/* Glossy sweep effect */}
+                  <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-[45deg] -translate-x-[200%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
                 </button>
               </div>
             </Reveal>
