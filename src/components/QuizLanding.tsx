@@ -888,22 +888,51 @@ export default function QuizLanding() {
           )}
 
           {step === "processing" && (
-            <div className="text-center space-y-12 max-w-xl">
+            <div className="text-left space-y-12 max-w-[520px]">
               <div className="relative">
-                <div className="w-24 h-24 border-2 border-white/5 border-t-[#8f2f3f] rounded-full animate-spin mx-auto" />
-                <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-[#8f2f3f] animate-pulse" />
+                <div className="w-16 h-16 border border-white/5 border-t-[#A8283D] rounded-full animate-spin" />
               </div>
-              <motion.h2 
-                key={currentQuestion} // Reuse state for animation rhythm if needed
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                className="text-2xl md:text-3xl font-black text-white italic uppercase tracking-tighter"
-              >
-                ANALISANDO A PERSONAGEM QUE VOCÊ CRIOU…
-              </motion.h2>
-              <div className="space-y-4">
-                 <p className="text-[#8f2f3f] font-black tracking-widest text-xs uppercase animate-pulse">Identificando seus mecanismos de proteção…</p>
-                 <p className="text-white/40 text-xs uppercase tracking-widest">Analisando os padrões que você repete…</p>
+              
+              <div className="space-y-10">
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">1.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">Você respondeu 14 situações.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">2.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">Algumas desculpas apareceram mais vezes do que deveriam.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 2.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">3.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">Estamos cruzando como você planeja, adia, abandona e recomeça.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 3.5 }}
+                  className="space-y-2"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">4.</span>
+                  <p className="text-xl font-bold italic uppercase tracking-tight text-white">O hábito podre que mais destrói sua palavra apareceu.</p>
+                </motion.div>
               </div>
             </div>
           )}
