@@ -4,7 +4,39 @@ import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain 
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
 
-const QUESTIONS = [
+type Profile = "ML" | "IF" | "SE" | "FE" | "ER";
+
+type ScoredProfile = "ML" | "IF" | "SE" | "FE";
+
+type Scores = {
+  ML: number;
+  IF: number;
+  SE: number;
+  FE: number;
+};
+
+type QuizOption = {
+  text: string;
+  profile: Profile;
+  points: number;
+};
+
+type QuizQuestion = {
+  id: number;
+  question: string;
+  options: QuizOption[];
+};
+
+type QuizAnswer = {
+  questionId: number;
+  question: string;
+  answer: string;
+  profile: Profile;
+  points: number;
+  regulated: boolean;
+};
+
+const QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question:
