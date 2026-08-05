@@ -63,7 +63,7 @@ interface QuizResult {
   icon: React.ReactNode;
 }
 
-const RESULTS: Record<string, QuizResult> = {
+const RESULTS_DATA = {
   sabotage: {
     title: "A AUTO-SABOTADORA DIPLOMATA",
     description: "Você construiu uma vida onde o sucesso é um perigo. Sempre que a felicidade se aproxima, você 'diplomaticamente' cria um caos para restaurar o desconforto familiar. Você se ama, mas odeia o risco de ser vulnerável.",
@@ -113,9 +113,9 @@ export default function QuizLanding() {
       return acc;
     }, {} as Record<string, number>);
     
-    if ((counts["sabotage"] || 0) > 0) return RESULTS.sabotage;
-    if ((counts["mask"] || 0) > 0) return RESULTS.mask;
-    return RESULTS.generic;
+    if ((counts["sabotage"] || 0) > 0) return RESULTS_DATA.sabotage;
+    if ((counts["mask"] || 0) > 0) return RESULTS_DATA.mask;
+    return RESULTS_DATA.generic;
   };
 
   return (
