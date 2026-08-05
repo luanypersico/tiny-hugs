@@ -121,7 +121,7 @@ function App() {
                   <Diamond className="w-6 h-6 sm:w-8 sm:h-8 text-[#d4726a]" />
                 </div>
                 <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed">
-                  <strong className="text-white">Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir.</strong>
+                  <strong className="text-white drop-shadow-sm">Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir.</strong>
                 </p>
               </div>
             </Reveal>
