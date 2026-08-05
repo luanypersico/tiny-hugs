@@ -514,35 +514,144 @@ export default function QuizLanding() {
   const [step, setStep] = useState<"intro" | "quiz" | "transition" | "processing" | "lead" | "result">("intro");
   const [formData, setFormData] = useState({ name: "", contact: "" });
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState({ ML: 0, IF: 0, SE: 0, FE: 0, ER: 0 });
+  
+  const [selectedOption, setSelectedOption] = useState<QuizOption | null>(null);
+  const [answers, setAnswers] = useState<QuizAnswer[]>([]);
+  const [scores, setScores] = useState<Scores>({
+    ML: 0,
+    IF: 0,
+    SE: 0,
+    FE: 0,
+  });
+  const [regulatedCount, setRegulatedCount] = useState(0);
+  const [primaryResult, setPrimaryResult] = useState<Profile | null>(null);
+  const [secondaryResult, setSecondaryResult] = useState<ScoredProfile | null>(null);
+
   const [activeTransition, setActiveTransition] = useState<any>(null);
 
-  const handleAnswer = (option: any) => {
-    setScores(prev => ({ ...prev, [option.profile]: (prev as any)[option.profile] + option.points }));
-    
-    const nextQ = currentQuestion + 1;
-    const transition = TRANSITIONS.find(t => t.afterQuestion === nextQ);
+  const calculateQuizResult = (
+    finalAnswers: QuizAnswer[],
+    finalScores: Scores,
+    finalRegulatedCount: number
+  ) => {
+    // ER Logic
+    // finalRegulatedCount >= 8
+    // Or finalRegulatedCount >= 6 AND diff between top two scores <= 2
+    const sortedProfiles = (Object.entries(finalScores) as [ScoredProfile, number][]).sort(
+      (a, b) => b[1] - a[1]
+    );
 
+    const topScore = sortedProfiles[0][1];
+    const secondScore = sortedProfiles[1][1];
+    const diffTopTwo = topScore - secondScore;
+
+    if (finalRegulatedCount >= 8 || (finalRegulatedCount >= 6 && diffTopTwo <= 2)) {
+      setPrimaryResult("ER");
+      setSecondaryResult(null);
+      return;
+    }
+
+    // Absolute Tie-breaker logic for ScoredProfiles
+    const maxScore = sortedProfiles[0][1];
+    const tiedProfiles = sortedProfiles.filter(([_, score]) => score === maxScore).map(([p, _]) => p);
+
+    let winner: ScoredProfile;
+
+    if (tiedProfiles.length === 1) {
+      winner = tiedProfiles[0];
+    } else {
+      // 1. Check Q14 answer
+      const q14Answer = finalAnswers.find((a) => a.questionId === 14);
+      if (q14Answer && q14Answer.profile !== "ER" && tiedProfiles.includes(q14Answer.profile as ScoredProfile)) {
+        winner = q14Answer.profile as ScoredProfile;
+      } else {
+        // 2. Count profile occurrences in Q9-Q13
+        const subsetAnswers = finalAnswers.filter((a) => a.questionId >= 9 && a.questionId <= 13);
+        const counts = tiedProfiles.map((p) => ({
+          profile: p,
+          count: subsetAnswers.filter((a) => a.profile === p).length,
+        }));
+        const maxCount = Math.max(...counts.map((c) => c.count));
+        const winnersByCount = counts.filter((c) => c.count === maxCount);
+
+        if (winnersByCount.length === 1) {
+          winner = winnersByCount[0].profile;
+        } else {
+          // 3. Most recent non-regulated answer from Q13 back to Q1
+          const reversedAnswers = [...finalAnswers].reverse();
+          const latestTied = reversedAnswers.find(
+            (a) => !a.regulated && tiedProfiles.includes(a.profile as ScoredProfile)
+          );
+          winner = latestTied ? (latestTied.profile as ScoredProfile) : tiedProfiles[0];
+        }
+      }
+    }
+
+    setPrimaryResult(winner);
+
+    // Secondary result
+    // If not winner, check diff to next best
+    const remainingProfiles = (Object.entries(finalScores) as [ScoredProfile, number][])
+      .filter(([p, _]) => p !== winner)
+      .sort((a, b) => b[1] - a[1]);
+
+    const runnerUp = remainingProfiles[0];
+    if (runnerUp && finalScores[winner] - runnerUp[1] <= 2) {
+      setSecondaryResult(runnerUp[0]);
+    } else {
+      setSecondaryResult(null);
+    }
+  };
+
+  const confirmAnswer = () => {
+    if (!selectedOption) return;
+
+    const currentQuestionData = QUESTIONS[currentQuestion];
+    const confirmedAnswer: QuizAnswer = {
+      questionId: currentQuestionData.id,
+      question: currentQuestionData.question,
+      answer: selectedOption.text,
+      profile: selectedOption.profile,
+      points: selectedOption.points,
+      regulated: selectedOption.profile === "ER",
+    };
+
+    const nextAnswers = [...answers, confirmedAnswer];
+    let nextScores = { ...scores };
+    let nextRegulatedCount = regulatedCount;
+
+    if (confirmedAnswer.profile === "ER") {
+      nextRegulatedCount += 1;
+    } else {
+      const p = confirmedAnswer.profile as ScoredProfile;
+      nextScores[p] += confirmedAnswer.points;
+    }
+
+    setAnswers(nextAnswers);
+    setScores(nextScores);
+    setRegulatedCount(nextRegulatedCount);
+    setSelectedOption(null);
+
+    const nextQ = currentQuestion + 1;
+
+    if (nextQ >= QUESTIONS.length) {
+      calculateQuizResult(nextAnswers, nextScores, nextRegulatedCount);
+      setStep("processing");
+      setTimeout(() => setStep("lead"), 3000);
+      return;
+    }
+
+    const transition = TRANSITIONS.find((t) => t.afterQuestion === nextQ);
     if (transition) {
       setActiveTransition(transition);
       setStep("transition");
-    } else if (nextQ >= QUESTIONS.length) {
-      setStep("processing");
-      setTimeout(() => setStep("lead"), 3000);
     } else {
       setCurrentQuestion(nextQ);
     }
   };
 
   const getResult = () => {
-    const { ML, IF, SE, FE } = scores;
-    const max = Math.max(ML, IF, SE, FE);
-    if (scores.ER >= 8 || (ML + IF + SE + FE) <= 10) return "ER";
-    
-    // Find highest
-    const profiles = [{code: "ML", val: ML}, {code: "IF", val: IF}, {code: "SE", val: SE}, {code: "FE", val: FE}];
-    const sorted = profiles.sort((a,b) => b.val - a.val);
-    return sorted[0]?.code || "ER";
+    return primaryResult || "ER";
   };
 
   return (
