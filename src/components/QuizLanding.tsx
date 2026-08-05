@@ -108,8 +108,8 @@ export default function QuizLanding() {
       return acc;
     }, {} as Record<string, number>);
     
-    if (counts.sabotage > 1) return RESULTS.sabotage;
-    if (counts.mask > 1) return RESULTS.mask;
+    if ((counts["sabotage"] || 0) > 0) return RESULTS.sabotage;
+    if ((counts["mask"] || 0) > 0) return RESULTS.mask;
     return RESULTS.generic;
   };
 
