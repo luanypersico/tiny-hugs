@@ -762,7 +762,6 @@ export default function QuizLanding() {
     if (nextQ >= QUESTIONS.length) {
       calculateQuizResult(nextAnswers, nextScores, nextRegulatedCount);
       setStep("processing");
-      setTimeout(() => setStep("lead"), 3000);
       
       window.setTimeout(() => {
         answerLockRef.current = false;
