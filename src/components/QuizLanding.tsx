@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, ShieldAlert, Zap, CheckCircle, ChevronRight, Brain, Sparkles, X, Heart } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowRight, ShieldAlert, Zap, CheckCircle, ChevronRight, Brain, Sparkles } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
 
@@ -117,7 +116,6 @@ export default function QuizLanding() {
     <div className="relative min-h-screen bg-[#0a0807] text-[#c8c0ba] font-sans selection:bg-[#8f2f3f] selection:text-white overflow-x-hidden">
       <ShaderBackground />
       
-      {/* Spotlight Effect */}
       <div 
         className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-1000 opacity-40 lg:opacity-60"
         style={{
@@ -157,10 +155,6 @@ export default function QuizLanding() {
                 </span>
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
-              
-              <p className="text-[#8f2f3f] text-sm font-bold tracking-[0.2em] uppercase opacity-60">
-                100% gratuito e anônimo. Leva menos de 2 minutos.
-              </p>
             </motion.div>
           )}
 
@@ -224,14 +218,9 @@ export default function QuizLanding() {
                 <div className="w-24 h-24 border-2 border-white/10 border-t-[#8f2f3f] rounded-full animate-spin mx-auto" />
                 <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-[#8f2f3f] animate-pulse" />
               </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl font-black text-white uppercase tracking-tighter italic">
-                  Processando suas respostas...
-                </h3>
-                <p className="text-[#c8c0ba]/60 animate-pulse uppercase text-xs font-bold tracking-[0.2em]">
-                  Mapeando padrões de sabotagem emocional
-                </p>
-              </div>
+              <h3 className="text-2xl font-black text-white uppercase tracking-tighter italic">
+                Processando suas respostas...
+              </h3>
             </motion.div>
           )}
 
@@ -265,74 +254,70 @@ export default function QuizLanding() {
                         </p>
                       </div>
 
-
-                  <div className="p-8 border border-[#8f2f3f]/30 bg-[#8f2f3f]/5 rounded-3xl space-y-4">
-                    <h4 className="text-[#d4726a] font-black uppercase text-sm tracking-widest">⚠️ VEREDITO CRÍTICO:</h4>
-                    <p className="text-white text-lg font-bold leading-snug">
-                      Seus ciclos não vão mudar enquanto você não matar a personagem que criou para ser aceita. Você está a um passo da ressurreição.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <Reveal from="right">
-                    <div className="surface-noir p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_100px_-30px_rgba(143,47,63,0.4)] relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8f2f3f]/30 to-transparent blur-3xl opacity-50" />
-                      
-                      <div className="relative space-y-10">
-                        <div className="space-y-2">
-                          <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
-                            A SOLUÇÃO PARA O SEU PERFIL:
-                          </h3>
-                          <p className="text-[#8f2f3f] font-black tracking-widest text-xs uppercase">PLANO DE 14 DIAS COMPLETO</p>
-                        </div>
-
-                        <div className="space-y-4">
-                          {[
-                            "Plano + comandos diários (100+ págs)",
-                            "Acesso vitalício ao conteúdo",
-                            "Esmurre sua insegurança emocional",
-                            "Método para parar de fugir"
-                          ].map((f, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                              <CheckCircle className="w-5 h-5 text-[#8f2f3f]" />
-                              <span className="text-lg font-light">{f}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="pt-6 border-t border-white/5">
-                          <div className="flex items-center gap-4 mb-6">
-                            <span className="text-white/30 text-2xl line-through italic">R$ 97,00</span>
-                            <span className="text-6xl font-black text-white tracking-tighter ember-glow">R$ 29,90</span>
-                          </div>
-
-                          <button
-                            onClick={() => window.open('https://pay.hotmart.com/YOUR_LINK', '_blank')}
-                            className="group relative w-full overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 rounded-2xl text-xl md:text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter"
-                          >
-                            <span className="relative z-10 flex items-center justify-center gap-4">
-                              QUERO MINHA RESSURREIÇÃO
-                              <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
-                            </span>
-                            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                          </button>
-                        </div>
-
-                        <div className="flex items-center justify-center gap-6 text-[10px] font-black tracking-widest uppercase opacity-40">
-                          <div className="flex items-center gap-2"><ShieldAlert className="w-3 h-3" /> SEGURO</div>
-                          <div className="flex items-center gap-2"><Zap className="w-3 h-3" /> IMEDIATO</div>
-                        </div>
+                      <div className="p-8 border border-[#8f2f3f]/30 bg-[#8f2f3f]/5 rounded-3xl space-y-4">
+                        <h4 className="text-[#d4726a] font-black uppercase text-sm tracking-widest">⚠️ VEREDITO CRÍTICO:</h4>
+                        <p className="text-white text-lg font-bold leading-snug">
+                          Seus ciclos não vão mudar enquanto você não matar a personagem que criou para ser aceita. Você está a um passo da ressurreição.
+                        </p>
                       </div>
                     </div>
-                  );
-                })()}
+
+                    <div className="relative">
+                      <Reveal from="right">
+                        <div className="surface-noir p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_100px_-30px_rgba(143,47,63,0.4)] relative overflow-hidden group">
+                          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8f2f3f]/30 to-transparent blur-3xl opacity-50" />
+                          
+                          <div className="relative space-y-10">
+                            <div className="space-y-2">
+                              <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none">
+                                A SOLUÇÃO PARA O SEU PERFIL:
+                              </h3>
+                              <p className="text-[#8f2f3f] font-black tracking-widest text-xs uppercase">PLANO DE 14 DIAS COMPLETO</p>
+                            </div>
+
+                            <div className="space-y-4">
+                              {[
+                                "Plano + comandos diários (100+ págs)",
+                                "Acesso vitalício ao conteúdo",
+                                "Esmurre sua insegurança emocional",
+                                "Método para parar de fugir"
+                              ].map((f, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                  <CheckCircle className="w-5 h-5 text-[#8f2f3f]" />
+                                  <span className="text-lg font-light">{f}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="pt-6 border-t border-white/5">
+                              <div className="flex items-center gap-4 mb-6">
+                                <span className="text-white/30 text-2xl line-through italic">R$ 97,00</span>
+                                <span className="text-6xl font-black text-white tracking-tighter ember-glow">R$ 29,90</span>
+                              </div>
+
+                              <button
+                                onClick={() => window.open('https://pay.hotmart.com/YOUR_LINK', '_blank')}
+                                className="group relative w-full overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 rounded-2xl text-xl md:text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter"
+                              >
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                  QUERO MINHA RESSURREIÇÃO
+                                  <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+                                </span>
+                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </Reveal>
+                    </div>
+                  </div>
+                );
+              })()}
             </motion.div>
           )}
         </AnimatePresence>
       </main>
 
-      {/* Background Decorative Text */}
       <div className="fixed bottom-10 left-10 pointer-events-none opacity-[0.02] select-none">
         <h2 className="text-[20rem] font-black leading-none uppercase italic tracking-tighter">
           CONFRONTO
