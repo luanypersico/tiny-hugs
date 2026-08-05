@@ -735,7 +735,7 @@ export default function QuizLanding() {
       return;
     }
 
-    const transition = TRANSITIONS.find((t) => t.afterQuestion === nextQ);
+    const transition = TRANSITIONS.find((t) => t.afterQuestion === nextAnswers.length);
     if (transition) {
       setActiveTransition(transition);
       setStep("transition");
