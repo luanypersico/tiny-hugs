@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronRight, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
 
