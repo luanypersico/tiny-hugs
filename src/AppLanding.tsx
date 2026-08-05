@@ -329,13 +329,16 @@ function App() {
               },
             ].map((card, index) => (
               <Reveal key={card.title} delay={index * 110}>
-                <div className="group relative surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full overflow-hidden transition-all duration-700 hover:-translate-y-2">
-                  <span aria-hidden className="index-numeral pointer-events-none absolute -right-2 -top-4 text-7xl sm:text-8xl select-none opacity-70">
+                <div className="group relative surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 h-full overflow-hidden transition-all duration-700 hover:-translate-y-2 border-white/5 hover:border-[#d4726a]/30">
+                  <span aria-hidden className="index-numeral pointer-events-none absolute -right-2 -top-4 text-8xl sm:text-9xl select-none opacity-40">
                     {card.numeral}
                   </span>
-                  <div aria-hidden className="absolute inset-x-0 -top-24 h-40 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.22),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#8f2f3f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="relative">
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">{card.title}</h3>
+                    <div className="mb-6 sm:mb-8 text-[#d4726a] group-hover:scale-110 transition-transform duration-500 origin-left">
+                      {card.icon}
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 uppercase tracking-tight">{card.title}</h3>
                     {card.body}
                   </div>
                 </div>
