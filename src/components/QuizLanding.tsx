@@ -61,7 +61,6 @@ const PROFILE_HEADLINES: Record<Profile, string> = {
 type QuizProgress = {
   step: "intro" | "quiz" | "transition" | "processing" | "lead" | "result";
   currentQuestion: number;
-  selectedOption: QuizOption | null;
   answers: QuizAnswer[];
   scores: Scores;
   regulatedCount: number;
