@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check, FileText } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check, FileText, MousePointer2 } from 'lucide-react';
 import { EBOOK_CONTENT } from '@/lib/ebook-content.server';
 import ShaderBackground from '@/components/ShaderBackground';
 import SocialProofSection from '@/components/SocialProofSection';
