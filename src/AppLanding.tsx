@@ -427,7 +427,7 @@ function App() {
                   ].map((line, index) => (
                     <Reveal key={line} delay={index * 80} from="left">
                       <div className="flex items-start gap-3 border-l border-[#c2534a]/25 pl-4">
-                        <div className="text-[#c2534a] text-xl sm:text-2xl mt-1">❌</div>
+                        <X className="w-5 h-5 sm:w-[22px] sm:h-[22px] flex-shrink-0 text-[#c2534a] mt-1" strokeWidth={1.5} />
                         <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
                           {line}
                         </p>
