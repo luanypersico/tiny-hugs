@@ -1,0 +1,862 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check, FileText, MousePointer2 } from 'lucide-react';
+import { EBOOK_CONTENT } from '@/lib/ebook-content.server';
+import ShaderBackground from '@/components/ShaderBackground';
+import SocialProofSection from '@/components/SocialProofSection';
+import Reveal from '@/components/Reveal';
+import StickyCta from '@/components/StickyCta';
+
+import heroCover from '@/assets/hero-cover.jpg';
+import bonusEbook from '@/assets/bonus-ebook.jpg';
+import finalCta from '@/assets/final-cta.jpg';
+
+interface SectionKickerProps {
+  label: string;
+  index?: string;
+}
+
+/** Micro-cabeçalho editorial que ancora cada seção na narrativa. */
+const SectionKicker: React.FC<SectionKickerProps> = ({ label, index }) => (
+  <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
+    <span className="hidden sm:block h-px w-10 bg-gradient-to-r from-transparent to-[#d4726a]/50" />
+    {index && (
+      <span className="kicker text-[#d4726a]/80">{index}</span>
+    )}
+    <span className="kicker">{label}</span>
+    <span className="hidden sm:block h-px w-10 bg-gradient-to-l from-transparent to-[#d4726a]/50" />
+  </div>
+);
+
+function App() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedVersion, setSelectedVersion] = useState<'digital' | 'print' | null>(null);
+  const [activeTab, setActiveTab] = useState<'problema' | 'metodo' | 'bonus'>('problema');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const scrollToAction = () => {
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-[#040308] relative overflow-x-hidden selection:bg-[#8f2f3f] selection:text-white">
+      {/* Dynamic Cursor Spotlight */}
+      <div 
+        aria-hidden
+        className="fixed inset-0 pointer-events-none z-[100] opacity-30 mix-blend-soft-light transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 114, 106, 0.15), transparent 80%)`
+        }}
+      />
+
+      {/* Animated Shader Background */}
+      <ShaderBackground />
+
+      {/* Cinematic overlays */}
+      <div aria-hidden className="vignette-overlay" />
+      <div aria-hidden className="grain-overlay" />
+
+      <StickyCta label="Quero Começar Agora" onClick={scrollToAction} />
+
+      {/* Hero Image at Very Top */}
+      <div className="relative z-10 pt-6 sm:pt-10 lg:pt-14 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-2xl">
+          <Reveal from="none">
+            <div className="relative">
+              <div aria-hidden className="absolute -inset-10 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.28),transparent_70%)] blur-3xl ember-breathe"></div>
+              <img
+                src={heroCover}
+                alt="ME AMO, MAS ME ODEIO™"
+                width={1280}
+                height={1280}
+                className="relative w-full h-auto rounded-2xl border border-white/10 edge-hairline"
+                loading="eager"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-[#040308] via-[#040308]/10 to-transparent"></div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      <div className="relative z-10 bg-gradient-to-b from-[#040308]/85 via-[#050308]/70 to-[#040308]/90">
+
+      {/* Header */}
+      <header className="relative overflow-hidden min-h-screen flex items-center">
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#1a0d1c]/25 via-black/50 to-[#210d15]/25"></div>
+        <div aria-hidden className="absolute left-1/2 top-1/3 h-[50rem] w-[50rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(143,47,63,0.35),transparent_70%)] blur-[120px] ember-breathe"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative">
+          <div className="text-center max-w-6xl mx-auto">
+            <Reveal from="none">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5b3a63]/20 to-[#a9414a]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-10 sm:mb-14 border border-white/10">
+                <span className="text-white font-semibold text-sm sm:text-base tracking-[0.22em]">ME AMO, MAS ME ODEIO™</span>
+              </div>
+            </Reveal>
+
+              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold text-white mb-8 sm:mb-12 leading-[0.85] tracking-tighter">
+                <Reveal delay={60}>
+                  <span className="block mb-2 sm:mb-4">Plano de 14 dias para se confrontar,</span>
+                </Reveal>
+              <Reveal delay={160}>
+                <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
+              </Reveal>
+              <Reveal delay={260}>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#b98aa8] via-[#d4726a] to-[#b98aa8] ember-glow italic">
+                  procrastinação emocional
+                </span>
+              </Reveal>
+              <Reveal delay={360}>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4">
+                  {' '}e sair do papel de "mulher legal que sempre acaba sozinha".
+                </span>
+              </Reveal>
+            </h1>
+
+            <Reveal delay={120}>
+              <div className="max-w-4xl mx-auto mb-10 sm:mb-14 px-4">
+                <p className="text-xl sm:text-2xl md:text-4xl text-[#c8c0ba] mb-4 sm:mb-6 font-light leading-tight tracking-tight">
+                  Ou você encara seus monstros de frente...
+                </p>
+                <div aria-hidden className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[#d4726a] to-transparent my-10 sm:my-14" />
+                <p className="text-2xl sm:text-3xl md:text-5xl text-white font-medium leading-tight tracking-tighter">
+                  Ou continua chamando de <span className="text-[#d4726a] italic">"jeito difícil de amar"</span> só porque tem medo de ser rejeitada por inteiro.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <div className="surface-noir rounded-3xl p-10 sm:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto border-[#d4726a]/10">
+                <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+                  <div className="h-1 w-12 bg-[#d4726a] rounded-full" />
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                    Oi, eu sou você.
+                  </h2>
+                  <div className="h-1 w-12 bg-[#d4726a] rounded-full" />
+                </div>
+                <p className="text-xl sm:text-2xl lg:text-3xl text-[#c8c0ba] leading-relaxed font-light">
+                  <span className="text-white font-medium italic">"Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir."</span>
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={40}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button
+                  onClick={scrollToAction}
+                  className="group relative overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 sm:py-10 px-16 sm:px-24 rounded-2xl text-2xl sm:text-3xl transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_80px_-10px_rgba(143,47,63,0.5)] border border-white/20 w-full sm:w-auto uppercase tracking-tighter"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-4">
+                    COMEÇAR O CONFRONTO
+                    <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
+                  </span>
+                  {/* Glossy sweep effect */}
+                  <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-[45deg] -translate-x-[200%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
+                </button>
+              </div>
+            </Reveal>
+
+            <div aria-hidden className="mt-12 sm:mt-16 flex justify-center">
+              <ChevronDown className="w-6 h-6 text-[#d4726a] scroll-hint" />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Problem Section */}
+      <section className="py-20 sm:py-24 lg:py-36 bg-gradient-to-b from-black/90 to-[#1a0d1c]/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto text-center">
+            <Reveal><SectionKicker index="01" label="O espelho" /></Reveal>
+
+            <Reveal delay={60}>
+              <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.85] tracking-tighter">
+                  TODO MUNDO TE ACHA FODA.
+                </h2>
+              </div>
+            </Reveal>
+            <Reveal delay={140}>
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] mb-14 sm:mb-20 ember-glow tracking-tight italic">
+                MAS NINGUÉM TE VIU CHORANDO LAVANDO LOUÇA.
+              </h3>
+            </Reveal>
+
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 text-left">
+              <Reveal from="left" delay={60}>
+                <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
+                  <div className="space-y-5 sm:space-y-7 text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed">
+                    <p>Todo mundo diz que você tem "uma energia boa".</p>
+                    <p>Mas ninguém te vê quando você tenta se justificar por não conseguir levantar da cama.</p>
+                    <div aria-hidden className="ember-rule" />
+                    <p className="text-[#d4726a] font-semibold text-lg sm:text-xl">Você se ama, mas se odeia em silêncio. Se sabota com classe. Foge sempre quando começa a dar certo.</p>
+                  </div>
+                </div>
+              </Reveal>
+              <Reveal from="right" delay={160}>
+                <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 h-full border-[#d4726a]/25">
+                  <div className="space-y-5 sm:space-y-7 text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed">
+                    <p>E no fundo, já cansou de viver repetindo os mesmos ciclos de abandono disfarçado de independência.</p>
+                    <p className="text-[#b98aa8] font-semibold text-lg sm:text-xl">Essa porra aqui não é um planner. Não é um PDFZINHO com frase fofa.</p>
+                    <div aria-hidden className="ember-rule" />
+                    <p className="text-white font-bold text-xl sm:text-2xl tracking-tight">É UM PROCESSO DE RESSURREIÇÃO.</p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solution Section */}
+      <section className="py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-[#1a0d1c]/30 via-black/80 to-[#210d15]/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14 sm:mb-20">
+              <Reveal><SectionKicker index="02" label="O método" /></Reveal>
+              <Reveal delay={60}>
+                <div className="flex items-center justify-center gap-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                    O QUE É O ME AMO, MAS ME ODEIO™
+                  </h2>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
+              <div className="space-y-6 sm:space-y-8 text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed">
+                <Reveal delay={0}><p>É um método de <span className="text-white font-bold text-xl sm:text-2xl ember-glow">14 dias</span> criado para te confrontar.</p></Reveal>
+                <Reveal delay={60}><p>Para rasgar a mulher que você inventou para sobreviver.</p></Reveal>
+                <Reveal delay={120}><p className="text-[#d4726a] font-semibold text-lg sm:text-xl">E reconstruir a mulher que você nunca teve coragem de ser.</p></Reveal>
+                <Reveal delay={180}><p>Com perguntas que doem. Com frases que você não vai querer ler em voz alta.</p></Reveal>
+                <Reveal delay={240}><p className="text-[#b98aa8] font-semibold text-lg sm:text-xl">Com tarefas que você tem evitado há anos.</p></Reveal>
+                <Reveal delay={300}><p className="text-white font-bold text-lg sm:text-xl">E não importa se você já fez terapia, se já leu livro de autoconhecimento, ou se acha que tá melhor.</p></Reveal>
+                <Reveal delay={340}>
+                  <div className="surface-noir border-l-2 border-l-[#c2534a] p-6 sm:p-8 rounded-r-2xl">
+                    <p className="text-white font-bold text-lg sm:text-xl leading-relaxed">
+                      Se você acha que isso é 'mais um PDF de autoconhecimento', você vai se sentir envergonhada já na primeira tarefa.
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+
+              <Reveal from="right" delay={120}>
+                <div className="relative">
+                  <div aria-hidden className="absolute -inset-8 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.18),transparent_70%)] blur-3xl ember-breathe" />
+                  <div className="relative surface-noir rounded-3xl p-8 sm:p-10 lg:p-14">
+                    <div className="text-center">
+                      <div className="ember-rule mb-6 sm:mb-8" />
+                      <p className="text-[#c8c0ba] text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 italic">
+                        "Por que eu não aguento quando começam a gostar de mim?"
+                      </p>
+                      <div aria-hidden className="ember-rule mb-6 sm:mb-8" />
+                      <p className="text-white text-xl sm:text-2xl lg:text-3xl font-bold leading-tight">
+                        Esse material é um tapa. E você PRECISA tomar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What You Get */}
+      <section className="py-20 sm:py-24 lg:py-36 bg-gradient-to-b from-black/90 to-[#1a0d1c]/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal><SectionKicker index="03" label="O confronto" /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-14 sm:mb-20">
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.05] block max-w-5xl mx-auto">AQUI COMEÇA O PROCESSO DE RASGAR A PERSONAGEM:</span>
+            </h2>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                icon: <ShieldAlert className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
+                numeral: 'I',
+                title: 'Confronto Direto',
+                body: (
+                  <ul className="text-[#c8c0ba] space-y-3 sm:space-y-4 text-base sm:text-lg lg:text-xl">
+                    <li>• "Por que eu performo confiança quando estou em pedaços?"</li>
+                    <li>• "Como eu me saboto com classe?"</li>
+                    <li>• "O que eu tento consertar nos outros?"</li>
+                  </ul>
+                ),
+              },
+              {
+                icon: <X className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
+                numeral: 'II',
+                title: 'Plano de 14 Dias',
+                body: (
+                  <ul className="text-[#c8c0ba] space-y-3 sm:space-y-4 text-base sm:text-lg lg:text-xl">
+                    <li>• Rasgar a mulher inventada</li>
+                    <li>• Reconstruir quem você é</li>
+                    <li>• Parar de mentir para si mesma</li>
+                    <li>• Sair do personagem</li>
+                  </ul>
+                ),
+              },
+              {
+                icon: <Brain className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
+                numeral: 'III',
+                title: 'Tarefas que Você Evita',
+                body: (
+                  <ul className="text-[#c8c0ba] space-y-3 sm:space-y-4 text-base sm:text-lg lg:text-xl">
+                    <li>• Confrontar seus monstros</li>
+                    <li>• Parar de procrastinar emocionalmente</li>
+                    <li>• Quebrar ciclos de abandono</li>
+                    <li>• Assumir quem você realmente é</li>
+                  </ul>
+                ),
+              },
+              {
+                icon: <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
+                numeral: 'IV',
+                title: 'O Primeiro Estalo',
+                body: (
+                  <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
+                    Depois dele, você não vai mais conseguir mentir para si mesma sem sentir nojo.
+                  </p>
+                ),
+              },
+            ].map((card, index) => (
+              <Reveal key={card.title} delay={index * 110}>
+                <div className="group relative surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 h-full overflow-hidden transition-all duration-700 hover:-translate-y-2 border-white/5 hover:border-[#d4726a]/30">
+                  <span aria-hidden className="index-numeral pointer-events-none absolute -right-2 -top-4 text-8xl sm:text-9xl select-none opacity-40">
+                    {card.numeral}
+                  </span>
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#8f2f3f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="relative">
+                    <div className="mb-6 sm:mb-8 text-[#d4726a] group-hover:scale-110 transition-transform duration-500 origin-left">
+                      {card.icon}
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 uppercase tracking-tight">{card.title}</h3>
+                    {card.body}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What You Get Section */}
+      <section className="py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-black/90 via-[#1a0d1c]/30 to-[#210d15]/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14 sm:mb-20">
+              <Reveal><SectionKicker index="04" label="O que fica com você" /></Reveal>
+              <Reveal delay={60}>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12 leading-tight">
+                  O QUE VOCÊ VAI LEVAR
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4 ember-glow italic">
+                    (E NUNCA MAIS LARGAR)
+                  </span>
+                </h2>
+              </Reveal>
+            </div>
+
+            <Reveal>
+              <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 mb-14 sm:mb-20">
+                <div className="flex items-center gap-4 mb-6 sm:mb-8">
+                  <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#b98aa8]/25 bg-[#b98aa8]/10">
+                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold leading-tight">
+                    Você não tá comprando um arquivo.
+                  </p>
+                </div>
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed mb-10">
+                  Tá comprando o primeiro confronto real com a mulher que você virou pra sobreviver.
+                </p>
+
+                <div aria-hidden className="ember-rule mb-10" />
+
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 sm:mb-8">O que você recebe no eBook (100+ páginas de impacto):</h3>
+
+                <div className="space-y-5 sm:space-y-7">
+                  {[
+                    { strong: 'Conteúdo Masterclass em Texto:', rest: ' Mais de 100 páginas escritas com profundidade visceral e técnica literária profissional.' },
+                    { strong: 'Sumário Estruturado:', rest: ' Uma jornada lógica do confronto à ressurreição, dividida em 3 fases críticas.' },
+                    { strong: 'Proteção Anti-Pirataria Digital:', rest: ' Sistema de marca d\'água dinâmico vinculado ao seu CPF/E-mail para garantir exclusividade.' },
+                    { strong: 'O método de 14 dias mais visceral, honesto e sujo de bonito', rest: ' que você vai ver ainda esse ano' },
+                    { strong: 'Um espaço para desenterrar tudo', rest: ' que você esconde até de você mesma' },
+                  ].map((item, index) => (
+                    <Reveal key={item.strong} delay={index * 90} from="left">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-[#7fae8e] to-[#3f6b55] rounded-full flex items-center justify-center mt-1">
+                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                        </div>
+                        <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
+                          <strong className="text-white">{item.strong}</strong>{item.rest}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+
+                <div className="mt-10 sm:mt-12 pt-8 border-t border-white/10">
+                  <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold mb-2 sm:mb-4">
+                    Isso aqui não é autoajuda.
+                  </p>
+                  <p className="text-lg sm:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] font-bold ember-glow">
+                    É autoexposição guiada com propósito.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Who Cannot Download */}
+            <Reveal>
+              <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 border-[#c2534a]/25">
+                <div className="flex items-center gap-4 mb-6 sm:mb-8">
+                  <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#c2534a]/30 bg-[#c2534a]/10">
+                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#c2534a]">
+                    QUEM NÃO PODE TER ACESSO
+                  </h3>
+                </div>
+
+                <div className="mb-8 sm:mb-10">
+                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                    <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#c2534a]" strokeWidth={1.5} />
+                    <p className="text-lg sm:text-xl text-white font-semibold">
+                      Esse material não é pra quem quer uma dose de dopamina e vai embora.
+                    </p>
+                  </div>
+
+                  <p className="text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed mb-6 sm:mb-8">
+                    Mas cuidado: Se você achar que isso aqui é "só mais um PDF",
+                    vai continuar procrastinando sua cura e depois vai culpar o universo por tudo.
+                  </p>
+                </div>
+
+                <div className="space-y-4 sm:space-y-5 mb-8 sm:mb-10">
+                  {[
+                    'Se você ainda prefere parecer bem do que ficar bem',
+                    'Se você acha que mudança vem sem desconforto',
+                    'Se você acha que uma mulher forte nunca chora',
+                    'Se você quer resultado, mas não quer fazer esforço emocional nenhum',
+                  ].map((line, index) => (
+                    <Reveal key={line} delay={index * 80} from="left">
+                      <div className="flex items-start gap-3 border-l border-[#c2534a]/25 pl-4">
+                        <X className="w-5 h-5 sm:w-[22px] sm:h-[22px] flex-shrink-0 text-[#c2534a] mt-1" strokeWidth={1.5} />
+                        <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
+                          {line}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+
+                <Reveal>
+                  <div className="bg-gradient-to-r from-[#5f8f73]/20 to-[#3f6b55]/20 rounded-xl p-6 sm:p-8 border border-[#7fae8e]/20 mb-8 sm:mb-10">
+                    <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold mb-4 sm:mb-6 leading-tight">
+                      Agora, se você leu até aqui com o coração acelerado…<br />
+                      Se deu aquele sorriso triste porque se reconheceu…<br />
+                      E se sentiu vergonha de continuar fingindo…
+                    </p>
+                    <p className="text-xl sm:text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#7fae8e] to-[#7fae8e] font-bold">
+                      Então VOCÊ É EXATAMENTE PRA QUEM ESSE MÉTODO FOI FEITO.
+                    </p>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={80}>
+                  <div className="bg-gradient-to-r from-[#c9a227]/20 to-[#a5642c]/20 rounded-xl p-6 sm:p-8 border border-[#c9a227]/20">
+                    <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold leading-tight mb-4 sm:mb-6">
+                      A maioria vai salvar esse link pra "começar depois".<br />
+                      Você decide se quer ser a maioria…
+                    </p>
+                    <p className="text-xl sm:text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] font-bold ember-glow">
+                      ou a mulher que se salvou em silêncio e ressurgiu irreconhecível.
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <SocialProofSection />
+      {/* Pricing */}
+      {/* Bonus Section */}
+      <section className="py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-[#0d1a13]/20 via-black/90 to-[#0d1a13]/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14 sm:mb-20">
+              <Reveal delay={60}>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">
+                  BÔNUS EXCLUSIVO
+                </h2>
+              </Reveal>
+            </div>
+
+            <Reveal>
+              <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 border-[#7fae8e]/20">
+                <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
+                  {/* Text Content */}
+                  <div className="order-2 lg:order-1">
+                    <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed mb-6 sm:mb-8">
+                      Além do ME AMO, MAS ME ODEIO™, você vai ganhar o eBook Bônus exclusivo, totalmente revisado e estruturado, que irá
+                      <span className="text-[#7fae8e] font-semibold"> reconstruir sua autoestima de forma definitiva</span>.
+                    </p>
+
+                    <div aria-hidden className="ember-rule mb-6 sm:mb-8" />
+
+                    <p className="text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed mb-8 sm:mb-10">
+                      Não fiz isso porque sou gentil, mas porque quero que você se transforme em uma
+                      <span className="text-white font-bold"> mulher bem sucedida e bem resolvida</span>.
+                    </p>
+                  </div>
+
+                  {/* Image */}
+                  <div className="order-1 lg:order-2 flex justify-center">
+                    <div className="relative max-w-sm mx-auto">
+                      <div aria-hidden className="absolute -inset-6 bg-[radial-gradient(ellipse_at_center,rgba(127,174,142,0.28),transparent_70%)] rounded-2xl blur-2xl ember-breathe"></div>
+                      {/* GRÁTIS Tag */}
+                      <div className="absolute -top-4 -right-4 z-10">
+                        <div className="bg-gradient-to-r from-[#5f8f73] to-[#3f6b55] text-white font-bold px-4 py-2 rounded-full text-sm sm:text-base shadow-2xl border border-[#7fae8e]/25 transform rotate-12">
+                          OFERTA
+                        </div>
+                      </div>
+                      <img
+                        src={bonusEbook}
+                        alt="E-book bônus para reconstruir autoestima"
+                        width={1024}
+                        height={1024}
+                        className="relative w-full h-auto rounded-2xl border border-[#7fae8e]/20 edge-hairline"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom highlight */}
+                <div className="mt-10 sm:mt-14 pt-8 border-t border-[#7fae8e]/20 text-center">
+                  <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold mb-2 sm:mb-4">
+                    Você não paga nada a mais por isso.
+                  </p>
+                  <p className="text-base sm:text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#7fae8e] to-[#7fae8e] font-semibold">
+                    É meu investimento na sua transformação.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="relative py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-[#1a0d1c]/30 via-black/80 to-[#210d15]/30">
+        <div aria-hidden className="absolute left-1/2 top-1/4 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(169,65,74,0.18),transparent_65%)] blur-3xl ember-breathe" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14 sm:mb-20">
+              <Reveal>
+                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5b3a63]/20 to-[#a9414a]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-6 sm:mb-8 border border-white/10">
+                  <span className="text-white font-semibold text-sm sm:text-base tracking-[0.22em]">ESCOLHA SUA TRANSFORMAÇÃO</span>
+                </div>
+              </Reveal>
+              <Reveal delay={60}>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+                QUERO ME TORNAR IRRECONHECÍVEL:
+                </h2>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="text-lg sm:text-xl text-[#c8c0ba] max-w-3xl mx-auto">
+                  Acesso total ao Plano de 14 dias mais visceral que você já viu.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              {/* Versão Única - Ultra Premium */}
+              <Reveal from="up">
+                <div className="group/card relative surface-noir rounded-3xl border border-white/10 hover:border-[#8f2f3f]/50 transition-all duration-700 shadow-[0_0_100px_-30px_rgba(143,47,63,0.3)] overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8f2f3f]/30 to-transparent blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000" />
+                  
+                  <div className="relative p-8 sm:p-12 lg:p-16">
+                    {/* Badge */}
+                    <div className="absolute top-8 right-8 hidden sm:block">
+                      <div className="bg-[#8f2f3f] text-white px-6 py-2 rounded-full text-xs font-black tracking-[0.2em] uppercase shadow-2xl">
+                        OFERTA EXCLUSIVA
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col lg:flex-row gap-12 items-center">
+                      {/* Left: Product Info */}
+                      <div className="flex-1 text-center lg:text-left">
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 uppercase tracking-tighter leading-none">
+                          PLANO COMPLETO <br className="hidden lg:block" /> 14 DIAS
+                        </h3>
+                        <p className="text-[#c8c0ba] text-lg lg:text-xl mb-8 font-light italic">
+                          "O fim da personagem 'mulher legal'."
+                        </p>
+
+                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-2">
+                          <span className="text-[#c8c0ba] text-2xl line-through opacity-40">R$ 97,00</span>
+                          <span className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter ember-glow">
+                            R$ 29,90
+                          </span>
+                        </div>
+                        <div className="text-[#d4726a] font-black tracking-[0.3em] text-xs uppercase mb-10">pagamento único e acesso vitalício</div>
+                        
+                        <button
+                          onClick={() => window.open('https://pay.hotmart.com/YOUR_LINK', '_blank')}
+                          className="group relative w-full overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 rounded-2xl text-xl sm:text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter"
+                        >
+                          <span className="relative z-10 flex items-center justify-center gap-4">
+                            QUERO ME TORNAR IRRECONHECÍVEL
+                            <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
+                          </span>
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                        </button>
+                      </div>
+
+                      {/* Right: Feature List */}
+                      <div className="flex-1 w-full sm:w-auto">
+                        <div className="space-y-4">
+                          {[
+                            "Plano + comandos diários (100+ págs)",
+                            "Acesso vitalício ao conteúdo",
+                            "Reconstruction de autoestima",
+                            "Esmurre sua insegurança emocional",
+                            "Método para parar de fugir",
+                            "Tarefas de alto impacto",
+                            "Perguntas que desmontam o medo",
+                            "Reforço comportamental",
+                            "Declaração da Nova Identidade"
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-4 group/item">
+                              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#8f2f3f]/10 flex items-center justify-center group-hover/item:bg-[#8f2f3f]/30 transition-colors duration-500">
+                                <Check className="w-4 h-4 text-[#d4726a]" strokeWidth={3} />
+                              </div>
+                              <span className="text-[#c8c0ba] text-lg font-light group-hover/item:text-white transition-colors duration-300">
+                                {feature}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Trust Badges */}
+                    <div className="mt-16 flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-[#9a908a]">
+                      <div className="flex items-center gap-3"><ShieldAlert className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Pagamento 100% Seguro</span></div>
+                      <div className="flex items-center gap-3"><Zap className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Acesso Imediato</span></div>
+                      <div className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Garantia Incondicional</span></div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-[#1a0d1c]/20 via-black/90 to-[#210d15]/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14 sm:mb-20">
+              <Reveal><SectionKicker index="05" label="As desculpas" /></Reveal>
+              <Reveal delay={60}>
+                <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+                  <HelpCircle className="w-8 h-8 sm:w-10 sm:h-10 text-[#b98aa8]" />
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                    PERGUNTAS QUE VOCÊ TÁ FAZENDO
+                  </h2>
+                </div>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="text-lg sm:text-xl text-[#c8c0ba] italic">
+                  (E que você já sabe as respostas, mas tá procurando desculpa)
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="space-y-4 sm:space-y-5">
+              {[
+                {
+                  question: "Isso realmente funciona ou é mais um método qualquer?",
+                  answer: "Olha, se você tá perguntando isso, já sabe que precisa. Não é um método 'qualquer' - é um processo de confronto real. Vai doer. Vai incomodar. E é exatamente por isso que funciona. Você não vai sair igual."
+                },
+                {
+                  question: "Por que só 14 dias? Não é muito pouco tempo?",
+                  answer: "14 dias é o suficiente para você parar de mentir para si mesma. Não precisa de 6 meses de enrolação. Ou você muda em 14 dias, ou você não quer mudar de verdade. Simples assim."
+                },
+                {
+                  question: "E se eu não conseguir fazer as tarefas?",
+                  answer: "Aí você vai ter a resposta que já sabia: você não quer mudar, você quer continuar no drama. As tarefas são simples, mas não são fáceis. A diferença é que uma mexe com preguiça, a outra mexe com medo."
+                },
+                {
+                  question: "Qual a diferença entre as duas versões?",
+                  answer: "A versão 'Ainda Tem Medo' é pra quem quer começar devagar. A versão 'Vou Mudar de Verdade' tem tudo da primeira MAIS ordens surpresa e reforço comportamental. É pra quem não quer mais perder tempo fingindo que tá bem."
+                },
+                {
+                  question: "Posso fazer no meu tempo ou tem prazo?",
+                  answer: "Você PODE fazer no seu tempo. Mas se você fizer 'no seu tempo', vai fazer igual tudo na sua vida: pela metade, quando der vontade, sem compromisso real. Os 14 dias existem pra te tirar da zona de conforto."
+                },
+                {
+                  question: "E se eu não gostar? Tem garantia?",
+                  answer: "Tem garantia total. Mas vou te falar uma coisa: se você 'não gostar', é porque funcionou. Ninguém gosta de ser confrontado com a própria mentira. Se você sair confortável, é porque não fez direito."
+                },
+                {
+                  question: "Isso substitui terapia?",
+                  answer: "Não substitui nada. Isso COMPLEMENTA tudo que você já tentou e não deu certo. É o empurrão que você precisa para parar de enrolar na terapia, no autoconhecimento, na vida."
+                },
+                {
+                  question: "Por que o preço é tão baixo?",
+                  answer: "Porque não é sobre dinheiro. É sobre você parar de inventar desculpa. Se fosse R$ 500, você ia falar que tá caro. Se fosse de graça, você não ia valorizar. R$ 37 ou R$ 47 é o preço de você parar de se sabotar."
+                }
+              ].map((faq, index) => (
+                <Reveal key={faq.question} delay={index * 60}>
+                  <div className="surface-noir rounded-2xl overflow-hidden">
+                    <button
+                      onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                      className="w-full p-6 sm:p-8 text-left flex items-center justify-between gap-4 hover:bg-[#5b3a63]/10 transition-all duration-300"
+                    >
+                      <span className="flex items-baseline gap-4">
+                        <span aria-hidden className="kicker text-[#d4726a]/70">{String(index + 1).padStart(2, '0')}</span>
+                        <h3 className="text-lg sm:text-xl font-bold text-white pr-2 leading-tight">
+                          {faq.question}
+                        </h3>
+                      </span>
+                      {openFaq === index ? (
+                        <ChevronUp className="w-6 h-6 text-[#b98aa8] flex-shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-6 h-6 text-[#b98aa8] flex-shrink-0" />
+                      )}
+                    </button>
+                    {openFaq === index && (
+                      <div className="px-6 sm:px-8 pb-6 sm:pb-8 animate-fade-in">
+                        <div className="border-t border-white/10 pt-6">
+                          <p className="text-base sm:text-lg text-[#c8c0ba] leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={80}>
+              <div className="text-center mt-14 sm:mt-20">
+                <div className="surface-noir rounded-2xl p-6 sm:p-8 border-[#d4726a]/25">
+                  <p className="text-lg sm:text-xl text-white font-semibold mb-4">
+                    Ainda tem dúvida?
+                  </p>
+                  <p className="text-base sm:text-lg text-[#c8c0ba] leading-relaxed">
+                    A única dúvida real que você tem é se vai ter coragem de fazer.
+                    <span className="text-[#d4726a] font-semibold"> O resto é desculpa.</span>
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-black/90 via-[#1a0d1c]/40 to-[#210d15]/30">
+        <div aria-hidden className="absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(212,114,106,0.16),transparent_65%)] blur-3xl ember-breathe" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-5xl mx-auto text-center">
+            <Reveal><SectionKicker index="06" label="A decisão" /></Reveal>
+            <Reveal delay={60}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12 leading-tight">
+                Ou você toma vergonha...
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4 ember-glow italic"> ou você repete os mesmos erros com maquiagem nova.</span>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] mb-10 sm:mb-14 leading-relaxed">
+                Clique abaixo e comece o ME AMO, MAS ME ODEIO™ agora.
+              </p>
+            </Reveal>
+
+            {/* Hero Image */}
+            <Reveal delay={60}>
+              <div className="relative mb-10 sm:mb-14 lg:mb-16">
+                <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
+                  <img
+                    src={finalCta}
+                    alt="ME AMO, MAS ME ODEIO - 14 dias para se confrontar"
+                    width={1280}
+                    height={960}
+                    className="w-full h-auto rounded-2xl border border-white/10 edge-hairline"
+                    loading="lazy"
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#040308] via-transparent to-transparent rounded-2xl"></div>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={40}>
+              <button 
+                onClick={scrollToAction}
+                className="group relative overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 sm:py-10 px-12 sm:px-20 rounded-2xl text-xl sm:text-3xl transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_80px_-10px_rgba(143,47,63,0.5)] border border-white/20 w-full sm:w-auto uppercase tracking-tighter"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-4">
+                  ME ENTREGA ESSE ESTALO AGORA
+                  <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
+                </span>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </button>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <div className="mb-8 sm:mb-12">
+                <div aria-hidden className="ember-rule mx-auto max-w-sm mb-8" />
+                <p className="text-xl sm:text-2xl lg:text-3xl text-white font-bold leading-tight">
+                  14 dias para finalmente sair do personagem.
+                </p>
+              </div>
+            </Reveal>
+
+            {selectedVersion && (
+              <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-[#7fae8e]/25 max-w-2xl mx-auto animate-fade-in">
+                <p className="text-[#7fae8e] font-bold text-lg sm:text-xl lg:text-2xl inline-flex items-center justify-center gap-2 flex-wrap">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                  Plano Selecionado - R$ 29,90
+                </p>
+                <p className="text-[#c8c0ba] mt-2 sm:mt-4 text-base sm:text-lg">
+                  Clique no botão acima para finalizar sua compra
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-10 sm:py-14 bg-black border-t border-white/10 pb-24 sm:pb-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
+            <span className="text-white font-bold text-lg sm:text-xl tracking-[0.22em]">ME AMO, MAS ME ODEIO™</span>
+          </div>
+          <p className="text-[#9a908a] text-sm sm:text-base">
+            © 2025 - Todos os direitos reservados. Para quem está pronta pra parar de fingir.
+          </p>
+        </div>
+      </footer>
+      </div>
+    </div>
+  );
+}
+
+export default App;
