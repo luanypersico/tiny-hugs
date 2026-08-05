@@ -857,9 +857,9 @@ export default function QuizLanding() {
                 <span className="kicker !text-[#8f2f3f]">Avançando no Confronto</span>
                 <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter leading-none">{activeTransition?.title}</h2>
               </div>
-              <p className="text-lg md:text-xl italic text-white/80 leading-tight">{activeTransition?.text}</p>
+              <p className="text-lg md:text-xl italic text-white/80 leading-tight whitespace-pre-line">{activeTransition?.text}</p>
               <button 
-                onClick={() => { setStep("quiz"); setCurrentQuestion(currentQuestion + 1); }} 
+                onClick={() => { setStep("quiz"); setCurrentQuestion(answers.length); }} 
                  className="w-full md:w-auto bg-[#8f2f3f] px-12 py-6 rounded-2xl text-white uppercase font-black tracking-tighter shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)] active:scale-95"
                >
                  {activeTransition?.button || "CONTINUAR"}
