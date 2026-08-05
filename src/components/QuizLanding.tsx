@@ -242,25 +242,29 @@ export default function QuizLanding() {
               animate={{ opacity: 1, scale: 1 }}
               className="max-w-5xl w-full"
             >
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
-                  <div className="space-y-4">
-                    <span className="inline-block bg-[#8f2f3f]/20 text-[#d4726a] px-4 py-1 rounded-full text-xs font-black tracking-[0.2em] uppercase">
-                      DIAGNÓSTICO CONCLUÍDO
-                    </span>
-                    <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
-                      {getResult().title}
-                    </h2>
-                  </div>
-                  
-                  <div className="flex gap-6 items-start">
-                    <div className="flex-shrink-0 p-4 bg-[#8f2f3f]/10 rounded-2xl">
-                      {getResult().icon}
-                    </div>
-                    <p className="text-xl md:text-2xl text-[#c8c0ba] font-light leading-relaxed italic">
-                      {getResult().description}
-                    </p>
-                  </div>
+              {(() => {
+                const result = getResult();
+                return (
+                  <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-8">
+                      <div className="space-y-4">
+                        <span className="inline-block bg-[#8f2f3f]/20 text-[#d4726a] px-4 py-1 rounded-full text-xs font-black tracking-[0.2em] uppercase">
+                          DIAGNÓSTICO CONCLUÍDO
+                        </span>
+                        <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
+                          {result.title}
+                        </h2>
+                      </div>
+                      
+                      <div className="flex gap-6 items-start">
+                        <div className="flex-shrink-0 p-4 bg-[#8f2f3f]/10 rounded-2xl">
+                          {result.icon}
+                        </div>
+                        <p className="text-xl md:text-2xl text-[#c8c0ba] font-light leading-relaxed italic">
+                          {result.description}
+                        </p>
+                      </div>
+
 
                   <div className="p-8 border border-[#8f2f3f]/30 bg-[#8f2f3f]/5 rounded-3xl space-y-4">
                     <h4 className="text-[#d4726a] font-black uppercase text-sm tracking-widest">⚠️ VEREDITO CRÍTICO:</h4>
@@ -321,9 +325,8 @@ export default function QuizLanding() {
                         </div>
                       </div>
                     </div>
-                  </Reveal>
-                </div>
-              </div>
+                  );
+                })()}
             </motion.div>
           )}
         </AnimatePresence>
