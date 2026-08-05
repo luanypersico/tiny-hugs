@@ -88,7 +88,7 @@ function App() {
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 sm:mb-8 leading-tight tracking-tight">
               <span className="block mb-2 sm:mb-4">14 dias pra se confrontar,</span>
               <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b98aa8] via-[#d4726a] to-[#b98aa8] animate-pulse">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b98aa8] via-[#d4726a] to-[#b98aa8]">
                 procrastinação emocional
               </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4">
@@ -667,7 +667,7 @@ function App() {
             <div className="text-center mt-12 sm:mt-16">
               <div className="inline-flex items-center gap-4 sm:gap-6 lg:gap-8 bg-gradient-to-r from-black/60 to-[#1a0d1c]/40 backdrop-blur-xl rounded-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 border border-white/10 max-w-4xl mx-auto flex-wrap justify-center">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-3 h-3 bg-[#7fae8e] rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-[#7fae8e] rounded-full"></div>
                   <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Pagamento Seguro</span>
                 </div>
                 <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
