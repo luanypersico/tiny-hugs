@@ -139,16 +139,7 @@ function App() {
                   </span>
                   <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
-                <Reveal delay={200}>
-                  <a 
-                    href="/ebook/ME_AMO_MAS_ME_ODEIO_COMPLETO.txt" 
-                    download 
-                    className="group relative bg-white/5 hover:bg-white/10 text-white font-bold py-6 px-12 rounded-full text-xl transition-all duration-300 border border-white/10 flex items-center gap-3"
-                  >
-                    <Download className="w-6 h-6" />
-                    BAIXAR EBOOK (100+ PÁGS)
-                  </a>
-                </Reveal>
+                {/* Removed direct ebook download button as per user request */}
               </div>
             </Reveal>
 
@@ -413,7 +404,7 @@ function App() {
                     <X className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#c2534a]">
-                    QUEM NÃO PODE BAIXAR
+                    QUEM NÃO PODE TER ACESSO
                   </h3>
                 </div>
 
