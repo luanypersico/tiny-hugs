@@ -1076,10 +1076,7 @@ export default function QuizLanding() {
                            <div className="space-y-1 mt-6">
                              <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">VOCÊ TAMBÉM CARREGA UM SEGUNDO HÁBITO PODRE:</p>
                              <p className="text-lg md:text-xl text-white/50 font-black italic uppercase tracking-tighter">
-                               {secondaryResult === "ML" && "A ARQUITETA DE SEGUNDA-FEIRA"}
-                               {secondaryResult === "IF" && "A PERFECCIONISTA PARALISADA"}
-                               {secondaryResult === "SE" && "A VICIADA EM ALÍVIO IMEDIATO"}
-                               {secondaryResult === "FE" && "A RECOMEÇADORA COMPULSIVA"}
+                               {PROFILE_NAMES[secondaryResult]}
                              </p>
                              <p className="text-sm text-white/30 italic max-w-md">
                                Ele não manda em você o tempo inteiro.
