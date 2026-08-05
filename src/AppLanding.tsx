@@ -821,7 +821,7 @@ function App() {
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-[#7fae8e]/25 max-w-2xl mx-auto animate-fade-in">
                 <p className="text-[#7fae8e] font-bold text-lg sm:text-xl lg:text-2xl inline-flex items-center justify-center gap-2 flex-wrap">
                   <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
-                  Versão {selectedVersion === 'digital' ? 'Digital' : 'Impressa'} selecionada - R$ {selectedVersion === 'digital' ? '37' : '47'}
+                  Plano Selecionado - R$ 29,00
                 </p>
                 <p className="text-[#c8c0ba] mt-2 sm:mt-4 text-base sm:text-lg">
                   Clique no botão acima para finalizar sua compra
