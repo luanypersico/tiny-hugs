@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check } from 'lucide-react';
 import ShaderBackground from '@/components/ShaderBackground';
 import SocialProofSection from '@/components/SocialProofSection';
 import Reveal from '@/components/Reveal';
@@ -345,7 +345,9 @@ function App() {
             <Reveal>
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 mb-14 sm:mb-20">
                 <div className="flex items-center gap-4 mb-6 sm:mb-8">
-                  <div className="text-3xl sm:text-4xl">🧠</div>
+                  <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#b98aa8]/25 bg-[#b98aa8]/10">
+                    <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" strokeWidth={1.5} />
+                  </div>
                   <p className="text-lg sm:text-xl lg:text-2xl text-white font-bold leading-tight">
                     Você não tá comprando um arquivo.
                   </p>
@@ -394,7 +396,9 @@ function App() {
             <Reveal>
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 border-[#c2534a]/25">
                 <div className="flex items-center gap-4 mb-6 sm:mb-8">
-                  <div className="text-3xl sm:text-4xl">⛔️</div>
+                  <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#c2534a]/30 bg-[#c2534a]/10">
+                    <Ban className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
+                  </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#c2534a]">
                     QUEM NÃO PODE BAIXAR
                   </h3>
@@ -402,7 +406,7 @@ function App() {
 
                 <div className="mb-8 sm:mb-10">
                   <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <div className="text-2xl sm:text-3xl">🚫</div>
+                    <ShieldAlert className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#c2534a]" strokeWidth={1.5} />
                     <p className="text-lg sm:text-xl text-white font-semibold">
                       Esse material não é pra quem quer uma dose de dopamina e vai embora.
                     </p>
@@ -423,7 +427,7 @@ function App() {
                   ].map((line, index) => (
                     <Reveal key={line} delay={index * 80} from="left">
                       <div className="flex items-start gap-3 border-l border-[#c2534a]/25 pl-4">
-                        <div className="text-[#c2534a] text-xl sm:text-2xl mt-1">❌</div>
+                        <X className="w-5 h-5 sm:w-[22px] sm:h-[22px] flex-shrink-0 text-[#c2534a] mt-1" strokeWidth={1.5} />
                         <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
                           {line}
                         </p>
@@ -470,16 +474,6 @@ function App() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14 sm:mb-20">
-              <Reveal>
-                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5f8f73]/20 to-[#3f6b55]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-8 sm:mb-12 border border-[#7fae8e]/20">
-                  <Star className="w-5 h-5 sm:w-6 sm:h-6 text-[#7fae8e]" />
-                  <span className="text-[#7fae8e] font-semibold text-sm sm:text-base tracking-[0.22em]">
-                    BÔNUS EXCLUSIVO
-                  </span>
-                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#7fae8e]" />
-                </div>
-              </Reveal>
-
               <Reveal delay={60}>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">
                   BÔNUS EXCLUSIVO
@@ -620,8 +614,9 @@ function App() {
                           : 'bg-gradient-to-r from-[#39485a]/80 to-[#4a2350]/80 text-white hover:from-[#4a5a6b] hover:to-[#5b3a63] shadow-xl hover:shadow-[#4a5a6b]/30'
                       }`}
                     >
-                      <span className="relative z-10">
-                        {selectedVersion === 'digital' ? '✓ SELECIONADO!' : 'SIM, EU VOU TRANSFORMAR A DOR EM DISCIPLINA'}
+                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
+                        {selectedVersion === 'digital' && <Check className="w-5 h-5" strokeWidth={2} />}
+                        {selectedVersion === 'digital' ? 'SELECIONADO!' : 'SIM, EU VOU TRANSFORMAR A DOR EM DISCIPLINA'}
                       </span>
                       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
@@ -705,8 +700,9 @@ function App() {
                           : 'bg-gradient-to-r from-[#8f2f3f]/80 to-[#4a2350]/80 text-white hover:from-[#a9414a] hover:to-[#5b3a63] shadow-xl hover:shadow-[#a9414a]/30'
                       }`}
                     >
-                      <span className="relative z-10">
-                        {selectedVersion === 'print' ? '✓ SELECIONADO!' : 'QUERO ME TORNAR IRRECONHECÍVEL'}
+                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
+                        {selectedVersion === 'print' && <Check className="w-5 h-5" strokeWidth={2} />}
+                        {selectedVersion === 'print' ? 'SELECIONADO!' : 'QUERO ME TORNAR IRRECONHECÍVEL'}
                       </span>
                       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
@@ -911,8 +907,9 @@ function App() {
 
             {selectedVersion && (
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-[#7fae8e]/25 max-w-2xl mx-auto animate-fade-in">
-                <p className="text-[#7fae8e] font-bold text-lg sm:text-xl lg:text-2xl">
-                  ✅ Versão {selectedVersion === 'digital' ? 'Digital' : 'Impressa'} selecionada - R$ {selectedVersion === 'digital' ? '37' : '47'}
+                <p className="text-[#7fae8e] font-bold text-lg sm:text-xl lg:text-2xl inline-flex items-center justify-center gap-2 flex-wrap">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                  Versão {selectedVersion === 'digital' ? 'Digital' : 'Impressa'} selecionada - R$ {selectedVersion === 'digital' ? '37' : '47'}
                 </p>
                 <p className="text-[#c8c0ba] mt-2 sm:mt-4 text-base sm:text-lg">
                   Clique no botão acima para finalizar sua compra
