@@ -140,14 +140,6 @@ function App() {
                   </span>
                   <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
-                <a
-                  href="/ME_AMO_MAS_ME_ODEIO_PROFISSIONAL_V2.pdf"
-                  download="ME_AMO_MAS_ME_ODEIO_PROFISSIONAL_V2.pdf"
-                  className="group relative bg-white/5 hover:bg-white/10 text-white font-medium py-6 px-12 rounded-full text-lg transition-all duration-500 border border-white/10 flex items-center justify-center gap-3 w-full sm:w-auto"
-                >
-                  <Download className="w-5 h-5 text-[#d4726a]" />
-                  BAIXAR PDF PROFISSIONAL (104 PÁGINAS)
-                </a>
               </div>
             </Reveal>
 
