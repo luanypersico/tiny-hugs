@@ -918,9 +918,7 @@ function App() {
       <footer className="py-10 sm:py-14 bg-black border-t border-white/10 pb-24 sm:pb-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-            <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-[#b98aa8]" />
             <span className="text-white font-bold text-lg sm:text-xl tracking-[0.22em]">ME AMO, MAS ME ODEIO™</span>
-            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-[#d4726a]" />
           </div>
           <p className="text-[#9a908a] text-sm sm:text-base">
             © 2025 - Todos os direitos reservados. Para quem está pronta pra parar de fingir.
