@@ -208,10 +208,30 @@ export default function QuizLanding() {
       <main className="relative z-10 min-h-screen flex items-center justify-center p-4 md:p-6 w-full max-w-full py-20">
         <AnimatePresence mode="wait">
           {step === "intro" && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-8 max-w-2xl">
-              <h1 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-none tracking-tighter">QUAL PERSONAGEM EMOCIONAL ESTÁ SABOTANDO A SUA VIDA?</h1>
-              <p className="text-xl italic text-white/70">Responda 14 perguntas e descubra o padrão que faz você se abandonar.</p>
-              <button onClick={() => setStep("quiz")} className="w-full md:w-auto bg-[#8f2f3f] text-white px-10 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_0_30px_-5px_rgba(143,47,63,0.5)]">COMEÇAR O CONFRONTO</button>
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-10 max-w-2xl px-4">
+              <div className="space-y-4">
+                <span className="kicker !text-[#8f2f3f]">Diagnóstico Comportamental</span>
+                <h1 className="text-4xl md:text-7xl font-black text-white italic uppercase leading-[0.85] tracking-tighter">
+                  Você é realmente independente… <br />
+                  <span className="text-white/40">ou só aprendeu a fugir antes que alguém pudesse abandoná-la?</span>
+                </h1>
+              </div>
+              
+              <div className="space-y-6 max-w-lg mx-auto">
+                <p className="text-lg md:text-xl italic text-white/70 leading-tight">
+                  Talvez todo mundo ache você forte, segura e resolvida. Mas ninguém vê o que acontece quando você começa a gostar de alguém.
+                </p>
+                <p className="text-sm uppercase tracking-widest text-[#8f2f3f] font-black">
+                  Este teste vai revelar qual personagem emocional você criou para sobreviver.
+                </p>
+              </div>
+
+              <div className="pt-6 space-y-4">
+                <button onClick={() => setStep("quiz")} className="w-full md:w-auto bg-[#8f2f3f] text-white px-12 py-7 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]">
+                  COMEÇAR O CONFRONTO
+                </button>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/20">Leva menos de 4 minutos. As respostas são confidenciais.</p>
+              </div>
             </motion.div>
           )}
 
