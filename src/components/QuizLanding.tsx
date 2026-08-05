@@ -1072,24 +1072,24 @@ export default function QuizLanding() {
                               const nonRegulated = answers.filter(a => !a.regulated);
                               displayedAnswers = [...regulated];
                               if (displayedAnswers.length < 3) {
-                                nonRegulated.forEach(a => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
-                                    displayedAnswers.push({...ans, secondaryLabel: "Padrão que ainda aparece"} as any);
+                                nonRegulated.forEach(item => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                    displayedAnswers.push({...item, secondaryLabel: "Padrão que ainda aparece"} as any);
                                   }
                                 });
                               }
                             } else {
                               if (displayedAnswers.length < 3 && secondaryResult) {
-                                answers.filter(a => a.profile === secondaryResult).forEach(a => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
-                                    displayedAnswers.push({...ans, secondaryLabel: "Traço secundário"} as any);
+                                answers.filter(a => a.profile === secondaryResult).forEach(item => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                    displayedAnswers.push({...item, secondaryLabel: "Traço secundário"} as any);
                                   }
                                 });
                               }
                               if (displayedAnswers.length < 3) {
-                                answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(a => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === a.questionId)) {
-                                    displayedAnswers.push(a);
+                                answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(item => {
+                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                    displayedAnswers.push(item);
                                   }
                                 });
                               }
