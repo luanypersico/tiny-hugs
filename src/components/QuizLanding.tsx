@@ -38,6 +38,22 @@ type QuizAnswer = {
   regulated: boolean;
 };
 
+const PROFILE_NAMES: Record<Profile, string> = {
+  ML: "A ARQUITETA DE SEGUNDA-FEIRA",
+  IF: "A PERFECCIONISTA PARALISADA",
+  SE: "A VICIADA EM ALÍVIO IMEDIATO",
+  FE: "A RECOMEÇADORA COMPULSIVA",
+  ER: "A MULHER QUE ESTÁ RECONSTRUINDO A PRÓPRIA PALAVRA",
+};
+
+const PROFILE_HEADLINES: Record<Profile, string> = {
+  ML: "Você planeja uma vida foda e executa uma desculpa por dia.",
+  IF: "Você chama de perfeccionismo. Muitas vezes é medo usando roupa bonita.",
+  SE: "Você troca o próprio futuro por alguns minutos de alívio.",
+  FE: "Você não aprendeu a continuar. Só ficou muito boa em recomeçar.",
+  ER: "Você está começando a provar que sua palavra ainda vale alguma coisa.",
+};
+
 type QuizProgress = {
   step: "intro" | "quiz" | "transition" | "processing" | "lead" | "result";
   currentQuestion: number;
