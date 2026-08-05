@@ -524,10 +524,9 @@ const TRANSITIONS = [
   },
   {
     afterQuestion: 8,
-    title: "AGORA FICOU MENOS BONITO.",
-    text:
-      "Até aqui você já mostrou como costuma se defender: virando a mulher perfeita, virando pedra, virando enfermeira emocional ou virando fumaça. A próxima parte é sobre o que acontece depois que a merda já aconteceu.",
-    button: "EU NÃO VOU SUMIR AGORA",
+    title: "AGORA A DESCULPA COMEÇOU A FEDER.",
+    text: "Você chama de planejamento.\n\nDe cansaço.\n\nDe perfeccionismo.\n\nDe falta de tempo.\n\nMas o resultado é sempre o mesmo:\n\nA tarefa continua parada e sua confiança em você mesma continua apodrecendo.\n\nA próxima parte mostra o preço dessa merda.",
+    button: "MOSTRAR O ESTRAGO",
   },
   {
     afterQuestion: 12,
