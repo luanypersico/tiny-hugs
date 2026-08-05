@@ -322,31 +322,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 9,
-    question:
-      "Depois de uma rejeição, qual comportamento mais parece com você?",
+    question: "Depois de abandonar mais um projeto, o que você faz?",
     options: [
       {
-        text: "Reviso tudo o que fiz procurando onde deixei de ser suficiente.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Finjo que não liguei e corto qualquer sinal de sentimento.",
-        profile: "IF",
-        points: 3,
-      },
-      {
-        text: "Fecho a porta para todo mundo por um bom tempo.",
+        text: "Crio uma data simbólica para recomeçar do zero.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Tento mostrar para a pessoa tudo o que ela perdeu.",
+        text: "Analiso tudo e desenho uma estratégia ainda mais completa.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Uso o fracasso como prova de que ainda não estou pronta.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Evito pensar nisso até a culpa diminuir.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Eu sofro, mas não transformo a rejeição em prova de que não tenho valor.",
+        text: "Descubro o menor ponto possível de retomada e continuo dali.",
         profile: "ER",
         points: 0,
       },
@@ -354,31 +353,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 10,
-    question:
-      "Alguém pede uma coisa que você não quer fazer. O que costuma acontecer?",
+    question: "Quando existe risco de seu trabalho não ficar bom, você:",
     options: [
       {
-        text: "Eu aceito e fico com raiva de ter aceitado.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Digo não, mas volto atrás quando a pessoa faz cara de sofrimento.",
-        profile: "SE",
-        points: 3,
-      },
-      {
-        text: "Recuso de um jeito tão frio que ninguém tenta pedir novamente.",
+        text: "Adio para não precisar encarar um resultado abaixo do que imaginei.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Demoro para responder até o assunto morrer.",
+        text: "Continuo melhorando a estrutura antes de produzir a primeira versão.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Procuro uma tarefa mais fácil para sentir que fiz alguma coisa.",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "Abandono a ideia e prometo voltar numa fase melhor.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Digo não sem escrever uma tese tentando justificar minha existência.",
+        text: "Entrego uma primeira versão imperfeita e corrijo depois.",
         profile: "ER",
         points: 0,
       },
@@ -386,31 +384,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 11,
-    question:
-      "Você está mal e alguém oferece ajuda. Sua reação mais automática é:",
+    question: "Quando a empolgação inicial morre, o que sobra?",
     options: [
       {
-        text: "Não preciso. Eu resolvo.",
-        profile: "IF",
-        points: 3,
-      },
-      {
-        text: "Tem gente com problemas maiores. Não quero incomodar.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Começo a falar dos problemas da outra pessoa.",
+        text: "Procuro outra coisa que me dê novidade e prazer rápido.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Mudo de assunto e desapareço depois.",
+        text: "Interpreto a queda de motivação como sinal de que preciso recomeçar.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Talvez eu diga que nem sei do que preciso, mas aceito companhia.",
+        text: "Refaço o sistema para tentar recuperar a animação.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Espero voltar a me sentir preparada.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Reduzo a tarefa, mas mantenho algum movimento.",
         profile: "ER",
         points: 0,
       },
@@ -418,30 +415,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 12,
-    question: "Qual personagem as pessoas costumam conhecer primeiro?",
+    question: "Qual destes hábitos mais destrói sua rotina sem fazer barulho?",
     options: [
       {
-        text: "A que resolve tudo e sempre sabe o que fazer.",
+        text: "Pegar o celular sempre que sinto qualquer desconforto.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "A agradável, leve e que nunca dá trabalho.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "A desapegada que vai embora sem olhar para trás.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "A forte que não precisa de porra nenhuma.",
+        text: "Adiar enquanto imagino a forma perfeita de fazer.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "A que não está sempre bem, mas também não transforma toda dor em espetáculo.",
+        text: "Organizar infinitamente aquilo que deveria executar.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Jogar tudo fora depois de um único dia ruim.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Eu ainda escorrego, mas já consigo retomar antes de perder a semana.",
         profile: "ER",
         points: 0,
       },
@@ -449,31 +446,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 13,
-    question:
-      "Quando você percebe que errou com alguém, o que faz primeiro?",
+    question: "Quando você promete alguma coisa para si mesma e não cumpre, o que faz?",
     options: [
       {
-        text: "Peço desculpa dez vezes e tento compensar até a pessoa cansar.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Explico todos os motivos para não precisar admitir que doeu.",
-        profile: "IF",
-        points: 3,
-      },
-      {
-        text: "Evito a conversa porque estou com vergonha.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Começo a listar tudo o que já fiz de bom pela pessoa.",
+        text: "Procuro alguma coisa que me faça esquecer a culpa.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Assumo o que fiz, reparo o possível e não me transformo no pior ser humano da Terra.",
+        text: "Crio uma promessa nova, mais organizada e mais bonita.",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "Uso isso como prova de que preciso estar mais preparada da próxima vez.",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "Marco uma nova data para recomeçar tudo.",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "Reconheço que quebrei a promessa e faço uma versão menor ainda no mesmo dia.",
         profile: "ER",
         points: 0,
       },
@@ -481,31 +477,30 @@ const QUESTIONS: QuizQuestion[] = [
   },
   {
     id: 14,
-    question:
-      "Qual dessas verdades você está mais cansada de fingir que não sabe?",
+    question: "Qual dessas verdades você está mais cansada de fingir que não sabe?",
     options: [
       {
-        text: "Eu me abandono para evitar que alguém me abandone.",
+        text: "Eu planejo tanto porque planejar me deixa sentir produtiva sem precisar me expor à execução.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Minha independência também virou uma desculpa para não confiar.",
+        text: "Meu perfeccionismo é uma desculpa bonita para não correr o risco de falhar.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Eu ajudo todo mundo porque ser necessária me faz sentir segura.",
+        text: "Eu troco o que quero no futuro por qualquer coisa que alivie o desconforto agora.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Eu chamo de perda de interesse aquilo que muitas vezes é medo.",
+        text: "Eu amo recomeçar porque continuar sem empolgação me obriga a encarar quem eu sou de verdade.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Eu já reconheço meus padrões, mas ainda preciso parar de voltar para eles quando estou frágil.",
+        text: "Minha confiança vai voltar quando minha palavra começar a valer de novo nas pequenas coisas.",
         profile: "ER",
         points: 0,
       },
@@ -530,10 +525,9 @@ const TRANSITIONS = [
   },
   {
     afterQuestion: 12,
-    title: "FALTAM DUAS.",
-    text:
-      "Não escolhe a resposta mais madura. Escolhe a que você já fez e depois fingiu que não fez. A resposta bonita não muda sua vida. A resposta verdadeira talvez mude.",
-    button: "RASGAR A ÚLTIMA DESCULPA",
+    title: "FALTAM DUAS.\n\nE NÃO ADIANTA ESCOLHER A RESPOSTA BONITA.",
+    text: "Você passou anos explicando por que não começou.\n\nPor que não terminou.\n\nPor que dessa vez foi diferente.\n\nAgora escolha o que você realmente faz.\n\nNão o que gostaria de postar que faz.",
+    button: "ARRANCAR A ÚLTIMA DESCULPA",
   },
 ];
 
