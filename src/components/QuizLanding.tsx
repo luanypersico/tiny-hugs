@@ -4,7 +4,39 @@ import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain 
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
 
-const QUESTIONS = [
+type Profile = "ML" | "IF" | "SE" | "FE" | "ER";
+
+type ScoredProfile = "ML" | "IF" | "SE" | "FE";
+
+type Scores = {
+  ML: number;
+  IF: number;
+  SE: number;
+  FE: number;
+};
+
+type QuizOption = {
+  text: string;
+  profile: Profile;
+  points: number;
+};
+
+type QuizQuestion = {
+  id: number;
+  question: string;
+  options: QuizOption[];
+};
+
+type QuizAnswer = {
+  questionId: number;
+  question: string;
+  answer: string;
+  profile: Profile;
+  points: number;
+  regulated: boolean;
+};
+
+const QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question:
@@ -482,35 +514,144 @@ export default function QuizLanding() {
   const [step, setStep] = useState<"intro" | "quiz" | "transition" | "processing" | "lead" | "result">("intro");
   const [formData, setFormData] = useState({ name: "", contact: "" });
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState({ ML: 0, IF: 0, SE: 0, FE: 0, ER: 0 });
+  
+  const [selectedOption, setSelectedOption] = useState<QuizOption | null>(null);
+  const [answers, setAnswers] = useState<QuizAnswer[]>([]);
+  const [scores, setScores] = useState<Scores>({
+    ML: 0,
+    IF: 0,
+    SE: 0,
+    FE: 0,
+  });
+  const [regulatedCount, setRegulatedCount] = useState(0);
+  const [primaryResult, setPrimaryResult] = useState<Profile | null>(null);
+  const [secondaryResult, setSecondaryResult] = useState<ScoredProfile | null>(null);
+
   const [activeTransition, setActiveTransition] = useState<any>(null);
 
-  const handleAnswer = (option: any) => {
-    setScores(prev => ({ ...prev, [option.profile]: (prev as any)[option.profile] + option.points }));
-    
-    const nextQ = currentQuestion + 1;
-    const transition = TRANSITIONS.find(t => t.afterQuestion === nextQ);
+  const calculateQuizResult = (
+    finalAnswers: QuizAnswer[],
+    finalScores: Scores,
+    finalRegulatedCount: number
+  ) => {
+    const sortedProfiles = (Object.entries(finalScores) as [ScoredProfile, number][]).sort(
+      (a, b) => b[1] - a[1]
+    );
 
+    const first = sortedProfiles[0];
+    const second = sortedProfiles[1];
+
+    if (!first || !second) {
+      setPrimaryResult("ER");
+      setSecondaryResult(null);
+      return;
+    }
+
+    const topScore = first[1];
+    const secondScore = second[1];
+    const diffTopTwo = topScore - secondScore;
+
+    if (finalRegulatedCount >= 8 || (finalRegulatedCount >= 6 && diffTopTwo <= 2)) {
+      setPrimaryResult("ER");
+      setSecondaryResult(null);
+      return;
+    }
+
+    const maxScore = first[1];
+    const tiedProfiles = sortedProfiles.filter(([_, score]) => score === maxScore).map(([p, _]) => p);
+
+    let winner: ScoredProfile = tiedProfiles[0] || "ML";
+
+    if (tiedProfiles.length > 1) {
+      const q14Answer = finalAnswers.find((a) => a.questionId === 14);
+      if (q14Answer && q14Answer.profile !== "ER" && tiedProfiles.includes(q14Answer.profile as ScoredProfile)) {
+        winner = q14Answer.profile as ScoredProfile;
+      } else {
+        const subsetAnswers = finalAnswers.filter((a) => a.questionId >= 9 && a.questionId <= 13);
+        const counts = tiedProfiles.map((p) => ({
+          profile: p,
+          count: subsetAnswers.filter((a) => a.profile === p).length,
+        }));
+        const maxCount = Math.max(...counts.map((c) => c.count));
+        const winnersByCount = counts.filter((c) => c.count === maxCount);
+
+        if (winnersByCount.length === 1) {
+          winner = winnersByCount[0].profile;
+        } else {
+          const reversedAnswers = [...finalAnswers].reverse();
+          const latestTied = reversedAnswers.find(
+            (a) => !a.regulated && tiedProfiles.includes(a.profile as ScoredProfile)
+          );
+          winner = latestTied ? (latestTied.profile as ScoredProfile) : (tiedProfiles[0] || "ML");
+        }
+      }
+    }
+
+    setPrimaryResult(winner);
+
+    const remainingProfiles = (Object.entries(finalScores) as [ScoredProfile, number][])
+      .filter(([p, _]) => p !== winner)
+      .sort((a, b) => b[1] - a[1]);
+
+    const runnerUp = remainingProfiles[0];
+    if (runnerUp && (finalScores[winner] || 0) - runnerUp[1] <= 2) {
+      setSecondaryResult(runnerUp[0]);
+    } else {
+      setSecondaryResult(null);
+    }
+  };
+
+  const confirmAnswer = () => {
+    if (!selectedOption) return;
+
+    const currentQuestionData = QUESTIONS[currentQuestion];
+    if (!currentQuestionData) return;
+
+    const confirmedAnswer: QuizAnswer = {
+      questionId: currentQuestionData.id,
+      question: currentQuestionData.question,
+      answer: selectedOption.text,
+      profile: selectedOption.profile,
+      points: selectedOption.points,
+      regulated: selectedOption.profile === "ER",
+    };
+
+    const nextAnswers = [...answers, confirmedAnswer];
+    let nextScores = { ...scores };
+    let nextRegulatedCount = regulatedCount;
+
+    if (confirmedAnswer.profile === "ER") {
+      nextRegulatedCount += 1;
+    } else {
+      const p = confirmedAnswer.profile as ScoredProfile;
+      nextScores[p] += confirmedAnswer.points;
+    }
+
+    setAnswers(nextAnswers);
+    setScores(nextScores);
+    setRegulatedCount(nextRegulatedCount);
+    setSelectedOption(null);
+
+    const nextQ = currentQuestion + 1;
+
+    if (nextQ >= QUESTIONS.length) {
+      calculateQuizResult(nextAnswers, nextScores, nextRegulatedCount);
+      setStep("processing");
+      setTimeout(() => setStep("lead"), 3000);
+      return;
+    }
+
+    const transition = TRANSITIONS.find((t) => t.afterQuestion === nextQ);
     if (transition) {
       setActiveTransition(transition);
       setStep("transition");
-    } else if (nextQ >= QUESTIONS.length) {
-      setStep("processing");
-      setTimeout(() => setStep("lead"), 3000);
     } else {
       setCurrentQuestion(nextQ);
     }
   };
 
   const getResult = () => {
-    const { ML, IF, SE, FE } = scores;
-    const max = Math.max(ML, IF, SE, FE);
-    if (scores.ER >= 8 || (ML + IF + SE + FE) <= 10) return "ER";
-    
-    // Find highest
-    const profiles = [{code: "ML", val: ML}, {code: "IF", val: IF}, {code: "SE", val: SE}, {code: "FE", val: FE}];
-    const sorted = profiles.sort((a,b) => b.val - a.val);
-    return sorted[0]?.code || "ER";
+    return primaryResult || "ER";
   };
 
   return (
@@ -550,33 +691,80 @@ export default function QuizLanding() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-10 px-4 md:px-0">
                <div className="text-center space-y-3">
                  <div className="flex justify-between items-end">
-                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Nível de Autoengano</p>
-                   <p className="text-[10px] text-white/30 font-black">{Math.round((currentQuestion/QUESTIONS.length)*100)}%</p>
+                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">
+                     CONFRONTO {(currentQuestion + 1).toString().padStart(2, "0")} DE {QUESTIONS.length}
+                   </p>
+                   <p className="text-[10px] text-white/30 font-black">
+                     {Math.round(((currentQuestion + 1) / QUESTIONS.length) * 100)}%
+                   </p>
                  </div>
                  <div className="h-1.5 bg-white/5 w-full rounded-full overflow-hidden border border-white/5">
                    <motion.div 
                      initial={{ width: 0 }}
-                     animate={{ width: `${(currentQuestion/QUESTIONS.length)*100}%` }}
+                     animate={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
                      className="h-full bg-[#8f2f3f] shadow-[0_0_15px_rgba(143,47,63,0.5)]" 
                    />
                  </div>
                </div>
                <div className="space-y-4">
-                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Pergunta {currentQuestion + 1} de {QUESTIONS.length}</span>
-                 <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">{QUESTIONS[currentQuestion]?.question}</h2>
+                 <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">
+                   {QUESTIONS[currentQuestion]?.question}
+                 </h2>
                </div>
                <div className="grid gap-3 md:gap-4">
-                 {QUESTIONS[currentQuestion]?.options.map((opt: any, i: number) => (
-                   <button 
-                     key={i} 
-                     onClick={() => handleAnswer(opt)} 
-                     className="group w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f]/50 bg-white/[0.02] hover:bg-[#8f2f3f]/5 transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4"
-                   >
-                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.text}</span>
-                     <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 transition-all shrink-0" />
-                   </button>
-                 ))}
+                 {QUESTIONS[currentQuestion]?.options.map((opt, i: number) => {
+                   const isSelected = selectedOption?.text === opt.text;
+                   return (
+                     <button 
+                       key={i} 
+                       onClick={() => setSelectedOption(opt)} 
+                       aria-pressed={isSelected}
+                       className={`group w-full p-6 text-left border transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4 outline-none focus-visible:ring-2 focus-visible:ring-[#8f2f3f] ${
+                         isSelected 
+                           ? "border-[#8f2f3f] bg-[#8f2f3f]/10 shadow-[0_0_20px_rgba(143,47,63,0.2)]" 
+                           : "border-white/10 bg-white/[0.02] hover:border-[#8f2f3f]/50 hover:bg-[#8f2f3f]/5"
+                       }`}
+                     >
+                       <span className={`text-base md:text-lg transition-colors leading-snug ${
+                         isSelected ? "text-white font-bold" : "text-white/80 group-hover:text-white"
+                       }`}>
+                         {opt.text}
+                       </span>
+                       <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
+                         isSelected ? "border-[#8f2f3f] bg-[#8f2f3f]" : "border-white/20 group-hover:border-[#8f2f3f]/50"
+                       }`}>
+                         {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
+                       </div>
+                     </button>
+                   );
+                 })}
                </div>
+
+               <AnimatePresence>
+                 {selectedOption && (
+                   <motion.div 
+                     initial={{ opacity: 0, y: 10 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     exit={{ opacity: 0, y: 10 }}
+                     className="space-y-8"
+                   >
+                     <div className="p-6 border-l-2 border-[#8f2f3f] bg-white/[0.02] italic text-white/90 text-lg">
+                       {selectedOption.profile === "ML" && "“Você não evita conflito. Você evita o risco de desagradar.”"}
+                       {selectedOption.profile === "IF" && "“Nem toda distância é paz. Às vezes é medo bem vestido.”"}
+                       {selectedOption.profile === "SE" && "“Ser necessária não é a mesma coisa que ser amada.”"}
+                       {selectedOption.profile === "FE" && "“Sumir dá sensação de controle. Também mata qualquer chance de profundidade.”"}
+                       {selectedOption.profile === "ER" && "“Isso não é perfeição. É conseguir ficar presente sem se abandonar.”"}
+                     </div>
+
+                     <button 
+                       onClick={confirmAnswer}
+                       className="w-full bg-[#8f2f3f] text-white py-6 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]"
+                     >
+                       CONTINUAR
+                     </button>
+                   </motion.div>
+                 )}
+               </AnimatePresence>
             </motion.div>
           )}
 
