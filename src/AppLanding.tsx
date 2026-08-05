@@ -119,13 +119,13 @@ function App() {
             </h1>
 
             <Reveal delay={120}>
-              <div className="max-w-4xl mx-auto mb-10 sm:mb-14">
-                <p className="text-xl sm:text-2xl md:text-3xl text-[#c8c0ba] mb-4 sm:mb-6 font-light leading-relaxed">
+              <div className="max-w-4xl mx-auto mb-10 sm:mb-14 px-4">
+                <p className="text-xl sm:text-2xl md:text-4xl text-[#c8c0ba] mb-4 sm:mb-6 font-light leading-tight tracking-tight">
                   Ou você encara seus monstros de frente...
                 </p>
-                <div aria-hidden className="ember-rule mx-auto max-w-md my-6 sm:my-8" />
-                <p className="text-xl sm:text-2xl md:text-3xl text-white font-medium leading-relaxed">
-                  Ou continua chamando de "jeito difícil de amar" só porque tem medo de ser rejeitada por inteiro.
+                <div aria-hidden className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[#d4726a] to-transparent my-10 sm:my-14" />
+                <p className="text-2xl sm:text-3xl md:text-5xl text-white font-medium leading-tight tracking-tighter">
+                  Ou continua chamando de <span className="text-[#d4726a] italic">"jeito difícil de amar"</span> só porque tem medo de ser rejeitada por inteiro.
                 </p>
               </div>
             </Reveal>
