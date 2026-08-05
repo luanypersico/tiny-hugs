@@ -88,14 +88,15 @@ const SocialProofSection: React.FC = () => {
 
           {/* iPhone Container */}
           <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[430px] mx-auto mb-8 sm:mb-12">
-            {/* iPhone Frame */}
-            <div className="relative bg-[#0a0a0a] rounded-[2.5rem] sm:rounded-[3rem] p-3 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] border border-white/5">
+            {/* iPhone Frame - Minimalist Editorial Border */}
+            <div className="relative bg-[#0a0a0a] rounded-[2.5rem] sm:rounded-[3rem] p-1 shadow-[0_40px_100px_-30px_rgba(0,0,0,1)] border border-white/10 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none"></div>
               {/* Screen */}
               <div 
-                className="bg-black rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden relative w-full"
+                className="bg-black rounded-[2.2rem] sm:rounded-[2.7rem] overflow-hidden relative w-full"
                 style={{
-                  height: 'min(700px, 80vh)',
-                  maxHeight: '800px',
+                  height: 'min(760px, 85vh)',
+                  maxHeight: '900px',
                   aspectRatio: '430/932'
                 }}
               >
@@ -113,8 +114,8 @@ const SocialProofSection: React.FC = () => {
                   />
                 </div>
 
-                {/* Home Indicator */}
-                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-20 sm:w-28 h-1 bg-white/60 rounded-full"></div>
+                {/* Home Indicator - Ultra Minimal */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-white/20 rounded-full"></div>
               </div>
             </div>
 
