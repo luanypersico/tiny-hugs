@@ -572,7 +572,7 @@ export default function QuizLanding() {
                      onClick={() => handleAnswer(opt)} 
                      className="group w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f]/50 bg-white/[0.02] hover:bg-[#8f2f3f]/5 transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4"
                    >
-                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.label}</span>
+                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.text}</span>
                      <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 transition-all shrink-0" />
                    </button>
                  ))}
