@@ -986,28 +986,32 @@ export default function QuizLanding() {
                {(() => {
                  const resCode = getResult();
                  const content: any = {
-                   ML: {
-                     name: "A MULHER LEGAL QUE SE ABANDONA",
-                     headline: "Todo mundo gosta de você. O problema é que você aprendeu a desaparecer.",
-                     desc: "Você percebe rapidamente o que os outros esperam e se transforma na versão mais confortável para eles. Evita conflitos, esconde necessidades, pede desculpas por sentir.",
-                     pattern: "Você abandona a si mesma antes que alguém tenha a oportunidade de abandoná-la.",
-                     price: "Relações em que todos conhecem sua versão agradável, mas quase ninguém conhece você de verdade.",
-                     confront: "Antes de dizer “sim”, pergunte: “Eu realmente quero isso ou estou tentando impedir que alguém se decepcione?”",
-                     punch: "Você não precisa continuar sendo conveniente para merecer permanência.",
-                     cta: "PARAR DE ME ABANDONAR",
-                     icon: <ShieldAlert className="w-12 h-12 text-[#8f2f3f]" />
-                   },
-                   IF: {
-                     name: "A INDEPENDENTE FERIDA",
-                     headline: "Você chama de independência aquilo que nasceu do medo de precisar.",
-                     desc: "Você construiu uma armadura eficiente. Resolve problemas, evita demonstrar fragilidade e tenta manter controle. Quando alguém se aproxima, você procura o risco.",
-                     pattern: "Você se protege tanto contra a possibilidade de sofrer que também bloqueia a possibilidade de ser acolhida.",
-                     price: "Ser admirada pela força e, ao mesmo tempo, sentir que ninguém consegue chegar perto de verdade.",
-                     confront: "Na próxima vez que oferecerem ajuda, não responda que não precisa. Descubra se é autonomia ou apenas defesa.",
-                     punch: "Sua força não desaparece quando você permite que alguém esteja ao seu lado.",
-                     cta: "COMEÇAR A BAIXAR A ARMADURA",
-                     icon: <Brain className="w-12 h-12 text-[#8f2f3f]" />
-                   },
+                    ML: {
+                      name: "A ARQUITETA DE SEGUNDA-FEIRA",
+                      headline: "VOCÊ PLANEJA UMA VIDA FODA. E EXECUTA uma desculpa por dia.",
+                      headline_l1: "VOCÊ PLANEJA UMA VIDA FODA.",
+                      headline_l2: "E EXECUTA UMA DESCULPA POR DIA.",
+                      desc: "Você sabe montar rotina. Criar lista. Organizar aplicativo. Escolher horário. Separar material. O problema começa quando planejar precisa virar execução. Enquanto estrutura tudo, você sente que está avançando. Mas no final do dia a tarefa importante continua intacta. Você não está sem capacidade. Está usando organização para fugir da parte em que pode falhar.",
+                      pattern: "“Eu só preciso me organizar melhor.”",
+                      price: "Projetos que nunca passam da preparação. Dias inteiros ocupados sem nada realmente importante concluído. E uma autoestima que não entende por que você trabalha tanto e continua parada.",
+                      confront: "Durante sete dias, você está proibida de criar um sistema novo antes de executar dez minutos da tarefa principal. Primeiro faz. Depois organiza.",
+                      punch: "Seu próximo plano não precisa ser melhor. Precisa sobreviver à primeira terça-feira.",
+                      cta: "PARAR DE DECORAR A MINHA FUGA",
+                      icon: <ShieldAlert className="w-12 h-12 text-[#A8283D]" />
+                    },
+                    IF: {
+                      name: "A PERFECCIONISTA PARALISADA",
+                      headline: "VOCÊ CHAMA DE PERFECCIONISMO. MUITAS VEZES É MEDO USANDO ROUPA BONITA.",
+                      headline_l1: "VOCÊ CHAMA DE PERFECCIONISMO.",
+                      headline_l2: "MUITAS VEZES É MEDO USANDO ROUPA BONITA.",
+                      desc: "Você não adia porque não se importa. Você adia porque se importa tanto com o resultado que prefere não produzir nada a produzir algo imperfeito. Espera segurança. Clareza. Preparação. Confiança. E enquanto espera se sentir pronta, a vida continua andando sem você.",
+                      pattern: "“Eu começo quando souber fazer direito.”",
+                      price: "Experiência que só viria depois da prática. Confiança que só nasceria depois da exposição. E projetos que morrem perfeitos dentro da sua cabeça.",
+                      confront: "Escolha uma tarefa e produza deliberadamente a primeira versão mais simples e imperfeita possível. Não corrija enquanto estiver criando.",
+                      punch: "A perfeição não está protegendo seu talento. Está impedindo que ele exista fora da sua cabeça.",
+                      cta: "PARAR DE USAR PERFEIÇÃO COMO ESCONDERIJO",
+                      icon: <Brain className="w-12 h-12 text-[#A8283D]" />
+                    },
                    SE: {
                      name: "A SALVADORA EXAUSTA",
                      headline: "Você se tornou necessária para todo mundo. E ficou ausente da própria vida.",
