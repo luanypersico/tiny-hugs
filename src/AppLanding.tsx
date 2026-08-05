@@ -82,7 +82,7 @@ function App() {
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-8 sm:mb-12 leading-[0.95] tracking-tight">
               <Reveal delay={60}>
-                <span className="block mb-2 sm:mb-4">Plano de 14 dias pra se confrontar,</span>
+                <span className="block mb-2 sm:mb-4">Plano de 14 dias para se confrontar,</span>
               </Reveal>
               <Reveal delay={160}>
                 <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
@@ -363,9 +363,9 @@ function App() {
                 <div className="space-y-5 sm:space-y-7">
                   {[
                     { strong: 'O método de 14 dias mais visceral, honesto e sujo de bonito', rest: ' que você vai ver ainda esse ano' },
-                    { strong: 'Um espaço pra desenterrar tudo', rest: ' que você esconde até de você mesma' },
+                    { strong: 'Um espaço para desenterrar tudo', rest: ' que você esconde até de você mesma' },
                     { strong: 'Perguntas que vão travar sua garganta,', rest: ' mas abrir sua clareza' },
-                    { strong: 'Exercícios que vão curar a mulher', rest: ' que você zoa pra ninguém perceber que dói' },
+                    { strong: 'Exercícios que vão curar a mulher', rest: ' que você zoa para ninguém perceber que dói' },
                     { strong: 'Opção de versão digital ou impressa,', rest: ' porque até a forma de se curar é escolha sua' },
                   ].map((item, index) => (
                     <Reveal key={item.strong} delay={index * 90} from="left">
@@ -506,7 +506,7 @@ function App() {
                       {/* GRÁTIS Tag */}
                       <div className="absolute -top-4 -right-4 z-10">
                         <div className="bg-gradient-to-r from-[#5f8f73] to-[#3f6b55] text-white font-bold px-4 py-2 rounded-full text-sm sm:text-base shadow-2xl border border-[#7fae8e]/25 transform rotate-12">
-                          GRÁTIS
+                          OFERTA
                         </div>
                       </div>
                       <img
@@ -774,7 +774,7 @@ function App() {
                 },
                 {
                   question: "Por que só 14 dias? Não é muito pouco tempo?",
-                  answer: "14 dias é o suficiente pra você parar de mentir pra si mesma. Não precisa de 6 meses de enrolação. Ou você muda em 14 dias, ou você não quer mudar de verdade. Simples assim."
+                  answer: "14 dias é o suficiente para você parar de mentir para si mesma. Não precisa de 6 meses de enrolação. Ou você muda em 14 dias, ou você não quer mudar de verdade. Simples assim."
                 },
                 {
                   question: "E se eu não conseguir fazer as tarefas?",
@@ -794,7 +794,7 @@ function App() {
                 },
                 {
                   question: "Isso substitui terapia?",
-                  answer: "Não substitui nada. Isso COMPLEMENTA tudo que você já tentou e não deu certo. É o empurrão que você precisa pra parar de enrolar na terapia, no autoconhecimento, na vida."
+                  answer: "Não substitui nada. Isso COMPLEMENTA tudo que você já tentou e não deu certo. É o empurrão que você precisa para parar de enrolar na terapia, no autoconhecimento, na vida."
                 },
                 {
                   question: "Por que o preço é tão baixo?",
@@ -875,7 +875,7 @@ function App() {
                 <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
                   <img
                     src={finalCta}
-                    alt="ME AMO, MAS ME ODEIO - 14 dias pra se confrontar"
+                    alt="ME AMO, MAS ME ODEIO - 14 dias para se confrontar"
                     width={1280}
                     height={960}
                     className="w-full h-auto rounded-2xl border border-white/10 edge-hairline"
@@ -900,7 +900,7 @@ function App() {
               <div className="mb-8 sm:mb-12">
                 <div aria-hidden className="ember-rule mx-auto max-w-sm mb-8" />
                 <p className="text-xl sm:text-2xl lg:text-3xl text-white font-bold leading-tight">
-                  14 dias pra finalmente sair da porra do personagem.
+                  14 dias para finalmente sair do personagem.
                 </p>
               </div>
             </Reveal>
