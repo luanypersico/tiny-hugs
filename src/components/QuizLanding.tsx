@@ -539,7 +539,6 @@ export default function QuizLanding() {
   const [formData, setFormData] = useState({ name: "", contact: "" });
   const [currentQuestion, setCurrentQuestion] = useState(0);
   
-  const [selectedOption, setSelectedOption] = useState<QuizOption | null>(null);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [scores, setScores] = useState<Scores>({
     ML: 0,
@@ -553,6 +552,7 @@ export default function QuizLanding() {
 
   const [activeTransition, setActiveTransition] = useState<any>(null);
   const [hasRestoredProgress, setHasRestoredProgress] = useState(false);
+  const answerLockRef = useRef(false);
 
   const restartQuiz = useCallback(() => {
     if (window.confirm("Isso apagará suas respostas e reiniciará o confronto. Continuar?")) {
@@ -560,7 +560,6 @@ export default function QuizLanding() {
       setStep("intro");
       setFormData({ name: "", contact: "" });
       setCurrentQuestion(0);
-      setSelectedOption(null);
       setAnswers([]);
       setScores({ ML: 0, IF: 0, SE: 0, FE: 0 });
       setRegulatedCount(0);
@@ -579,7 +578,6 @@ export default function QuizLanding() {
         if (progress && typeof progress === "object" && progress.step) {
           setStep(progress.step);
           setCurrentQuestion(progress.currentQuestion ?? 0);
-          setSelectedOption(progress.selectedOption ?? null);
           setAnswers(progress.answers ?? []);
           setScores(progress.scores ?? { ML: 0, IF: 0, SE: 0, FE: 0 });
           setRegulatedCount(progress.regulatedCount ?? 0);
@@ -599,7 +597,6 @@ export default function QuizLanding() {
       const progress: QuizProgress = {
         step,
         currentQuestion,
-        selectedOption,
         answers,
         scores,
         regulatedCount,
@@ -608,7 +605,7 @@ export default function QuizLanding() {
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
     }
-  }, [step, currentQuestion, selectedOption, answers, scores, regulatedCount, primaryResult, secondaryResult, hasRestoredProgress]);
+  }, [step, currentQuestion, answers, scores, regulatedCount, primaryResult, secondaryResult, hasRestoredProgress]);
 
   const calculateQuizResult = (
     finalAnswers: QuizAnswer[],
