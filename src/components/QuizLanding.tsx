@@ -1210,11 +1210,101 @@ export default function QuizLanding() {
                          </div>
                        </div>
 
-                       {/* TODO: adicionar conteúdo da apostila, preço e checkout após aprovação da oferta e do design. */}
+                       <div className="space-y-12 pt-10 border-t border-white/5">
+                         <div className="space-y-6">
+                           <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">O QUE VOCÊ ESTÁ COMPRANDO DE VERDADE</p>
+                           <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                             PARAR DE QUEBRAR A PRÓPRIA PALAVRA E VOLTAR A CONFIAR EM SI.
+                           </h3>
+                           <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                             <p>A procrastinação não destrói somente tarefas.</p>
+                             <p>Toda promessa quebrada também ensina você a confiar menos em si mesma.</p>
+                             <p>Cada “amanhã eu começo”.</p>
+                             <p>Cada plano abandonado.</p>
+                             <p>Cada tarefa simples transformada em mais uma semana de culpa.</p>
+                             <p>A apostila foi construída para interromper esse ciclo com pequenas ações cumpridas de verdade.</p>
+                             <p>Não com motivação.</p>
+                             <p>Não com rotina perfeita.</p>
+                             <p>Com provas.</p>
+                           </div>
+                         </div>
+
+                         <div className="space-y-6 pt-10 border-t border-white/5">
+                           <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">O MECANISMO</p>
+                           <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                             ROTA DE DESTRUIÇÃO™
+                           </h3>
+                           <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                             <p>Você não precisa abrir uma apostila com 365 hábitos e tentar fazer tudo de uma vez.</p>
+                             <p>Isso seria só outra rotina perfeita esperando para ser enterrada.</p>
+                             <p>O resultado do quiz mostra qual hábito podre aparece mais na sua vida.</p>
+                             <p>A partir dele, você começa pela rota correspondente.</p>
+                             <p>Um hábito por dia.</p>
+                             <p>Uma ação pequena.</p>
+                             <p>Uma prova de que sua palavra ainda pode valer alguma coisa.</p>
+                           </div>
+                         </div>
+
+                         <div className="space-y-4 pt-10 text-left">
+                           <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                             VOCÊ NÃO PRECISA FAZER 365 COISAS.
+                           </h3>
+                           <p className="text-2xl md:text-4xl text-[#A8283D] font-black italic uppercase tracking-tighter">
+                             PRECISA PARAR DE REPETIR A MESMA COISA PODRE TODOS OS DIAS.
+                           </p>
+                         </div>
+
+                         <div className="space-y-12 pt-10 border-t border-white/5">
+                           <div className="space-y-4 pb-8 border-b border-white/5">
+                             <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">ROTA 01: DESTRUIR O PLANEJAMENTO QUE NÃO EXECUTA</h4>
+                             <p className="text-sm text-[#A8283D] font-black uppercase tracking-widest">Para a Arquiteta de Segunda-Feira.</p>
+                             <p className="text-white/70 italic text-lg">73 hábitos para parar de usar planner, lista, aplicativo e organização como substitutos da execução. Ações para começar antes de deixar o planejamento virar mais uma fuga bem decorada.</p>
+                           </div>
+
+                           <div className="space-y-4 pb-8 border-b border-white/5">
+                             <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">ROTA 02: DESTRUIR A PERFEIÇÃO QUE PARALISA</h4>
+                             <p className="text-sm text-[#A8283D] font-black uppercase tracking-widest">Para a Perfeccionista Paralisada.</p>
+                             <p className="text-white/70 italic text-lg">73 hábitos para produzir antes de se sentir pronta, aceitar primeiras versões imperfeitas e parar de enterrar projetos perfeitos dentro da cabeça.</p>
+                           </div>
+
+                           <div className="space-y-4 pb-8 border-b border-white/5">
+                             <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">ROTA 03: DESTRUIR O VÍCIO EM ALÍVIO IMEDIATO</h4>
+                             <p className="text-sm text-[#A8283D] font-black uppercase tracking-widest">Para a Viciada em Alívio Imediato.</p>
+                             <p className="text-white/70 italic text-lg">73 hábitos para interromper celular, distração, fuga e conforto rápido antes que alguns minutos de alívio virem mais uma semana de culpa.</p>
+                           </div>
+
+                           <div className="space-y-4 pb-8 border-b border-white/5">
+                             <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">ROTA 04: DESTRUIR O RECOMEÇO COMPULSIVO</h4>
+                             <p className="text-sm text-[#A8283D] font-black uppercase tracking-widest">Para a Recomeçadora Compulsiva.</p>
+                             <p className="text-white/70 italic text-lg">73 hábitos para retomar depois de falhar, continuar sem empolgação e parar de transformar um dia ruim no funeral de uma semana inteira.</p>
+                           </div>
+
+                           <div className="space-y-4 pb-8">
+                             <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">ROTA 05: RECONSTRUIR A PRÓPRIA PALAVRA</h4>
+                             <p className="text-sm text-[#A8283D] font-black uppercase tracking-widest">Para a Mulher que Está Reconstruindo a Própria Palavra.</p>
+                             <p className="text-white/70 italic text-lg">73 hábitos para criar constância, proteger pequenas promessas cumpridas e construir uma autoestima baseada em evidência.</p>
+                           </div>
+                         </div>
+
+                         <div className="space-y-6 pt-10 border-t border-white/5">
+                           <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                             73 HÁBITOS POR ROTA.
+                           </h3>
+                           <p className="text-2xl md:text-4xl text-[#A8283D] font-black italic uppercase tracking-tighter leading-tight">
+                             365 FORMAS DE PARAR DE COLABORAR COM A PRÓPRIA ESTAGNAÇÃO.
+                           </p>
+                           <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                             <p>Você começa pela rota indicada no resultado do quiz. Depois avança pelas outras conforme os hábitos antigos forem perdendo força.</p>
+                             <p>A apostila não exige perfeição. Exige uma ação possível hoje.</p>
+                           </div>
+                         </div>
+                       </div>
+
+                       {/* TODO: adicionar entregáveis complementares, preço e checkout após validação desta seção. */}
                        
                        <div className="pt-10 border-t border-white/5">
                          <p className="text-sm text-white/30 italic">
-                           A apresentação completa da apostila entra na próxima etapa.
+                           Os materiais complementares e a condição de acesso entram na próxima etapa.
                          </p>
                        </div>
                      </section>
