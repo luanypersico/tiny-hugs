@@ -89,7 +89,7 @@ const SocialProofSection: React.FC = () => {
           {/* iPhone Container */}
           <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[430px] mx-auto mb-8 sm:mb-12">
             {/* iPhone Frame */}
-            <div className="relative bg-gradient-to-br from-[#141216] to-black rounded-[2rem] sm:rounded-[2.5rem] p-2 shadow-2xl border border-[#1e1b21]">
+            <div className="relative bg-[#0a0a0a] rounded-[2.5rem] sm:rounded-[3rem] p-3 shadow-[0_0_100px_-20px_rgba(0,0,0,1)] border border-white/5">
               {/* Screen */}
               <div 
                 className="bg-black rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden relative w-full"
