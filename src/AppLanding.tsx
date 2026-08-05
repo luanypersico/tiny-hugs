@@ -468,16 +468,15 @@ function App() {
                         GRÁTIS
                       </div>
                     </div>
-                    <img 
-                      src="https://fimdosciclos.com/wp-content/uploads/2025/09/Design-sem-nome-36.png" 
+                    <img
+                      src={bonusEbook}
                       alt="E-book bônus para reconstruir autoestima"
-                      className="relative w-full h-auto rounded-2xl shadow-2xl border border-[#7fae8e]/20"
+                      width={1024}
+                      height={1024}
+                      className="relative w-full h-auto rounded-2xl border border-[#7fae8e]/20 edge-hairline"
                       loading="lazy"
-                      onError={(e) => {
-                        console.error('Erro ao carregar imagem do bônus');
-                        e.currentTarget.style.display = 'none';
-                      }}
                     />
+
                   </div>
                 </div>
               </div>
