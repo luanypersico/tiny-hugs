@@ -1533,10 +1533,106 @@ export default function QuizLanding() {
                              </div>
                            </div>
 
-                           <div className="pt-10 border-t border-white/5">
-                             <p className="text-sm text-white/30 italic">
-                               A condição de acesso entra na próxima etapa.
-                             </p>
+                           <div className="space-y-12 pt-16 border-t border-white/5">
+                             // TODO: conectar o checkout somente após a criação e revisão final da apostila.
+                             <div className="space-y-6">
+                               <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">CONDIÇÃO DE ACESSO</p>
+                               <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                                 VOCÊ JÁ SABE ONDE COMEÇAR.
+                               </h3>
+                               <h3 className="text-3xl md:text-5xl font-black text-[#A8283D] italic uppercase tracking-tighter leading-none">
+                                 AGORA PRECISA TER O QUE EXECUTAR QUANDO A DESCULPA APARECER.
+                               </h3>
+                               <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                                 <p>A DESTRUINDO HÁBITOS PODRES™ reúne uma ação prática para cada dia do ano.</p>
+                                 <p>Você começa pela rota indicada no resultado do quiz.</p>
+                                 <p>Executa uma destruição por vez.</p>
+                                 <p>Retoma quando falhar.</p>
+                                 <p>E registra pequenas provas de que sua palavra ainda vale alguma coisa.</p>
+                               </div>
+                             </div>
+
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                               <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                                 <div className="flex items-center gap-4">
+                                   <span className="text-2xl font-black text-[#A8283D]/30 italic">01</span>
+                                   <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">365 HÁBITOS PRÁTICOS</h4>
+                                 </div>
+                                 <p className="text-white/70 italic text-base leading-relaxed">73 ações dentro de cada uma das cinco Rotas de Destruição™.</p>
+                               </div>
+
+                               <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                                 <div className="flex items-center gap-4">
+                                   <span className="text-2xl font-black text-[#A8283D]/30 italic">02</span>
+                                   <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">MAPA DO HÁBITO PODRE™</h4>
+                                 </div>
+                                 <p className="text-white/70 italic text-base leading-relaxed">Para identificar por qual rota começar de acordo com o resultado do quiz.</p>
+                               </div>
+
+                               <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                                 <div className="flex items-center gap-4">
+                                   <span className="text-2xl font-black text-[#A8283D]/30 italic">03</span>
+                                   <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">PROTOCOLO ANTIRRECOMEÇO™</h4>
+                                 </div>
+                                 <p className="text-white/70 italic text-base leading-relaxed">Para retomar em até 24 horas sem esperar outra segunda-feira.</p>
+                               </div>
+
+                               <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                                 <div className="flex items-center gap-4">
+                                   <span className="text-2xl font-black text-[#A8283D]/30 italic">04</span>
+                                   <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">PLACAR DA PALAVRA CUMPRIDA™</h4>
+                                 </div>
+                                 <p className="text-white/70 italic text-base leading-relaxed">Acompanhamento de 30 dias baseado em pequenas promessas realizadas.</p>
+                               </div>
+
+                               <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                                 <div className="flex items-center gap-4">
+                                   <span className="text-2xl font-black text-[#A8283D]/30 italic">05</span>
+                                   <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">SOS DE DOIS MINUTOS™</h4>
+                                 </div>
+                                 <p className="text-white/70 italic text-base leading-relaxed">Ações mínimas para impedir que o abandono seja sua primeira resposta.</p>
+                               </div>
+                             </div>
+
+                             <div className="space-y-8 pt-10 text-left">
+                               <div className="space-y-2">
+                                 <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">PAGAMENTO ÚNICO</p>
+                                 <p className="text-6xl md:text-8xl font-black text-white italic uppercase tracking-tighter leading-none">R$ 37,00</p>
+                                 <div className="space-y-1">
+                                   <p className="text-xl text-white/70 italic">Sem mensalidade.</p>
+                                   <p className="text-sm text-white/50 italic">Acesso à apostila completa liberado após a confirmação do pagamento.</p>
+                                 </div>
+                               </div>
+
+                               <div className="pt-6 space-y-4 max-w-md">
+                                 <button 
+                                   type="button" 
+                                   disabled 
+                                   aria-disabled="true"
+                                   className="w-full py-6 px-8 bg-white/5 border border-white/10 text-white/30 font-black italic uppercase tracking-tighter text-xl rounded-2xl cursor-not-allowed opacity-50"
+                                 >
+                                   QUERO PARAR DE QUEBRAR A MINHA PALAVRA
+                                 </button>
+                                 <p className="text-xs text-white/30 italic text-center">
+                                   O checkout será conectado somente depois da criação e revisão final da apostila.
+                                 </p>
+                               </div>
+                             </div>
+
+                             <div className="space-y-8 pt-16">
+                               <div className="space-y-2">
+                                 <h3 className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">
+                                   R$ 37,00 NÃO COMPRA UMA VERSÃO PERFEITA DE VOCÊ.
+                                 </h3>
+                                 <h3 className="text-2xl md:text-4xl font-black text-[#A8283D] italic uppercase tracking-tighter leading-none">
+                                   COMPRA 365 OPORTUNIDADES DE PARAR DE ABANDONAR A VERSÃO REAL.
+                                 </h3>
+                               </div>
+                               <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                                 <p>Você não precisa executar tudo hoje.</p>
+                                 <p>Precisa começar pela ação que cabe no dia em que sua desculpa aparecer.</p>
+                               </div>
+                             </div>
                            </div>
                          </div>
                        </section>
