@@ -795,12 +795,16 @@ function App() {
             {/* Hero Image */}
             <div className="relative mb-8 sm:mb-12 lg:mb-16">
               <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
-                <img 
-                  src="https://fimdosciclos.com/wp-content/uploads/2025/09/Design-sem-nome-41.png" 
+                <img
+                  src={finalCta}
                   alt="ME AMO, MAS ME ODEIO - 14 dias pra se confrontar"
-                  className="w-full h-auto rounded-2xl shadow-2xl border-4 border-white/10"
+                  width={1280}
+                  height={960}
+                  className="w-full h-auto rounded-2xl border border-white/10 edge-hairline"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0d1c]/20 to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#040308] via-transparent to-transparent rounded-2xl"></div>
+
               </div>
             </div>
             
