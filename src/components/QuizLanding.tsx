@@ -959,7 +959,7 @@ export default function QuizLanding() {
                   <label className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">E-mail ou WhatsApp</label>
                   <input 
                     type="text" 
-                    placeholder="Para onde enviamos seu diagnóstico?"
+                    placeholder="Para onde enviamos seu resultado?"
                     value={formData.contact}
                     onChange={(e) => setFormData({...formData, contact: e.target.value})}
                     className="w-full bg-white/5 border border-white/10 rounded-xl p-5 focus:border-[#8f2f3f] outline-none transition-all text-white"
