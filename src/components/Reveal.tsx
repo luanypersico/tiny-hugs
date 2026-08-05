@@ -72,10 +72,12 @@ const Reveal: React.FC<RevealProps> = ({
   return (
     <div
       ref={ref}
-      className={cn("reveal-base", visible && "reveal-in", className)}
+      className={cn("reveal-base", className)}
       style={{
         transitionDelay: `${delay}ms`,
-        ...(visible ? {} : { transform: OFFSETS[from] }),
+        opacity: visible ? 1 : 0,
+        filter: visible ? "blur(0px)" : "blur(10px)",
+        transform: visible ? "translate3d(0,0,0)" : OFFSETS[from],
       }}
     >
       {children}
