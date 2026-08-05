@@ -396,7 +396,9 @@ function App() {
             <Reveal>
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-14 border-[#c2534a]/25">
                 <div className="flex items-center gap-4 mb-6 sm:mb-8">
-                  <div className="text-3xl sm:text-4xl">⛔️</div>
+                  <div className="flex-shrink-0 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl border border-[#c2534a]/30 bg-[#c2534a]/10">
+                    <Ban className="w-5 h-5 sm:w-6 sm:h-6 text-[#c2534a]" strokeWidth={1.5} />
+                  </div>
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#c2534a]">
                     QUEM NÃO PODE BAIXAR
                   </h3>
