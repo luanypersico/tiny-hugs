@@ -1104,8 +1104,8 @@ export default function QuizLanding() {
                              <p className="text-white/80 italic">{result.price}</p>
                          </div>
                          <div className="p-8 bg-[#8f2f3f]/5 rounded-3xl space-y-4 border border-[#8f2f3f]/10">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-[#d4726a] font-black">Primeiro Confronto</p>
-                            <p className="text-white/80 italic">{result.confront}</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#d4726a] font-black">PRIMEIRA DESTRUIÇÃO</p>
+                             <p className="text-white/80 italic">{result.confront}</p>
                          </div>
                        </div>
                      </div>
