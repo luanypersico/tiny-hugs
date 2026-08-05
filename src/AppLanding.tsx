@@ -30,6 +30,16 @@ const SectionKicker: React.FC<SectionKickerProps> = ({ label, index }) => (
 function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedVersion, setSelectedVersion] = useState<'digital' | 'print' | null>(null);
+  const [activeTab, setActiveTab] = useState<'problema' | 'metodo' | 'bonus'>('problema');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const scrollToAction = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
