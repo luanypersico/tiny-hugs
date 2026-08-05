@@ -916,7 +916,7 @@ export default function QuizLanding() {
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
+                  transition={{ delay: 0.2 }}
                   className="space-y-2"
                 >
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">1.</span>
@@ -926,7 +926,7 @@ export default function QuizLanding() {
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.5 }}
+                  transition={{ delay: 0.8 }}
                   className="space-y-2"
                 >
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">2.</span>
@@ -936,7 +936,7 @@ export default function QuizLanding() {
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 2.5 }}
+                  transition={{ delay: 1.4 }}
                   className="space-y-2"
                 >
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">3.</span>
@@ -946,7 +946,7 @@ export default function QuizLanding() {
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 3.5 }}
+                  transition={{ delay: 2.0 }}
                   className="space-y-2"
                 >
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#A8283D]">4.</span>
