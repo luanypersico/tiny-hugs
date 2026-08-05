@@ -749,55 +749,67 @@ export default function QuizLanding() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#090909] text-[#F2EDE5] font-sans selection:bg-[#9B2636] selection:text-white">
-      <main className="relative z-10 min-h-screen w-full flex flex-col items-center pt-16 pb-20 px-6">
+    <div className="min-h-screen bg-[#090909] text-[#F2EDE5] font-sans selection:bg-[#9B2636] selection:text-white">
+      <main className="mx-auto w-full max-w-[520px] px-6 py-12 sm:px-8 sm:py-16">
         <AnimatePresence mode="wait">
           {step === "intro" && (
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
-              className="w-full max-w-[520px] text-left space-y-8"
+              className="text-left"
             >
-              <div className="space-y-2">
-                <span className="block text-[11px] font-sans font-bold uppercase tracking-[0.15em] text-[#9B2636]">
-                  CANSADA DE RECOMEÇAR?
+              <span className="block text-[11px] font-sans font-bold uppercase tracking-[0.15em] text-[#9B2636]">
+                UM CONFRONTO PARA QUEM ESTÁ CANSADA DE RECOMEÇAR
+              </span>
+
+              <h1 className="mt-4 font-black text-[#F2EDE5] text-[38px] sm:text-[46px] leading-[0.94] tracking-[-0.035em]">
+                <span className="block">
+                  VOCÊ MONTA UMA VIDA NOVA
                 </span>
-                <h1 className="text-[clamp(38px,10vw,54px)] font-serif font-bold text-[#F2EDE5] leading-[0.98] tracking-tight">
-                  VOCÊ MONTA UMA VIDA NOVA TODA SEGUNDA-FEIRA.
-                </h1>
-                <h2 className="text-[clamp(28px,8vw,42px)] font-sans font-bold text-[#9B2636] leading-[1.02] tracking-tight">
-                  E ENTERRA A PORRA TODA ANTES DE SEXTA.
-                </h2>
-              </div>
-              
-              <div className="space-y-6">
-                <p className="text-[18px] leading-[1.55] text-[#F2EDE5]">
-                  Você planeja, organiza e promete que agora vai.
+                <span className="block whitespace-nowrap">
+                  TODA SEGUNDA-FEIRA.
+                </span>
+              </h1>
+
+              <h2 className="mt-5 font-black text-[#A8283D] text-[25px] sm:text-[30px] leading-[1.02] tracking-[-0.02em]">
+                <span className="block">
+                  E ENTERRA A PORRA TODA
+                </span>
+                <span className="block">
+                  ANTES DE SEXTA.
+                </span>
+              </h2>
+
+              <div className="mt-8 space-y-4 text-[17px] leading-7 text-[#F2EDE5]">
+                <p>
+                  Você planeja. Organiza. Salva vídeo. Monta rotina. Promete que agora vai.
                 </p>
-                <p className="text-[18px] leading-[1.55] text-[#F2EDE5]">
-                  Aí adia por dez minutos, pega o celular e transforma um dia ruim em outra semana perdida.
-                </p>
-                <p className="text-[18px] leading-[1.55] text-[#A59F98] font-bold">
-                  Este quiz revela qual hábito podre está enterrando seus planos.
+                <p>
+                  Então chega a hora de fazer. Você adia por dez minutos. Pega o celular. Espera a vontade aparecer. Perde um dia. E transforma um dia ruim em mais uma semana jogada no lixo.
                 </p>
               </div>
 
-              <div className="pt-4 space-y-6">
-                <button 
-                  onClick={() => setStep("quiz")} 
-                  className="w-full h-[60px] bg-[#9B2636] text-white rounded-md text-lg uppercase font-bold tracking-tight hover:brightness-110 transition-all active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white outline-none flex items-center justify-center px-4 text-center"
-                >
-                  DESCOBRIR QUAL MERDA EU REPITO
-                </button>
-                <div className="space-y-2 text-center">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#A59F98]">
-                    14 situações reais • menos de 4 minutos
-                  </p>
-                  <p className="text-[10px] text-[#A59F98]/50 uppercase tracking-widest">
-                    Isso não é avaliação psicológica ou médica.
-                  </p>
-                </div>
+              <p className="mt-7 max-w-[38ch] text-[16px] leading-6 font-bold text-[#B9B1A8]">
+                Mas como você vai confiar em si mesma se vive quebrando a própria palavra? Este quiz vai mostrar qual hábito podre continua enterrando seus planos.
+              </p>
+
+              <button 
+                onClick={() => setStep("quiz")} 
+                className="mt-9 w-full min-h-[56px] px-5 py-4 rounded-md bg-[#9B2636] text-white text-center text-[15px] leading-5 font-black uppercase tracking-tight hover:brightness-110 transition-all active:scale-[0.98] outline-none"
+              >
+                DESCOBRIR QUAL MERDA EU REPITO
+              </button>
+
+              <div className="mt-5 space-y-2 text-left">
+                <p className="text-[11px] uppercase tracking-[0.14em] text-[#8E8882]">
+                  14 situações reais • menos de 4 minutos
+                </p>
+                <p className="text-[11px] leading-4 text-[#615D59]">
+                  Isso não é avaliação psicológica ou médica.
+                </p>
               </div>
+            </motion.div>
+          )}
             </motion.div>
           )}
 
