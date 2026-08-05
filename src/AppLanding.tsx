@@ -614,8 +614,9 @@ function App() {
                           : 'bg-gradient-to-r from-[#39485a]/80 to-[#4a2350]/80 text-white hover:from-[#4a5a6b] hover:to-[#5b3a63] shadow-xl hover:shadow-[#4a5a6b]/30'
                       }`}
                     >
-                      <span className="relative z-10">
-                        {selectedVersion === 'digital' ? '✓ SELECIONADO!' : 'SIM, EU VOU TRANSFORMAR A DOR EM DISCIPLINA'}
+                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
+                        {selectedVersion === 'digital' && <Check className="w-5 h-5" strokeWidth={2} />}
+                        {selectedVersion === 'digital' ? 'SELECIONADO!' : 'SIM, EU VOU TRANSFORMAR A DOR EM DISCIPLINA'}
                       </span>
                       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
