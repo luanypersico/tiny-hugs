@@ -1177,31 +1177,46 @@ export default function QuizLanding() {
                         </div>
                      </section>
 
-                     <section className="surface-noir p-10 md:p-16 rounded-[3rem] text-center space-y-10 relative overflow-hidden group">
-                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#8f2f3f]/10 to-transparent pointer-events-none" />
-                        
-                        <div className="relative space-y-6">
-                          <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
-                            VOCÊ DESCOBRIU A PERSONAGEM.<br />AGORA PRECISA DESMONTÁ-LA.
-                          </h3>
-                          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto italic">
-                            O “ME AMO, MAS ME ODEIO™” é um processo guiado de 14 dias para confrontar os comportamentos que você usa para agradar, controlar, salvar ou fugir.
-                          </p>
-                        </div>
+                     <section className="space-y-12 py-10">
+                       <div className="space-y-6">
+                         <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">VOCÊ DESCOBRIU QUAL HÁBITO PODRE ESTÁ NO COMANDO</p>
+                         <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                           SABER O NOME DA MERDA NÃO FAZ ELA DESAPARECER.
+                         </h3>
+                         <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                           <p>Você já sabe se costuma planejar sem executar, esperar perfeição, fugir para o alívio ou abandonar tudo depois de um erro.</p>
+                           <p>Mas reconhecer o ciclo é só o começo.</p>
+                           <p>Porque amanhã sua cabeça vai apresentar a mesma desculpa com outra roupa.</p>
+                           <p>E se você não tiver uma ação prática para usar no lugar, vai acreditar nela de novo.</p>
+                         </div>
+                       </div>
 
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 pt-6">
-                           <div className="text-left">
-                              <p className="text-xs uppercase tracking-widest text-white/30 mb-1">De R$ 97,00</p>
-                              <p className="text-6xl font-black text-white tracking-tighter ember-glow">R$ 29,90</p>
-                           </div>
-                           <button className="w-full md:w-auto bg-[#8f2f3f] hover:bg-[#a9414a] text-white px-12 py-8 rounded-2xl text-xl font-black uppercase tracking-tighter transition-all shadow-[0_20px_50px_-10px_rgba(143,47,63,0.5)] active:scale-95">
-                             {result.cta}
-                           </button>
-                        </div>
+                       <div className="space-y-8 pt-10 border-t border-white/5">
+                         <div className="space-y-2">
+                           <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-none">
+                             DESTRUINDO HÁBITOS PODRES™
+                           </h2>
+                           <p className="text-xl md:text-2xl text-[#A8283D] font-black italic uppercase tracking-tighter">
+                             365 hábitos para quem monta uma vida nova toda segunda-feira e enterra a porra toda antes de chegar no fim da semana.
+                           </p>
+                         </div>
+                         
+                         <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                           <p>Não é uma coleção de frases bonitas para salvar e esquecer.</p>
+                           <p>É uma apostila de aplicação diária criada para substituir pequenas sabotagens por pequenas ações que você consegue cumprir.</p>
+                           <p>Um hábito por dia.</p>
+                           <p>Uma desculpa por vez.</p>
+                           <p>Uma prova pequena de que sua palavra ainda pode valer alguma coisa.</p>
+                         </div>
+                       </div>
 
-                        <p className="text-xs text-white/30 uppercase tracking-widest italic pt-4">
-                          Pagamento único. Acesso imediato e vitalício.
-                        </p>
+                       {/* TODO: adicionar conteúdo da apostila, preço e checkout após aprovação da oferta e do design. */}
+                       
+                       <div className="pt-10 border-t border-white/5">
+                         <p className="text-sm text-white/30 italic">
+                           A apresentação completa da apostila entra na próxima etapa.
+                         </p>
+                       </div>
                      </section>
                    </div>
                  );
