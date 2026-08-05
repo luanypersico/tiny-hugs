@@ -31,7 +31,7 @@ export const EbookDownloader = () => {
 
   const simulatePdfDownload = () => {
     toast.info("Iniciando download do arquivo PDF protegido...");
-    // Em um app real, aqui abriríamos o Blob do PDF gerado
+    window.open('/ebook/ME_AMO_MAS_ME_ODEIO_PREVIEW.txt', '_blank');
   };
 
   return (
