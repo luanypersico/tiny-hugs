@@ -66,7 +66,7 @@ const SocialProofSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-black/90 via-purple-900/30 to-pink-900/20">
+    <section className="py-16 sm:py-20 lg:py-32 bg-[linear-gradient(180deg,#050308_0%,#0c0509_55%,#050308_100%)]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Header */}

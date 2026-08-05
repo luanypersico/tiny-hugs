@@ -78,8 +78,9 @@ const ShaderBackground = () => {
       space.x += random(space.y * warpFrequency + iTime * warpSpeed + 2.0) * warpAmplitude * horizontalFade;
 
       vec4 lines = vec4(0.0);
-      vec4 bgColor1 = vec4(0.1, 0.1, 0.3, 1.0);
-      vec4 bgColor2 = vec4(0.3, 0.1, 0.5, 1.0);
+      vec4 bgColor1 = vec4(0.022, 0.016, 0.028, 1.0);
+      vec4 bgColor2 = vec4(0.075, 0.028, 0.055, 1.0);
+
 
       for(int l = 0; l < linesPerGroup; l++) {
         float normalizedLineIndex = float(l) / float(linesPerGroup);
