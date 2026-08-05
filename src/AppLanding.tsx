@@ -280,7 +280,7 @@ function App() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
             {[
               {
-                icon: <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-[#7fae8e]" />,
+                icon: <ShieldAlert className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
                 numeral: 'I',
                 title: 'Confronto Direto',
                 body: (
@@ -292,20 +292,20 @@ function App() {
                 ),
               },
               {
-                icon: <Zap className="w-10 h-10 sm:w-12 sm:h-12 text-[#c9a227]" />,
+                icon: <X className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
                 numeral: 'II',
                 title: 'Plano de 14 Dias',
                 body: (
                   <ul className="text-[#c8c0ba] space-y-3 sm:space-y-4 text-base sm:text-lg lg:text-xl">
                     <li>• Rasgar a mulher inventada</li>
                     <li>• Reconstruir quem você é</li>
-                    <li>• Parar de mentir pra si mesma</li>
+                    <li>• Parar de mentir para si mesma</li>
                     <li>• Sair do personagem</li>
                   </ul>
                 ),
               },
               {
-                icon: <Heart className="w-10 h-10 sm:w-12 sm:h-12 text-[#d4726a]" />,
+                icon: <Brain className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
                 numeral: 'III',
                 title: 'Tarefas que Você Evita',
                 body: (
@@ -318,12 +318,12 @@ function App() {
                 ),
               },
               {
-                icon: <Star className="w-10 h-10 sm:w-12 sm:h-12 text-[#8fa3b8]" />,
+                icon: <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-[#8f2f3f]" />,
                 numeral: 'IV',
                 title: 'O Primeiro Estalo',
                 body: (
                   <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
-                    Depois dele, você não vai mais conseguir mentir pra si mesma sem sentir nojo.
+                    Depois dele, você não vai mais conseguir mentir para si mesma sem sentir nojo.
                   </p>
                 ),
               },
