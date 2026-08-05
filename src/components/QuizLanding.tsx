@@ -767,6 +767,12 @@ export default function QuizLanding() {
 
           {step === "quiz" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-10 px-4 md:px-0">
+               <div className="flex justify-between items-center">
+                 <button onClick={restartQuiz} className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/30 hover:text-[#8f2f3f] transition-colors font-black">
+                   <RotateCcw className="w-3 h-3" />
+                   RECOMEÇAR O CONFRONTO
+                 </button>
+               </div>
                <div className="text-center space-y-3">
                  <div className="flex justify-between items-end">
                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">
