@@ -1111,7 +1111,7 @@ export default function QuizLanding() {
                      </div>
 
                      <div className="text-center space-y-10 py-10">
-                        <p className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter ember-glow">
+                        <p className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter">
                           {result.punch}
                         </p>
                         <div className="ember-rule" />
