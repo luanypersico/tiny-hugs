@@ -691,33 +691,80 @@ export default function QuizLanding() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-10 px-4 md:px-0">
                <div className="text-center space-y-3">
                  <div className="flex justify-between items-end">
-                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Nível de Autoengano</p>
-                   <p className="text-[10px] text-white/30 font-black">{Math.round((currentQuestion/QUESTIONS.length)*100)}%</p>
+                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">
+                     CONFRONTO {(currentQuestion + 1).toString().padStart(2, "0")} DE {QUESTIONS.length}
+                   </p>
+                   <p className="text-[10px] text-white/30 font-black">
+                     {Math.round(((currentQuestion + 1) / QUESTIONS.length) * 100)}%
+                   </p>
                  </div>
                  <div className="h-1.5 bg-white/5 w-full rounded-full overflow-hidden border border-white/5">
                    <motion.div 
                      initial={{ width: 0 }}
-                     animate={{ width: `${(currentQuestion/QUESTIONS.length)*100}%` }}
+                     animate={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
                      className="h-full bg-[#8f2f3f] shadow-[0_0_15px_rgba(143,47,63,0.5)]" 
                    />
                  </div>
                </div>
                <div className="space-y-4">
-                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Pergunta {currentQuestion + 1} de {QUESTIONS.length}</span>
-                 <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">{QUESTIONS[currentQuestion]?.question}</h2>
+                 <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">
+                   {QUESTIONS[currentQuestion]?.question}
+                 </h2>
                </div>
                <div className="grid gap-3 md:gap-4">
-                 {QUESTIONS[currentQuestion]?.options.map((opt: any, i: number) => (
-                   <button 
-                     key={i} 
-                     onClick={() => handleAnswer(opt)} 
-                     className="group w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f]/50 bg-white/[0.02] hover:bg-[#8f2f3f]/5 transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4"
-                   >
-                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.text}</span>
-                     <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 transition-all shrink-0" />
-                   </button>
-                 ))}
+                 {QUESTIONS[currentQuestion]?.options.map((opt, i: number) => {
+                   const isSelected = selectedOption?.text === opt.text;
+                   return (
+                     <button 
+                       key={i} 
+                       onClick={() => setSelectedOption(opt)} 
+                       aria-pressed={isSelected}
+                       className={`group w-full p-6 text-left border transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4 outline-none focus-visible:ring-2 focus-visible:ring-[#8f2f3f] ${
+                         isSelected 
+                           ? "border-[#8f2f3f] bg-[#8f2f3f]/10 shadow-[0_0_20px_rgba(143,47,63,0.2)]" 
+                           : "border-white/10 bg-white/[0.02] hover:border-[#8f2f3f]/50 hover:bg-[#8f2f3f]/5"
+                       }`}
+                     >
+                       <span className={`text-base md:text-lg transition-colors leading-snug ${
+                         isSelected ? "text-white font-bold" : "text-white/80 group-hover:text-white"
+                       }`}>
+                         {opt.text}
+                       </span>
+                       <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
+                         isSelected ? "border-[#8f2f3f] bg-[#8f2f3f]" : "border-white/20 group-hover:border-[#8f2f3f]/50"
+                       }`}>
+                         {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
+                       </div>
+                     </button>
+                   );
+                 })}
                </div>
+
+               <AnimatePresence>
+                 {selectedOption && (
+                   <motion.div 
+                     initial={{ opacity: 0, y: 10 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     exit={{ opacity: 0, y: 10 }}
+                     className="space-y-8"
+                   >
+                     <div className="p-6 border-l-2 border-[#8f2f3f] bg-white/[0.02] italic text-white/90 text-lg">
+                       {selectedOption.profile === "ML" && "“Você não evita conflito. Você evita o risco de desagradar.”"}
+                       {selectedOption.profile === "IF" && "“Nem toda distância é paz. Às vezes é medo bem vestido.”"}
+                       {selectedOption.profile === "SE" && "“Ser necessária não é a mesma coisa que ser amada.”"}
+                       {selectedOption.profile === "FE" && "“Sumir dá sensação de controle. Também mata qualquer chance de profundidade.”"}
+                       {selectedOption.profile === "ER" && "“Isso não é perfeição. É conseguir ficar presente sem se abandonar.”"}
+                     </div>
+
+                     <button 
+                       onClick={confirmAnswer}
+                       className="w-full bg-[#8f2f3f] text-white py-6 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]"
+                     >
+                       CONTINUAR
+                     </button>
+                   </motion.div>
+                 )}
+               </AnimatePresence>
             </motion.div>
           )}
 
