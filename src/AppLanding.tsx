@@ -657,33 +657,7 @@ function App() {
                   </div>
                 </div>
               </Reveal>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
             </div>
-
-            {/* Trust indicators */}
-            <Reveal delay={80}>
-              <div className="text-center mt-14 sm:mt-20">
-                <div className="inline-flex items-center gap-4 sm:gap-6 lg:gap-8 surface-noir rounded-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-4xl mx-auto flex-wrap justify-center">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-3 h-3 bg-[#7fae8e] rounded-full"></div>
-                    <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Pagamento Seguro</span>
-                  </div>
-                  <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#7fae8e]" />
-                    <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Acesso Imediato</span>
-                  </div>
-                  <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Garantia Total</span>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
