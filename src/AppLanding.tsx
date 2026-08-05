@@ -474,16 +474,6 @@ function App() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14 sm:mb-20">
-              <Reveal>
-                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5f8f73]/20 to-[#3f6b55]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-8 sm:mb-12 border border-[#7fae8e]/20">
-                  <Star className="w-5 h-5 sm:w-6 sm:h-6 text-[#7fae8e]" />
-                  <span className="text-[#7fae8e] font-semibold text-sm sm:text-base tracking-[0.22em]">
-                    BÔNUS EXCLUSIVO
-                  </span>
-                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#7fae8e]" />
-                </div>
-              </Reveal>
-
               <Reveal delay={60}>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">
                   BÔNUS EXCLUSIVO
