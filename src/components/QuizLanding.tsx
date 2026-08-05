@@ -222,9 +222,9 @@ export default function QuizLanding() {
                    <div className="h-full bg-[#8f2f3f]" style={{ width: `${(currentQuestion/QUESTIONS.length)*100}%` }} />
                  </div>
                </div>
-               <h2 className="text-3xl font-black text-white italic uppercase">{QUESTIONS[currentQuestion].question}</h2>
+               <h2 className="text-3xl font-black text-white italic uppercase">{QUESTIONS[currentQuestion]?.question}</h2>
                <div className="space-y-4">
-                 {QUESTIONS[currentQuestion].options.map((opt: any, i: number) => (
+                 {QUESTIONS[currentQuestion]?.options.map((opt: any, i: number) => (
                    <button key={i} onClick={() => handleAnswer(opt)} className="w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f] transition-all rounded-xl">{opt.label}</button>
                  ))}
                </div>
