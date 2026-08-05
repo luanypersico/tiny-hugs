@@ -236,17 +236,34 @@ export default function QuizLanding() {
           )}
 
           {step === "quiz" && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-8 px-4 md:px-0">
-               <div className="text-center space-y-2">
-                 <p className="text-xs uppercase tracking-widest text-[#8f2f3f] font-black">Nível de Autoengano</p>
-                 <div className="h-1 bg-white/10 w-full rounded-full overflow-hidden">
-                   <div className="h-full bg-[#8f2f3f]" style={{ width: `${(currentQuestion/QUESTIONS.length)*100}%` }} />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-10 px-4 md:px-0">
+               <div className="text-center space-y-3">
+                 <div className="flex justify-between items-end">
+                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Nível de Autoengano</p>
+                   <p className="text-[10px] text-white/30 font-black">{Math.round((currentQuestion/QUESTIONS.length)*100)}%</p>
+                 </div>
+                 <div className="h-1.5 bg-white/5 w-full rounded-full overflow-hidden border border-white/5">
+                   <motion.div 
+                     initial={{ width: 0 }}
+                     animate={{ width: `${(currentQuestion/QUESTIONS.length)*100}%` }}
+                     className="h-full bg-[#8f2f3f] shadow-[0_0_15px_rgba(143,47,63,0.5)]" 
+                   />
                  </div>
                </div>
-               <h2 className="text-2xl md:text-3xl font-black text-white italic uppercase leading-tight">{QUESTIONS[currentQuestion]?.question}</h2>
-               <div className="space-y-3 md:space-y-4">
+               <div className="space-y-4">
+                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Pergunta {currentQuestion + 1} de {QUESTIONS.length}</span>
+                 <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase leading-[0.9] tracking-tighter">{QUESTIONS[currentQuestion]?.question}</h2>
+               </div>
+               <div className="grid gap-3 md:gap-4">
                  {QUESTIONS[currentQuestion]?.options.map((opt: any, i: number) => (
-                   <button key={i} onClick={() => handleAnswer(opt)} className="w-full p-5 md:p-6 text-sm md:text-base text-left border border-white/10 hover:border-[#8f2f3f] transition-all rounded-xl active:scale-[0.98]">{opt.label}</button>
+                   <button 
+                     key={i} 
+                     onClick={() => handleAnswer(opt)} 
+                     className="group w-full p-6 text-left border border-white/10 hover:border-[#8f2f3f]/50 bg-white/[0.02] hover:bg-[#8f2f3f]/5 transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4"
+                   >
+                     <span className="text-base md:text-lg text-white/80 group-hover:text-white transition-colors leading-snug">{opt.label}</span>
+                     <ChevronRight className="w-5 h-5 text-[#8f2f3f] opacity-0 group-hover:opacity-100 transition-all shrink-0" />
+                   </button>
                  ))}
                </div>
             </motion.div>
