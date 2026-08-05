@@ -575,14 +575,22 @@ export default function QuizLanding() {
         const maxCount = Math.max(...counts.map((c) => c.count));
         const winnersByCount = counts.filter((c) => c.count === maxCount);
 
-        if (winnersByCount.length === 1) {
-          winner = winnersByCount[0].profile;
+        const soleWinner = winnersByCount.at(0);
+
+        if (winnersByCount.length === 1 && soleWinner) {
+          winner = soleWinner.profile;
         } else {
           const reversedAnswers = [...finalAnswers].reverse();
+
           const latestTied = reversedAnswers.find(
-            (a) => !a.regulated && tiedProfiles.includes(a.profile as ScoredProfile)
+            (answer) =>
+              !answer.regulated &&
+              tiedProfiles.includes(answer.profile as ScoredProfile)
           );
-          winner = latestTied ? (latestTied.profile as ScoredProfile) : (tiedProfiles[0] || "ML");
+
+          winner = latestTied
+            ? (latestTied.profile as ScoredProfile)
+            : (tiedProfiles.at(0) ?? "ML");
         }
       }
     }
