@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain, RotateCcw } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
 
-const STORAGE_KEY = "me-amo-quiz-progress";
+const STORAGE_KEY = "destruindo-habitos-quiz-progress";
 
 type Profile = "ML" | "IF" | "SE" | "FE" | "ER";
 
