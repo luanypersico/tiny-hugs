@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain } from "lucide-react";
+import { ArrowRight, ChevronRight, Sparkles, CheckCircle, ShieldAlert, X, Brain, RotateCcw } from "lucide-react";
 import ShaderBackground from "@/components/ShaderBackground";
 import Reveal from "@/components/Reveal";
+
+const STORAGE_KEY = "me-amo-quiz-progress";
 
 type Profile = "ML" | "IF" | "SE" | "FE" | "ER";
 
@@ -36,11 +38,19 @@ type QuizAnswer = {
   regulated: boolean;
 };
 
+type QuizProgress = {
+  step: "intro" | "quiz" | "transition" | "processing" | "lead" | "result";
+  currentQuestion: number;
+  selectedOption: QuizOption | null;
+  answers: QuizAnswer[];
+  scores: Scores;
+  regulatedCount: number;
+  primaryResult: Profile | null;
+  secondaryResult: ScoredProfile | null;
+};
+
 const QUESTIONS: QuizQuestion[] = [
-  {
-    id: 1,
-    question:
-      "A conversa está boa. A pessoa deixa claro que está interessada em você. Qual merda começa a acontecer na sua cabeça?",
+...
     options: [
       {
         text: "Começo a pensar no que devo fazer para ela continuar gostando.",
