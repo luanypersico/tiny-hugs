@@ -69,30 +69,30 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question:
-      "A conversa está boa. A pessoa deixa claro que está interessada em você. Qual merda começa a acontecer na sua cabeça?",
+      "Segunda-feira chegou. Você decidiu que agora sua vida vai mudar. O que costuma acontecer primeiro?",
     options: [
       {
-        text: "Começo a pensar no que devo fazer para ela continuar gostando.",
+        text: "“Eu monto uma rotina perfeita, escolho aplicativo, cor, horário e nome para o projeto.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Desconfio. Ninguém se interessa assim sem querer alguma coisa.",
+        text: "“Eu percebo que ainda preciso pesquisar mais antes de começar direito.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Perco um pouco da vontade e começo a demorar para responder.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Tento descobrir os problemas dela e onde posso ser útil.",
+        text: "“Eu faço uma coisinha, sinto que mereço descansar e desapareço no celular.”",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Fico ansiosa, mas não viro outra pessoa nem invento um teste.",
+        text: "“Eu começo com força total porque dessa vez preciso compensar tudo o que não fiz.”",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "“Eu escolho uma ação pequena e começo antes de transformar isso em um evento.”",
         profile: "ER",
         points: 0,
       },
@@ -101,30 +101,30 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 2,
     question:
-      "Você recebe uma mensagem carinhosa de alguém de quem gosta. O que costuma fazer?",
+      "Existe uma tarefa importante que levaria vinte minutos. O que você faz?",
     options: [
       {
-        text: "Leio procurando uma intenção escondida.",
-        profile: "IF",
-        points: 3,
-      },
-      {
-        text: "Respondo do jeito mais agradável possível, mesmo sem estar bem.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Recebo o carinho sem transformar aquilo em dívida.",
-        profile: "ER",
-        points: 0,
-      },
-      {
-        text: "Já penso no que posso fazer para retribuir em dobro.",
+        text: "“Abro o celular por cinco minutos e volto quarenta minutos depois.”",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Gosto, mas deixo para responder depois porque ficou íntimo demais.",
+        text: "“Espero ter silêncio, energia e concentração suficientes para fazer bem.”",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "“Organizo a lista de tarefas antes de começar a tarefa.”",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "“Faço uma versão simples, mesmo sem estar com vontade.”",
+        profile: "ER",
+        points: 0,
+      },
+      {
+        text: "“Penso que agora já está tarde e decido começar amanhã cedo.”",
         profile: "FE",
         points: 3,
       },
@@ -133,62 +133,62 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 3,
     question:
-      "Alguma coisa incomodou você. A pessoa pergunta se está tudo bem. Sua resposta real costuma ser:",
+      "Você falhou um dia na rotina. Qual é sua reação automática?",
     options: [
       {
-        text: "Está tudo bem.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Eu desapareço por algumas horas ou dias.",
+        text: "“Já que estraguei hoje, segunda-feira eu recomeço direito.”",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Digo que não foi nada e fico fria.",
+        text: "“Procuro alguma coisa para me distrair da culpa.”",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "“Concluo que o plano não estava bom o suficiente.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Não sei explicar perfeitamente, mas digo que alguma coisa me pegou.",
-        profile: "ER",
-        points: 0,
+        text: "“Crio uma rotina nova para substituir a rotina que eu não cumpri.”",
+        profile: "ML",
+        points: 3,
       },
       {
-        text: "Esqueço o que senti e começo a tentar entender o lado da pessoa.",
-        profile: "SE",
-        points: 3,
+        text: "“Retomo na próxima ação sem transformar o erro em funeral.”",
+        profile: "ER",
+        points: 0,
       },
     ],
   },
   {
     id: 4,
     question:
-      "Quando você percebe que está gostando mais do que planejava, você:",
+      "Quando chega a hora de começar algo que realmente importa, qual palhaçada sua cabeça costuma inventar?",
     options: [
       {
-        text: "Reduzo o contato antes de parecer emocionada demais.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Começo a fazer muito pela pessoa.",
-        profile: "SE",
-        points: 3,
-      },
-      {
-        text: "Procuro um defeito que prove que isso vai acabar mal.",
+        text: "“Eu ainda não estou pronta.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Escondo o que quero para não assustar.",
+        text: "“Preciso organizar tudo primeiro.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Admito para mim mesma que estou envolvida e continuo observando os fatos.",
+        text: "“Só vou descansar um pouco para começar melhor.”",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "“Hoje já não conta. Amanhã faço do jeito certo.”",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "“Posso começar mal e melhorar enquanto faço.”",
         profile: "ER",
         points: 0,
       },
