@@ -313,7 +313,6 @@ function App() {
                   </span>
                   <div aria-hidden className="absolute inset-x-0 -top-24 h-40 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.22),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
                   <div className="relative">
-                    <div className="mb-4 sm:mb-6">{card.icon}</div>
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">{card.title}</h3>
                     {card.body}
                   </div>
