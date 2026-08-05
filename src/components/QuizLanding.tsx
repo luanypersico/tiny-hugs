@@ -197,7 +197,8 @@ export default function QuizLanding() {
     
     // Find highest
     const profiles = [{code: "ML", val: ML}, {code: "IF", val: IF}, {code: "SE", val: SE}, {code: "FE", val: FE}];
-    return profiles.sort((a,b) => b.val - a.val)[0].code;
+    const sorted = profiles.sort((a,b) => b.val - a.val);
+    return sorted[0]?.code || "ER";
   };
 
   return (
