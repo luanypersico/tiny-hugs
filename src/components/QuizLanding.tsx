@@ -687,19 +687,24 @@ export default function QuizLanding() {
     }
   };
 
-  const confirmAnswer = () => {
-    if (!selectedOption) return;
+  const confirmAnswer = (option: QuizOption) => {
+    if (answerLockRef.current) return;
 
     const currentQuestionData = QUESTIONS[currentQuestion];
-    if (!currentQuestionData) return;
+    if (!currentQuestionData) {
+      answerLockRef.current = false;
+      return;
+    }
+
+    answerLockRef.current = true;
 
     const confirmedAnswer: QuizAnswer = {
       questionId: currentQuestionData.id,
       question: currentQuestionData.question,
-      answer: selectedOption.text,
-      profile: selectedOption.profile,
-      points: selectedOption.points,
-      regulated: selectedOption.profile === "ER",
+      answer: option.text,
+      profile: option.profile,
+      points: option.points,
+      regulated: option.profile === "ER",
     };
 
     const nextAnswers = [...answers, confirmedAnswer];
@@ -716,7 +721,6 @@ export default function QuizLanding() {
     setAnswers(nextAnswers);
     setScores(nextScores);
     setRegulatedCount(nextRegulatedCount);
-    setSelectedOption(null);
 
     const nextQ = currentQuestion + 1;
 
@@ -724,6 +728,10 @@ export default function QuizLanding() {
       calculateQuizResult(nextAnswers, nextScores, nextRegulatedCount);
       setStep("processing");
       setTimeout(() => setStep("lead"), 3000);
+      
+      window.setTimeout(() => {
+        answerLockRef.current = false;
+      }, 300);
       return;
     }
 
@@ -734,6 +742,10 @@ export default function QuizLanding() {
     } else {
       setCurrentQuestion(nextQ);
     }
+
+    window.setTimeout(() => {
+      answerLockRef.current = false;
+    }, 300);
   };
 
   const getResult = () => {
