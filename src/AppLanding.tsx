@@ -700,8 +700,9 @@ function App() {
                           : 'bg-gradient-to-r from-[#8f2f3f]/80 to-[#4a2350]/80 text-white hover:from-[#a9414a] hover:to-[#5b3a63] shadow-xl hover:shadow-[#a9414a]/30'
                       }`}
                     >
-                      <span className="relative z-10">
-                        {selectedVersion === 'print' ? '✓ SELECIONADO!' : 'QUERO ME TORNAR IRRECONHECÍVEL'}
+                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
+                        {selectedVersion === 'print' && <Check className="w-5 h-5" strokeWidth={2} />}
+                        {selectedVersion === 'print' ? 'SELECIONADO!' : 'QUERO ME TORNAR IRRECONHECÍVEL'}
                       </span>
                       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
