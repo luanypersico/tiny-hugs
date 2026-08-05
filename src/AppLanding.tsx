@@ -81,10 +81,10 @@ function App() {
               </div>
             </Reveal>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-8 sm:mb-12 leading-[0.9] tracking-tighter">
-              <Reveal delay={60}>
-                <span className="block mb-2 sm:mb-4">O plano de 14 dias para se confrontar,</span>
-              </Reveal>
+              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold text-white mb-8 sm:mb-12 leading-[0.85] tracking-tighter">
+                <Reveal delay={60}>
+                  <span className="block mb-2 sm:mb-4">Plano de 14 dias para se confrontar,</span>
+                </Reveal>
               <Reveal delay={160}>
                 <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
               </Reveal>
@@ -139,7 +139,9 @@ function App() {
                   </span>
                   <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </button>
-                <EbookDownloader />
+                <Reveal delay={200}>
+                  <EbookDownloader />
+                </Reveal>
               </div>
             </Reveal>
 
@@ -278,7 +280,7 @@ function App() {
               {
                 icon: <Zap className="w-10 h-10 sm:w-12 sm:h-12 text-[#c9a227]" />,
                 numeral: 'II',
-                title: '14 Dias de Processo',
+                title: 'Plano de 14 Dias',
                 body: (
                   <ul className="text-[#c8c0ba] space-y-3 sm:space-y-4 text-base sm:text-lg lg:text-xl">
                     <li>• Rasgar a mulher inventada</li>
