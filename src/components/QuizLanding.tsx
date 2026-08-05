@@ -831,59 +831,23 @@ export default function QuizLanding() {
                  </h2>
                </div>
                <div className="grid gap-3 md:gap-4">
-                 {QUESTIONS[currentQuestion]?.options.map((opt, i: number) => {
-                   const isSelected = selectedOption?.text === opt.text;
+                 {QUESTIONS[currentQuestion]?.options.map((opt) => {
                    return (
                      <button 
-                       key={i} 
-                       onClick={() => setSelectedOption(opt)} 
-                       aria-pressed={isSelected}
-                       className={`group w-full p-6 text-left border transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4 outline-none focus-visible:ring-2 focus-visible:ring-[#8f2f3f] ${
-                         isSelected 
-                           ? "border-[#8f2f3f] bg-[#8f2f3f]/10 shadow-[0_0_20px_rgba(143,47,63,0.2)]" 
-                           : "border-white/10 bg-white/[0.02] hover:border-[#8f2f3f]/50 hover:bg-[#8f2f3f]/5"
-                       }`}
+                       key={`${QUESTIONS[currentQuestion]?.id}-${opt.profile}`}
+                       type="button"
+                       onClick={() => confirmAnswer(opt)} 
+                       className="group w-full p-6 text-left border transition-all rounded-2xl active:scale-[0.98] flex items-center justify-between gap-4 outline-none focus-visible:ring-2 focus-visible:ring-[#8f2f3f] border-white/10 bg-white/[0.02] hover:border-[#8f2f3f]/50 hover:bg-[#8f2f3f]/5"
                      >
-                       <span className={`text-base md:text-lg transition-colors leading-snug ${
-                         isSelected ? "text-white font-bold" : "text-white/80 group-hover:text-white"
-                       }`}>
+                       <span className="text-base md:text-lg transition-colors leading-snug text-white/80 group-hover:text-white">
                          {opt.text}
                        </span>
-                       <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
-                         isSelected ? "border-[#8f2f3f] bg-[#8f2f3f]" : "border-white/20 group-hover:border-[#8f2f3f]/50"
-                       }`}>
-                         {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
+                       <div className="w-5 h-5 rounded-full border flex items-center justify-center transition-all border-white/20 group-hover:border-[#8f2f3f]/50">
                        </div>
                      </button>
                    );
                  })}
                </div>
-
-               <AnimatePresence>
-                 {selectedOption && (
-                   <motion.div 
-                     initial={{ opacity: 0, y: 10 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     exit={{ opacity: 0, y: 10 }}
-                     className="space-y-8"
-                   >
-                     <div className="p-6 border-l-2 border-[#8f2f3f] bg-white/[0.02] italic text-white/90 text-lg">
-                        {selectedOption.profile === "ML" && "“Você não está organizando a execução. Está decorando a fuga.”"}
-                        {selectedOption.profile === "IF" && "“Perfeccionismo é medo com vocabulário bonito.”"}
-                        {selectedOption.profile === "SE" && "“Você compra alguns minutos de alívio e paga com dias de culpa.”"}
-                        {selectedOption.profile === "FE" && "“Recomeçar dá esperança. Continuar é o que realmente muda a vida.”"}
-                        {selectedOption.profile === "ER" && "“Autoestima também é conseguir acreditar no que você promete para si.”"}
-                     </div>
-
-                     <button 
-                       onClick={confirmAnswer}
-                       className="w-full bg-[#8f2f3f] text-white py-6 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]"
-                     >
-                       CONTINUAR
-                     </button>
-                   </motion.div>
-                 )}
-               </AnimatePresence>
             </motion.div>
           )}
 
