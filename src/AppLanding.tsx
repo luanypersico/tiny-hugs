@@ -771,7 +771,7 @@ function App() {
             <Reveal delay={60}>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12 leading-tight">
                 Ou você toma vergonha...
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4 ember-glow italic"> ou você repete 2026 com maquiagem nova.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] to-[#b98aa8] block mt-2 sm:mt-4 ember-glow italic"> ou você repete os mesmos erros com maquiagem nova.</span>
               </h2>
             </Reveal>
 
