@@ -1300,13 +1300,120 @@ export default function QuizLanding() {
                          </div>
                        </div>
 
-                       {/* TODO: adicionar entregáveis complementares, preço e checkout após validação desta seção. */}
+                       // TODO: adicionar condição de acesso, preço e checkout após aprovação completa da oferta.
                        
-                       <div className="pt-10 border-t border-white/5">
-                         <p className="text-sm text-white/30 italic">
-                           Os materiais complementares e a condição de acesso entram na próxima etapa.
-                         </p>
-                       </div>
+                       <section className="space-y-12 pt-16 border-t border-white/5">
+                         <div className="space-y-6">
+                           <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">FERRAMENTAS DE APLICAÇÃO</p>
+                           <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                             NÃO É SÓ SABER O QUE FAZER.
+                           </h3>
+                           <h3 className="text-3xl md:text-5xl font-black text-[#A8283D] italic uppercase tracking-tighter leading-none">
+                             É CONSEGUIR COMEÇAR, RETOMAR E PROVAR QUE VOCÊ CUMPRIU.
+                           </h3>
+                           <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                             <p>As 365 ações mostram o que executar.</p>
+                             <p>Estas quatro ferramentas impedem que você transforme a apostila em mais uma coisa salva, organizada e abandonada.</p>
+                           </div>
+                         </div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                           <div className="p-8 border border-white/5 rounded-3xl space-y-6">
+                             <span className="text-4xl font-black text-[#A8283D]/30 italic">01</span>
+                             <div className="space-y-2">
+                               <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">MAPA DO HÁBITO PODRE™</h4>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Seu resultado no quiz aponta qual Rota de Destruição deve ser aberta primeiro.
+                               </p>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Você não começa pelos 365 hábitos.
+                               </p>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Começa pelo padrão que mais aparece nas suas respostas e executa uma ação por dia dentro daquela rota.
+                               </p>
+                             </div>
+                             <p className="text-[#A8283D] font-black italic uppercase tracking-tighter">MENOS ESCOLHA. MAIS EXECUÇÃO.</p>
+                           </div>
+
+                           <div className="p-8 border border-white/5 rounded-3xl space-y-6">
+                             <span className="text-4xl font-black text-[#A8283D]/30 italic">02</span>
+                             <div className="space-y-2">
+                               <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">PROTOCOLO ANTIRRECOMEÇO™</h4>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Uma sequência curta para usar depois de falhar, abandonar um dia ou quebrar uma promessa.
+                               </p>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Em vez de esperar outra segunda-feira, você identifica a próxima ação possível e retoma em até 24 horas.
+                               </p>
+                               <div className="pt-2 space-y-1">
+                                 <p className="text-white/50 italic text-sm">Sem refazer a rotina.</p>
+                                 <p className="text-white/50 italic text-sm">Sem escolher outra data.</p>
+                                 <p className="text-white/50 italic text-sm">Sem começar tudo do zero.</p>
+                               </div>
+                             </div>
+                             <p className="text-[#A8283D] font-black italic uppercase tracking-tighter">VOCÊ NÃO RECOMEÇA. VOCÊ RETOMA.</p>
+                           </div>
+
+                           <div className="p-8 border border-white/5 rounded-3xl space-y-6">
+                             <span className="text-4xl font-black text-[#A8283D]/30 italic">03</span>
+                             <div className="space-y-2">
+                               <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">PLACAR DA PALAVRA CUMPRIDA™</h4>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Um acompanhamento de 30 dias para registrar pequenas promessas realizadas.
+                               </p>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 O placar não mede rotina perfeita, quantidade absurda de tarefas ou produtividade de aplicativo.
+                               </p>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Ele mede quantas vezes você disse que faria uma ação possível e realmente fez.
+                               </p>
+                             </div>
+                             <p className="text-[#A8283D] font-black italic uppercase tracking-tighter">AUTOESTIMA BASEADA EM EVIDÊNCIA.</p>
+                           </div>
+
+                           <div className="p-8 border border-white/5 rounded-3xl space-y-6">
+                             <span className="text-4xl font-black text-[#A8283D]/30 italic">04</span>
+                             <div className="space-y-2">
+                               <h4 className="text-2xl font-black text-white italic uppercase tracking-tighter">SOS DE DOIS MINUTOS™</h4>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Ações mínimas para os dias em que você estiver cansada, travada, atrasada ou procurando uma desculpa para desaparecer.
+                               </p>
+                               <p className="text-white/70 italic leading-relaxed">
+                                 Cada SOS reduz a tarefa até existir uma versão que possa ser iniciada em dois minutos.
+                               </p>
+                               <div className="pt-2 space-y-1">
+                                 <p className="text-white/50 italic text-sm">Não para terminar tudo.</p>
+                                 <p className="text-white/50 italic text-sm">Para impedir que o abandono seja sua primeira resposta.</p>
+                               </div>
+                             </div>
+                             <p className="text-[#A8283D] font-black italic uppercase tracking-tighter">DOIS MINUTOS AINDA CONTAM.</p>
+                           </div>
+                         </div>
+
+                         <div className="space-y-8 pt-10">
+                           <div className="space-y-2">
+                             <h3 className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">
+                               A APOSTILA NÃO DEPENDE DA SUA MELHOR VERSÃO.
+                             </h3>
+                             <h3 className="text-2xl md:text-4xl font-black text-[#A8283D] italic uppercase tracking-tighter leading-none">
+                               ELA FOI FEITA PARA O DIA EM QUE SUA PIOR DESCULPA APARECER.
+                             </h3>
+                           </div>
+                           <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                             <p>Você descobre onde começar com o Mapa do Hábito Podre™.</p>
+                             <p>Executa uma ação por dia dentro da sua rota.</p>
+                             <p>Usa o SOS de Dois Minutos™ quando travar.</p>
+                             <p>Aplica o Protocolo Antirrecomeço™ quando falhar.</p>
+                             <p>E registra no Placar da Palavra Cumprida™ cada prova de que você fez o que prometeu.</p>
+                           </div>
+                         </div>
+
+                         <div className="pt-10 border-t border-white/5">
+                           <p className="text-sm text-white/30 italic">
+                             A condição de acesso entra na próxima etapa.
+                           </p>
+                         </div>
+                       </section>
                      </section>
                    </div>
                  );
