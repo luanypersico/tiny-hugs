@@ -562,9 +562,7 @@ export default function QuizLanding() {
 
     let winner: ScoredProfile = tiedProfiles[0] || "ML";
 
-    if (tiedProfiles.length === 1) {
-      winner = tiedProfiles[0];
-    } else {
+    if (tiedProfiles.length > 1) {
       const q14Answer = finalAnswers.find((a) => a.questionId === 14);
       if (q14Answer && q14Answer.profile !== "ER" && tiedProfiles.includes(q14Answer.profile as ScoredProfile)) {
         winner = q14Answer.profile as ScoredProfile;
@@ -584,7 +582,7 @@ export default function QuizLanding() {
           const latestTied = reversedAnswers.find(
             (a) => !a.regulated && tiedProfiles.includes(a.profile as ScoredProfile)
           );
-          winner = latestTied ? (latestTied.profile as ScoredProfile) : tiedProfiles[0];
+          winner = latestTied ? (latestTied.profile as ScoredProfile) : (tiedProfiles[0] || "ML");
         }
       }
     }
