@@ -270,10 +270,18 @@ export default function QuizLanding() {
           )}
 
           {step === "transition" && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-8 max-w-xl">
-              <h2 className="text-4xl font-black text-white uppercase italic">{activeTransition?.title}</h2>
-              <p className="text-lg italic text-white/80">{activeTransition?.text}</p>
-              <button onClick={() => { setStep("quiz"); setCurrentQuestion(currentQuestion + 1); }} className="bg-[#8f2f3f] px-12 py-4 rounded-full text-white uppercase font-black">CONTINUAR O CONFRONTO</button>
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-10 max-w-xl px-4">
+              <div className="space-y-4">
+                <span className="kicker !text-[#8f2f3f]">Avançando no Confronto</span>
+                <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter leading-none">{activeTransition?.title}</h2>
+              </div>
+              <p className="text-lg md:text-xl italic text-white/80 leading-tight">{activeTransition?.text}</p>
+              <button 
+                onClick={() => { setStep("quiz"); setCurrentQuestion(currentQuestion + 1); }} 
+                className="w-full md:w-auto bg-[#8f2f3f] px-12 py-6 rounded-2xl text-white uppercase font-black tracking-tighter shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)] active:scale-95"
+              >
+                CONTINUAR O CONFRONTO
+              </button>
             </motion.div>
           )}
 
