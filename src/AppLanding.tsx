@@ -406,7 +406,7 @@ function App() {
 
                 <div className="mb-8 sm:mb-10">
                   <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <div className="text-2xl sm:text-3xl">🚫</div>
+                    <ShieldAlert className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#c2534a]" strokeWidth={1.5} />
                     <p className="text-lg sm:text-xl text-white font-semibold">
                       Esse material não é pra quem quer uma dose de dopamina e vai embora.
                     </p>
