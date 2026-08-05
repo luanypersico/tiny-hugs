@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Clock, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import ShaderBackground from '@/components/ShaderBackground';
 import SocialProofSection from '@/components/SocialProofSection';
+import heroCover from '@/assets/hero-cover.jpg';
+import bonusEbook from '@/assets/bonus-ebook.jpg';
+import finalCta from '@/assets/final-cta.jpg';
+
 
 interface PricingCardProps {
   title: string;
