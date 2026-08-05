@@ -534,15 +534,21 @@ export default function QuizLanding() {
     finalScores: Scores,
     finalRegulatedCount: number
   ) => {
-    // ER Logic
-    // finalRegulatedCount >= 8
-    // Or finalRegulatedCount >= 6 AND diff between top two scores <= 2
     const sortedProfiles = (Object.entries(finalScores) as [ScoredProfile, number][]).sort(
       (a, b) => b[1] - a[1]
     );
 
-    const topScore = sortedProfiles[0][1];
-    const secondScore = sortedProfiles[1][1];
+    const first = sortedProfiles[0];
+    const second = sortedProfiles[1];
+
+    if (!first || !second) {
+      setPrimaryResult("ER");
+      setSecondaryResult(null);
+      return;
+    }
+
+    const topScore = first[1];
+    const secondScore = second[1];
     const diffTopTwo = topScore - secondScore;
 
     if (finalRegulatedCount >= 8 || (finalRegulatedCount >= 6 && diffTopTwo <= 2)) {
@@ -551,8 +557,7 @@ export default function QuizLanding() {
       return;
     }
 
-    // Absolute Tie-breaker logic for ScoredProfiles
-    const maxScore = sortedProfiles[0][1];
+    const maxScore = first[1];
     const tiedProfiles = sortedProfiles.filter(([_, score]) => score === maxScore).map(([p, _]) => p);
 
     let winner: ScoredProfile;
@@ -560,12 +565,10 @@ export default function QuizLanding() {
     if (tiedProfiles.length === 1) {
       winner = tiedProfiles[0];
     } else {
-      // 1. Check Q14 answer
       const q14Answer = finalAnswers.find((a) => a.questionId === 14);
       if (q14Answer && q14Answer.profile !== "ER" && tiedProfiles.includes(q14Answer.profile as ScoredProfile)) {
         winner = q14Answer.profile as ScoredProfile;
       } else {
-        // 2. Count profile occurrences in Q9-Q13
         const subsetAnswers = finalAnswers.filter((a) => a.questionId >= 9 && a.questionId <= 13);
         const counts = tiedProfiles.map((p) => ({
           profile: p,
@@ -577,7 +580,6 @@ export default function QuizLanding() {
         if (winnersByCount.length === 1) {
           winner = winnersByCount[0].profile;
         } else {
-          // 3. Most recent non-regulated answer from Q13 back to Q1
           const reversedAnswers = [...finalAnswers].reverse();
           const latestTied = reversedAnswers.find(
             (a) => !a.regulated && tiedProfiles.includes(a.profile as ScoredProfile)
@@ -589,8 +591,6 @@ export default function QuizLanding() {
 
     setPrimaryResult(winner);
 
-    // Secondary result
-    // If not winner, check diff to next best
     const remainingProfiles = (Object.entries(finalScores) as [ScoredProfile, number][])
       .filter(([p, _]) => p !== winner)
       .sort((a, b) => b[1] - a[1]);
@@ -607,6 +607,8 @@ export default function QuizLanding() {
     if (!selectedOption) return;
 
     const currentQuestionData = QUESTIONS[currentQuestion];
+    if (!currentQuestionData) return;
+
     const confirmedAnswer: QuizAnswer = {
       questionId: currentQuestionData.id,
       question: currentQuestionData.question,
