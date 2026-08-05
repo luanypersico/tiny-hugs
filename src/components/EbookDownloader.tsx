@@ -118,7 +118,7 @@ export const EbookDownloader = () => {
                 </div>
               </div>
             ) : (
-              <div className="max-h-[80vh] overflow-y-auto p-8 sm:p-12 custom-scrollbar">
+              <div className="max-h-[85vh] overflow-y-auto p-8 sm:p-12 custom-scrollbar">
                 <div className="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
                   <div>
                     <h2 className="text-2xl font-bold text-white tracking-tight">{generatedEbook.title}</h2>
@@ -136,25 +136,28 @@ export const EbookDownloader = () => {
                   </p>
                 </div>
 
-                <div className="space-y-12">
+                <div className="space-y-12 pb-8">
                   <section>
                     <h3 className="text-[#b98aa8] text-xs font-bold uppercase tracking-[0.3em] mb-6 flex items-center gap-3">
                       <div className="h-px flex-1 bg-white/10" />
-                      SUMÁRIO EXECUTIVO
+                      SUMÁRIO EXECUTIVO (104 PÁGINAS)
                       <div className="h-px flex-1 bg-white/10" />
                     </h3>
                     <div className="grid gap-4">
                       {generatedEbook.phases.map((phase: any, i: number) => (
                         <div key={i} className="group cursor-default">
-                          <div className="text-white font-bold mb-2 flex items-center gap-2">
-                            <span className="text-[#d4726a] opacity-50">0{i+1}</span>
+                          <div className="text-white font-bold mb-3 flex items-center gap-2 text-lg">
+                            <span className="text-[#d4726a] opacity-70">0{i+1}</span>
                             {phase.name}
                           </div>
-                          <div className="grid gap-2 pl-6 border-l border-white/5">
+                          <div className="grid gap-3 pl-6 border-l border-[#d4726a]/30 py-1">
                             {phase.days.map((day: any, j: number) => (
-                              <div key={j} className="text-[#c8c0ba] text-sm flex items-center justify-between group-hover:text-white transition-colors">
-                                <span>Dia {day.day}: {day.title}</span>
-                                <span className="text-white/20 text-[10px] font-mono">PÁG {Math.floor(Math.random() * 90) + 10}</span>
+                              <div key={j} className="text-[#c8c0ba] text-sm flex items-center justify-between hover:text-white transition-colors py-1">
+                                <div className="flex flex-col">
+                                  <span className="font-semibold text-white/90">Dia {day.day}: {day.title}</span>
+                                  <span className="text-xs text-[#c8c0ba]/60 italic mt-0.5">{day.content.substring(0, 60)}...</span>
+                                </div>
+                                <span className="text-white/30 text-[10px] font-mono whitespace-nowrap ml-4">PÁG {12 + (i * 30) + (j * 6)}</span>
                               </div>
                             ))}
                           </div>
@@ -164,23 +167,31 @@ export const EbookDownloader = () => {
                   </section>
 
                   <section className="prose prose-invert max-w-none">
-                    <h3 className="text-white font-bold text-xl mb-4">INTRODUÇÃO: O ESPELHO QUEBRADO</h3>
-                    <p className="text-[#c8c0ba] leading-relaxed whitespace-pre-wrap">
-                      {generatedEbook.introduction}
-                    </p>
+                    <h3 className="text-white font-bold text-2xl mb-6 border-l-4 border-[#d4726a] pl-4">INTRODUÇÃO: O ESPELHO QUEBRADO</h3>
+                    <div className="space-y-6 text-[#c8c0ba] leading-relaxed text-lg italic border-b border-white/5 pb-8">
+                      {generatedEbook.introduction.split('\n\n').map((para: string, idx: number) => (
+                        <p key={idx}>{para}</p>
+                      ))}
+                    </div>
                   </section>
 
-                  <div className="bg-white/5 rounded-2xl p-8 text-center border border-white/5">
-                    <p className="text-white font-bold mb-6">Sua cópia personalizada de 104 páginas está pronta.</p>
-                    <button 
-                      onClick={simulatePdfDownload}
-                      className="inline-flex items-center gap-3 bg-[#d4726a] hover:bg-[#a9414a] text-white font-black py-4 px-10 rounded-xl transition-all shadow-xl shadow-[#d4726a]/20"
-                    >
-                      <Download className="w-5 h-5" />
-                      DOWNLOAD PDF SEGURO
-                    </button>
-                    <p className="mt-4 text-[10px] text-white/30 uppercase tracking-widest">Abertura permitida apenas via e-mail autorizado</p>
-                  </div>
+                  <section className="bg-white/5 rounded-3xl p-10 text-center border border-white/10 shadow-2xl relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#d4726a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="relative z-10">
+                      <h4 className="text-white font-black text-2xl mb-4">Sua obra completa está pronta.</h4>
+                      <p className="text-[#c8c0ba] mb-8 max-w-md mx-auto">
+                        Foram geradas <span className="text-white font-bold">104 páginas</span> de conteúdo visceral, protegidas com sua identidade digital.
+                      </p>
+                      <button 
+                        onClick={simulatePdfDownload}
+                        className="inline-flex items-center gap-4 bg-white text-black hover:bg-[#d4726a] hover:text-white font-black py-5 px-12 rounded-2xl transition-all duration-500 shadow-2xl scale-100 hover:scale-105"
+                      >
+                        <Download className="w-6 h-6" />
+                        BAIXAR PDF COMPLETO (104 PÁGS)
+                      </button>
+                      <p className="mt-6 text-[10px] text-white/40 uppercase tracking-[0.3em]">Criptografia de 256 bits aplicada</p>
+                    </div>
+                  </section>
                 </div>
               </div>
             )}
