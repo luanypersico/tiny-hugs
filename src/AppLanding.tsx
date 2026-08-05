@@ -76,9 +76,7 @@ function App() {
           <div className="text-center max-w-6xl mx-auto">
             <Reveal from="none">
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5b3a63]/20 to-[#a9414a]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-10 sm:mb-14 border border-white/10">
-                <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" />
                 <span className="text-white font-semibold text-sm sm:text-base tracking-[0.22em]">ME AMO, MAS ME ODEIO™</span>
-                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#d4726a]" />
               </div>
             </Reveal>
 
@@ -116,11 +114,9 @@ function App() {
             <Reveal delay={80}>
               <div className="surface-noir rounded-3xl p-6 sm:p-8 lg:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto">
                 <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-                  <Diamond className="w-6 h-6 sm:w-8 sm:h-8 text-[#b98aa8]" />
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
                     Oi, eu sou você.
                   </h2>
-                  <Diamond className="w-6 h-6 sm:w-8 sm:h-8 text-[#d4726a]" />
                 </div>
                 <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed">
                   <strong className="text-white drop-shadow-sm">Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir.</strong>
@@ -158,7 +154,6 @@ function App() {
 
             <Reveal delay={60}>
               <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
-                <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#c9a227]" />
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.85] tracking-tighter">
                   TODO MUNDO TE ACHA FODA.
                 </h2>
@@ -204,7 +199,6 @@ function App() {
               <Reveal><SectionKicker index="02" label="O método" /></Reveal>
               <Reveal delay={60}>
                 <div className="flex items-center justify-center gap-4">
-                  <Zap className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-[#c9a227]" />
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                     O QUE É O ME AMO, MAS ME ODEIO™
                   </h2>
@@ -234,7 +228,7 @@ function App() {
                   <div aria-hidden className="absolute -inset-8 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.18),transparent_70%)] blur-3xl ember-breathe" />
                   <div className="relative surface-noir rounded-3xl p-8 sm:p-10 lg:p-14">
                     <div className="text-center">
-                      <BookOpen className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-[#d4726a] mb-6 sm:mb-8 mx-auto" />
+                      <div className="ember-rule mb-6 sm:mb-8" />
                       <p className="text-[#c8c0ba] text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 italic">
                         "Por que eu não aguento quando começam a gostar de mim?"
                       </p>
@@ -319,7 +313,6 @@ function App() {
                   </span>
                   <div aria-hidden className="absolute inset-x-0 -top-24 h-40 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.22),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
                   <div className="relative">
-                    <div className="mb-4 sm:mb-6">{card.icon}</div>
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">{card.title}</h3>
                     {card.body}
                   </div>
@@ -547,9 +540,7 @@ function App() {
             <div className="text-center mb-14 sm:mb-20">
               <Reveal>
                 <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5b3a63]/20 to-[#a9414a]/20 backdrop-blur-xl rounded-full px-6 sm:px-8 py-3 sm:py-4 mb-6 sm:mb-8 border border-white/10">
-                  <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-[#b98aa8]" />
                   <span className="text-white font-semibold text-sm sm:text-base tracking-[0.22em]">ESCOLHA SUA TRANSFORMAÇÃO</span>
-                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#d4726a]" />
                 </div>
               </Reveal>
               <Reveal delay={60}>
@@ -739,7 +730,6 @@ function App() {
                   </div>
                   <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-[#b98aa8]" />
                     <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Garantia Total</span>
                   </div>
                 </div>
@@ -928,9 +918,7 @@ function App() {
       <footer className="py-10 sm:py-14 bg-black border-t border-white/10 pb-24 sm:pb-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-            <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-[#b98aa8]" />
             <span className="text-white font-bold text-lg sm:text-xl tracking-[0.22em]">ME AMO, MAS ME ODEIO™</span>
-            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-[#d4726a]" />
           </div>
           <p className="text-[#9a908a] text-sm sm:text-base">
             © 2025 - Todos os direitos reservados. Para quem está pronta pra parar de fingir.
