@@ -758,53 +758,34 @@ export default function QuizLanding() {
               animate={{ opacity: 1 }} 
               className="text-left"
             >
-              <span className="block text-[11px] font-sans font-bold uppercase tracking-[0.15em] text-[#9B2636]">
-                UM CONFRONTO PARA QUEM ESTÁ CANSADA DE RECOMEÇAR
+              <span className="block text-[11px] sm:text-[12px] font-sans font-bold uppercase tracking-wider text-[#A8283D]">
+                QUIZ DE AUTOSSABOTAGEM
               </span>
 
-              <h1 className="mt-4 font-black text-[#F2EDE5] text-[38px] sm:text-[46px] leading-[0.94] tracking-[-0.035em]">
-                <span className="block">
-                  VOCÊ MONTA UMA VIDA NOVA
-                </span>
-                <span className="block whitespace-nowrap">
-                  TODA SEGUNDA-FEIRA.
-                </span>
+              <h1 className="mt-4 font-serif font-bold text-[#F2EDE5] text-[clamp(42px,12vw,62px)] leading-[0.92] tracking-[-0.04em]">
+                DESTRUINDO HÁBITOS PODRES™
               </h1>
 
-              <h2 className="mt-5 font-black text-[#A8283D] text-[25px] sm:text-[30px] leading-[1.02] tracking-[-0.02em]">
-                <span className="block">
-                  E ENTERRA A PORRA TODA
-                </span>
-                <span className="block">
-                  ANTES DE SEXTA.
-                </span>
+              <h2 className="mt-6 font-sans font-bold text-[#F2EDE5] text-[21px] sm:text-[27px] leading-[1.12]">
+                365 hábitos para quem monta uma vida nova toda segunda-feira e enterra a porra toda antes de chegar no fim da semana.
               </h2>
 
-              <div className="mt-8 space-y-4 text-[17px] leading-7 text-[#F2EDE5]">
-                <p>
-                  Você planeja. Organiza. Salva vídeo. Monta rotina. Promete que agora vai.
-                </p>
-                <p>
-                  Então chega a hora de fazer. Você adia por dez minutos. Pega o celular. Espera a vontade aparecer. Perde um dia. E transforma um dia ruim em mais uma semana jogada no lixo.
-                </p>
-              </div>
-
-              <p className="mt-7 max-w-[38ch] text-[16px] leading-6 font-bold text-[#B9B1A8]">
-                Mas como você vai confiar em si mesma se vive quebrando a própria palavra? Este quiz vai mostrar qual hábito podre continua enterrando seus planos.
+              <p className="mt-7 max-w-[42ch] text-[17px] leading-[1.55] text-[#AAA39B]">
+                Antes de montar outra rotina perfeita e abandonar tudo três dias depois, descubra qual hábito podre está mantendo sua procrastinação viva.
               </p>
 
               <button 
                 onClick={() => setStep("quiz")} 
-                className="mt-9 w-full min-h-[56px] px-5 py-4 rounded-md bg-[#9B2636] text-white text-center text-[15px] leading-5 font-black uppercase tracking-tight hover:brightness-110 transition-all active:scale-[0.98] outline-none"
+                className="mt-8 w-full min-h-[56px] sm:min-h-[60px] px-5 py-4 rounded-md bg-[#A8283D] text-white text-center text-[15px] leading-5 font-black uppercase tracking-tight hover:brightness-110 transition-all active:scale-[0.98] outline-none"
               >
-                DESCOBRIR QUAL MERDA EU REPITO
+                DESCOBRIR MEU HÁBITO PODRE
               </button>
 
-              <div className="mt-5 space-y-2 text-left">
-                <p className="text-[11px] uppercase tracking-[0.14em] text-[#8E8882]">
+              <div className="mt-4 space-y-2 text-left">
+                <p className="text-[11px] uppercase tracking-[0.14em] text-[#AAA39B]">
                   14 situações reais • menos de 4 minutos
                 </p>
-                <p className="text-[11px] leading-4 text-[#615D59]">
+                <p className="text-[11px] leading-4 text-[#AAA39B]/60">
                   Isso não é avaliação psicológica ou médica.
                 </p>
               </div>
