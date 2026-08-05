@@ -576,7 +576,7 @@ function App() {
                       {/* Price */}
                       <div className="relative">
                         <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] via-[#b98aa8] to-[#d4726a] mb-2 ember-glow">
-                          R$ 29,00
+                          R$ 29,90
                         </div>
                         <div className="text-sm sm:text-base text-[#7a716c] tracking-[0.18em] uppercase">pagamento único</div>
                       </div>
@@ -821,7 +821,7 @@ function App() {
               <div className="surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-[#7fae8e]/25 max-w-2xl mx-auto animate-fade-in">
                 <p className="text-[#7fae8e] font-bold text-lg sm:text-xl lg:text-2xl inline-flex items-center justify-center gap-2 flex-wrap">
                   <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
-                  Plano Selecionado - R$ 29,00
+                  Plano Selecionado - R$ 29,90
                 </p>
                 <p className="text-[#c8c0ba] mt-2 sm:mt-4 text-base sm:text-lg">
                   Clique no botão acima para finalizar sua compra
