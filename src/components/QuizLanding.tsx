@@ -1408,10 +1408,136 @@ export default function QuizLanding() {
                            </div>
                          </div>
 
-                         <div className="pt-10 border-t border-white/5">
-                           <p className="text-sm text-white/30 italic">
-                             A condição de acesso entra na próxima etapa.
-                           </p>
+                         <div className="space-y-12 pt-16 border-t border-white/5">
+                           <div className="space-y-6">
+                             <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">POR DENTRO DE CADA HÁBITO</p>
+                             <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
+                               NÃO É UMA FRASE BONITA.
+                             </h3>
+                             <h3 className="text-3xl md:text-5xl font-black text-[#A8283D] italic uppercase tracking-tighter leading-none">
+                               É UMA PEQUENA DESTRUIÇÃO PRONTA PARA SER EXECUTADA.
+                             </h3>
+                             <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                               <p>Cada um dos 365 hábitos segue a mesma estrutura.</p>
+                               <p>Você identifica a sabotagem.</p>
+                               <p>Enxerga a desculpa usada para protegê-la.</p>
+                               <p>Entende o que ela está enterrando.</p>
+                               <p>Executa uma ação de dois, cinco ou dez minutos.</p>
+                               <p>E registra uma prova de que cumpriu o que prometeu.</p>
+                             </div>
+                           </div>
+
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                             <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                               <span className="text-3xl font-black text-[#A8283D]/30 italic">01</span>
+                               <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">HÁBITO PODRE</h4>
+                               <p className="text-white/70 italic text-base leading-relaxed">
+                                 A atitude automática que você repete mesmo sabendo que ela mantém sua vida parada.
+                               </p>
+                             </div>
+
+                             <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                               <span className="text-3xl font-black text-[#A8283D]/30 italic">02</span>
+                               <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">A DESCULPA</h4>
+                               <p className="text-white/70 italic text-base leading-relaxed">
+                                 A frase aparentemente razoável que sua cabeça usa para justificar planejamento, adiamento, distração ou abandono.
+                               </p>
+                             </div>
+
+                             <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                               <span className="text-3xl font-black text-[#A8283D]/30 italic">03</span>
+                               <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">O QUE ISSO ESTÁ ENTERRANDO</h4>
+                               <p className="text-white/70 italic text-base leading-relaxed">
+                                 O prejuízo concreto escondido atrás daquela escolha: tempo, constância, projetos, confiança ou autoestima.
+                               </p>
+                             </div>
+
+                             <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                               <span className="text-3xl font-black text-[#A8283D]/30 italic">04</span>
+                               <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">DESTRUIÇÃO DE HOJE</h4>
+                               <div className="space-y-2">
+                                 <p className="text-white/70 italic text-base leading-relaxed">
+                                   Uma ação pequena e específica, classificada para ser iniciada em dois, cinco ou dez minutos.
+                                 </p>
+                                 <p className="text-white/50 italic text-sm">Não é uma transformação completa. É a próxima prova possível.</p>
+                               </div>
+                             </div>
+
+                             <div className="p-8 border border-white/5 rounded-3xl space-y-4">
+                               <span className="text-3xl font-black text-[#A8283D]/30 italic">05</span>
+                               <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">PROVA DA SUA PALAVRA</h4>
+                               <p className="text-white/70 italic text-base leading-relaxed">
+                                 Um espaço para registrar o que foi cumprido e produzir evidência de que sua palavra ainda pode valer alguma coisa.
+                               </p>
+                             </div>
+                           </div>
+
+                           <div className="space-y-12 pt-16 border-t border-white/5">
+                             <div className="space-y-2">
+                               <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">EXEMPLO REAL DA ROTA 01</p>
+                               <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">HÁBITO 017</h3>
+                               <p className="text-2xl md:text-4xl text-[#A8283D] font-black italic uppercase tracking-tighter leading-tight">PARE DE ORGANIZAR A TAREFA QUE VOCÊ ESTÁ EVITANDO</p>
+                             </div>
+
+                             <div className="p-10 border border-white/5 rounded-3xl space-y-10 max-w-2xl">
+                               <div className="space-y-3">
+                                 <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">HÁBITO PODRE</p>
+                                 <p className="text-white/80 italic text-lg leading-relaxed">Abrir o planner, trocar horários, criar subtarefas e continuar sem executar a tarefa principal.</p>
+                               </div>
+
+                               <div className="space-y-3">
+                                 <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">A DESCULPA</p>
+                                 <p className="text-white/80 italic text-lg leading-relaxed font-bold">“Só preciso enxergar tudo com mais clareza.”</p>
+                               </div>
+
+                               <div className="space-y-3">
+                                 <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">O QUE ISSO ESTÁ ENTERRANDO</p>
+                                 <p className="text-white/80 italic text-lg leading-relaxed">
+                                   Uma tarefa de vinte minutos vira duas horas de preparação inútil.<br />
+                                   Você termina o dia ocupada, cansada e ainda parada no mesmo lugar.
+                                 </p>
+                               </div>
+
+                               <div className="space-y-4">
+                                 <div className="flex items-center gap-3">
+                                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">DESTRUIÇÃO DE HOJE</p>
+                                   <span className="bg-[#A8283D] text-white text-[10px] font-black px-2 py-0.5 rounded tracking-widest">10 MINUTOS</span>
+                                 </div>
+                                 <div className="space-y-2 text-white/80 italic text-lg leading-relaxed">
+                                   <p>Feche o planner.</p>
+                                   <p>Escolha a tarefa que está evitando.</p>
+                                   <p>Execute dez minutos antes de organizar qualquer outra coisa.</p>
+                                   <p className="font-bold pt-2">Primeiro faz. Depois organiza.</p>
+                                 </div>
+                               </div>
+
+                               <div className="space-y-3">
+                                 <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">PROVA DA SUA PALAVRA</p>
+                                 <p className="text-white/80 italic text-lg leading-relaxed">“Hoje eu comecei antes de me sentir pronta.”</p>
+                               </div>
+                             </div>
+                           </div>
+
+                           <div className="space-y-8 pt-10">
+                             <div className="space-y-2">
+                               <h3 className="text-3xl md:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">
+                                 VOCÊ NÃO PRECISA VENCER O ANO INTEIRO HOJE.
+                               </h3>
+                               <h3 className="text-2xl md:text-4xl font-black text-[#A8283D] italic uppercase tracking-tighter leading-none">
+                                 PRECISA CUMPRIR A DESTRUIÇÃO QUE ESTÁ NA SUA FRENTE.
+                               </h3>
+                             </div>
+                             <div className="space-y-4 text-lg md:text-xl text-white/70 italic max-w-2xl">
+                               <p>Os 365 hábitos não foram organizados para serem consumidos de uma vez.</p>
+                               <p>Foram organizados para entregar uma ação clara no momento em que sua velha desculpa aparecer.</p>
+                             </div>
+                           </div>
+
+                           <div className="pt-10 border-t border-white/5">
+                             <p className="text-sm text-white/30 italic">
+                               A condição de acesso entra na próxima etapa.
+                             </p>
+                           </div>
                          </div>
                        </section>
                      </section>
