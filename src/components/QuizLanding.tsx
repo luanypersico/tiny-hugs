@@ -38,6 +38,10 @@ type QuizAnswer = {
   regulated: boolean;
 };
 
+type DisplayedAnswer = QuizAnswer & {
+  label: string;
+};
+
 const PROFILE_NAMES: Record<Profile, string> = {
   ML: "A ARQUITETA DE SEGUNDA-FEIRA",
   IF: "A PERFECCIONISTA PARALISADA",
