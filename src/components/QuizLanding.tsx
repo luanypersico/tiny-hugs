@@ -72,27 +72,27 @@ const QUESTIONS: QuizQuestion[] = [
       "Segunda-feira chegou. Você decidiu que agora sua vida vai mudar. O que costuma acontecer primeiro?",
     options: [
       {
-        text: "“Eu monto uma rotina perfeita, escolho aplicativo, cor, horário e nome para o projeto.”",
+        text: "Eu monto uma rotina perfeita, escolho aplicativo, cor, horário e nome para o projeto.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Eu percebo que ainda preciso pesquisar mais antes de começar direito.”",
+        text: "Eu percebo que ainda preciso pesquisar mais antes de começar direito.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Eu faço uma coisinha, sinto que mereço descansar e desapareço no celular.”",
+        text: "Eu faço uma coisinha, sinto que mereço descansar e desapareço no celular.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Eu começo com força total porque dessa vez preciso compensar tudo o que não fiz.”",
+        text: "Eu começo com força total porque dessa vez preciso compensar tudo o que não fiz.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Eu escolho uma ação pequena e começo antes de transformar isso em um evento.”",
+        text: "Eu escolho uma ação pequena e começo antes de transformar isso em um evento.",
         profile: "ER",
         points: 0,
       },
@@ -104,27 +104,27 @@ const QUESTIONS: QuizQuestion[] = [
       "Existe uma tarefa importante que levaria vinte minutos. O que você faz?",
     options: [
       {
-        text: "“Abro o celular por cinco minutos e volto quarenta minutos depois.”",
+        text: "Abro o celular por cinco minutos e volto quarenta minutos depois.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Espero ter silêncio, energia e concentração suficientes para fazer bem.”",
+        text: "Espero ter silêncio, energia e concentração suficientes para fazer bem.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Organizo a lista de tarefas antes de começar a tarefa.”",
+        text: "Organizo a lista de tarefas antes de começar a tarefa.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Faço uma versão simples, mesmo sem estar com vontade.”",
+        text: "Faço uma versão simples, mesmo sem estar com vontade.",
         profile: "ER",
         points: 0,
       },
       {
-        text: "“Penso que agora já está tarde e decido começar amanhã cedo.”",
+        text: "Penso que agora já está tarde e decido começar amanhã cedo.",
         profile: "FE",
         points: 3,
       },
@@ -136,27 +136,27 @@ const QUESTIONS: QuizQuestion[] = [
       "Você falhou um dia na rotina. Qual é sua reação automática?",
     options: [
       {
-        text: "“Já que estraguei hoje, segunda-feira eu recomeço direito.”",
+        text: "Já que estraguei hoje, segunda-feira eu recomeço direito.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Procuro alguma coisa para me distrair da culpa.”",
+        text: "Procuro alguma coisa para me distrair da culpa.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Concluo que o plano não estava bom o suficiente.”",
+        text: "Concluo que o plano não estava bom o suficiente.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Crio uma rotina nova para substituir a rotina que eu não cumpri.”",
+        text: "Crio uma rotina nova para substituir a rotina que eu não cumpri.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Retomo na próxima ação sem transformar o erro em funeral.”",
+        text: "Retomo na próxima ação sem transformar o erro em funeral.",
         profile: "ER",
         points: 0,
       },
@@ -168,27 +168,27 @@ const QUESTIONS: QuizQuestion[] = [
       "Quando chega a hora de começar algo que realmente importa, qual palhaçada sua cabeça costuma inventar?",
     options: [
       {
-        text: "“Eu ainda não estou pronta.”",
+        text: "Eu ainda não estou pronta.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Preciso organizar tudo primeiro.”",
+        text: "Preciso organizar tudo primeiro.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Só vou descansar um pouco para começar melhor.”",
+        text: "Só vou descansar um pouco para começar melhor.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Hoje já não conta. Amanhã faço do jeito certo.”",
+        text: "Hoje já não conta. Amanhã faço do jeito certo.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Posso começar mal e melhorar enquanto faço.”",
+        text: "Posso começar mal e melhorar enquanto faço.",
         profile: "ER",
         points: 0,
       },
@@ -200,27 +200,27 @@ const QUESTIONS: QuizQuestion[] = [
       "Quando você vê outra pessoa avançando em algo que também queria fazer, o que acontece?",
     options: [
       {
-        text: "“Penso que ela provavelmente tinha mais preparo, dinheiro ou oportunidade.”",
+        text: "Penso que ela provavelmente tinha mais preparo, dinheiro ou oportunidade.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Eu me comparo, me sinto uma merda e procuro alguma distração.”",
+        text: "Eu me comparo, me sinto uma merda e procuro alguma distração.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Salvo mais conteúdos e monto outro plano para recuperar o atraso.”",
+        text: "Salvo mais conteúdos e monto outro plano para recuperar o atraso.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Decido que amanhã vou mudar tudo de uma vez.”",
+        text: "Decido que amanhã vou mudar tudo de uma vez.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Uso o desconforto para escolher uma ação real que cabe no meu dia.”",
+        text: "Uso o desconforto para escolher uma ação real que cabe no meu dia.",
         profile: "ER",
         points: 0,
       },
@@ -232,27 +232,27 @@ const QUESTIONS: QuizQuestion[] = [
       "Qual é sua relação com planners, listas, aplicativos e métodos de produtividade?",
     options: [
       {
-        text: "“Eu amo montar o sistema. Cumprir o sistema já é outra história.”",
+        text: "Eu amo montar o sistema. Cumprir o sistema já é outra história.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Continuo procurando o método perfeito que finalmente vai funcionar comigo.”",
+        text: "Continuo procurando o método perfeito que finalmente vai funcionar comigo.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Uso por alguns dias e abandono quando perde a novidade.”",
+        text: "Uso por alguns dias e abandono quando perde a novidade.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Compro ou crio outro toda vez que decido recomeçar.”",
+        text: "Compro ou crio outro toda vez que decido recomeçar.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Uso somente o suficiente para lembrar o que precisa ser feito.”",
+        text: "Uso somente o suficiente para lembrar o que precisa ser feito.",
         profile: "ER",
         points: 0,
       },
@@ -263,27 +263,27 @@ const QUESTIONS: QuizQuestion[] = [
     question: "O prazo ainda está longe. O que você costuma fazer?",
     options: [
       {
-        text: "“Escolho o alívio de agora e deixo a pressão para minha versão do futuro.”",
+        text: "Escolho o alívio de agora e deixo a pressão para minha versão do futuro.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Espero ter clareza suficiente para fazer sem errar.”",
+        text: "Espero ter clareza suficiente para fazer sem errar.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Divido a tarefa em tantas partes que gasto mais tempo planejando do que fazendo.”",
+        text: "Divido a tarefa em tantas partes que gasto mais tempo planejando do que fazendo.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Deixo acumular até precisar de um recomeço desesperado.”",
+        text: "Deixo acumular até precisar de um recomeço desesperado.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Faço uma parte pequena enquanto ainda existe espaço para respirar.”",
+        text: "Faço uma parte pequena enquanto ainda existe espaço para respirar.",
         profile: "ER",
         points: 0,
       },
@@ -294,27 +294,27 @@ const QUESTIONS: QuizQuestion[] = [
     question: "Qual frase você já usou para encobrir sua procrastinação?",
     options: [
       {
-        text: "“Eu só preciso me organizar melhor.”",
+        text: "Eu só preciso me organizar melhor.",
         profile: "ML",
         points: 3,
       },
       {
-        text: "“Eu funciono melhor quando tenho certeza do que estou fazendo.”",
+        text: "Eu funciono melhor quando tenho certeza do que estou fazendo.",
         profile: "IF",
         points: 3,
       },
       {
-        text: "“Depois eu faço. Agora estou cansada.”",
+        text: "Depois eu faço. Agora estou cansada.",
         profile: "SE",
         points: 3,
       },
       {
-        text: "“Na próxima semana vou começar direito.”",
+        text: "Na próxima semana vou começar direito.",
         profile: "FE",
         points: 3,
       },
       {
-        text: "“Não estou motivada, mas ainda consigo fazer uma parte.”",
+        text: "Não estou motivada, mas ainda consigo fazer uma parte.",
         profile: "ER",
         points: 0,
       },
