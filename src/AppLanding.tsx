@@ -358,15 +358,15 @@ function App() {
 
                 <div aria-hidden className="ember-rule mb-10" />
 
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 sm:mb-8">O que você recebe:</h3>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 sm:mb-8">O que você recebe no eBook (100+ páginas de impacto):</h3>
 
                 <div className="space-y-5 sm:space-y-7">
                   {[
+                    { strong: 'Conteúdo Masterclass em Texto:', rest: ' Mais de 100 páginas escritas com profundidade visceral e técnica literária profissional.' },
+                    { strong: 'Sumário Estruturado:', rest: ' Uma jornada lógica do confronto à ressurreição, dividida em 3 fases críticas.' },
+                    { strong: 'Proteção Anti-Pirataria Digital:', rest: ' Sistema de marca d\'água dinâmico vinculado ao seu CPF/E-mail para garantir exclusividade.' },
                     { strong: 'O método de 14 dias mais visceral, honesto e sujo de bonito', rest: ' que você vai ver ainda esse ano' },
                     { strong: 'Um espaço para desenterrar tudo', rest: ' que você esconde até de você mesma' },
-                    { strong: 'Perguntas que vão travar sua garganta,', rest: ' mas abrir sua clareza' },
-                    { strong: 'Exercícios que vão curar a mulher', rest: ' que você zoa para ninguém perceber que dói' },
-                    { strong: 'Opção de versão digital ou impressa,', rest: ' porque até a forma de se curar é escolha sua' },
                   ].map((item, index) => (
                     <Reveal key={item.strong} delay={index * 90} from="left">
                       <div className="flex items-start gap-4">
@@ -487,8 +487,8 @@ function App() {
                   {/* Text Content */}
                   <div className="order-2 lg:order-1">
                     <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed mb-6 sm:mb-8">
-                      Além do ME AMO, MAS ME ODEIO™, você vai ganhar o e-book que irá
-                      <span className="text-[#7fae8e] font-semibold"> reconstruir sua autoestima</span>.
+                      Além do ME AMO, MAS ME ODEIO™, você vai ganhar o eBook Bônus exclusivo, totalmente revisado e estruturado, que irá
+                      <span className="text-[#7fae8e] font-semibold"> reconstruir sua autoestima de forma definitiva</span>.
                     </p>
 
                     <div aria-hidden className="ember-rule mb-6 sm:mb-8" />
@@ -592,9 +592,9 @@ function App() {
                     {/* Features */}
                     <div className="space-y-4 sm:space-y-5 mb-8 sm:mb-10">
                       {[
-                        "Plano + comandos diários",
-                        "Acesso vitalício\u00a0",
-                        "Reconstrução de autoestima em 5 dias"
+                        "Plano + comandos diários (100+ págs)",
+                        "Acesso vitalício com proteção digital",
+                        "Guia de reconstrução de autoestima"
                       ].map((feature, index) => (
                         <div key={index} className="flex items-start gap-3 sm:gap-4">
                           <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-[#7fae8e] to-[#3f6b55] rounded-full flex items-center justify-center mt-0.5">
