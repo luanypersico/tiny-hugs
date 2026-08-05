@@ -1165,13 +1165,12 @@ export default function QuizLanding() {
                              }
 
                             return displayedAnswers.slice(0, 3).map((ans, idx) => (
-                              <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
-                                {(ans as any).secondaryLabel && (
-                                  <span className="text-[9px] uppercase tracking-widest text-[#8f2f3f] font-black italic">
-                                    {(ans as any).secondaryLabel}
-                                  </span>
-                                )}
-                                <p className="text-sm text-white/40 uppercase tracking-widest font-bold">Você marcou que…</p>
+                               <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
+                                 {(ans as any).label && (
+                                   <p className="text-sm text-white/40 uppercase tracking-widest font-bold">
+                                     {(ans as any).label}
+                                   </p>
+                                 )}
                                 <p className="text-white italic text-lg leading-tight">“{ans.answer}”</p>
                               </div>
                             ));
