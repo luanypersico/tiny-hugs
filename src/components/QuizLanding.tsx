@@ -169,6 +169,7 @@ const TRANSITIONS = [
 
 export default function QuizLanding() {
   const [step, setStep] = useState<"intro" | "quiz" | "transition" | "processing" | "lead" | "result">("intro");
+  const [formData, setFormData] = useState({ name: "", contact: "" });
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState({ ML: 0, IF: 0, SE: 0, FE: 0, ER: 0 });
   const [activeTransition, setActiveTransition] = useState<any>(null);
