@@ -131,14 +131,16 @@ function App() {
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="surface-noir rounded-3xl p-6 sm:p-8 lg:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto">
-                <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              <div className="surface-noir rounded-3xl p-10 sm:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto border-[#d4726a]/10">
+                <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+                  <div className="h-1 w-12 bg-[#d4726a] rounded-full" />
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                     Oi, eu sou você.
                   </h2>
+                  <div className="h-1 w-12 bg-[#d4726a] rounded-full" />
                 </div>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed">
-                  <strong className="text-white drop-shadow-sm">Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir.</strong>
+                <p className="text-xl sm:text-2xl lg:text-3xl text-[#c8c0ba] leading-relaxed font-light">
+                  <span className="text-white font-medium italic">"Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir."</span>
                 </p>
               </div>
             </Reveal>
