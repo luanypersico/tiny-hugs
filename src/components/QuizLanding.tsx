@@ -50,8 +50,10 @@ type QuizProgress = {
 };
 
 const QUESTIONS: QuizQuestion[] = [
-...
-    options: [
+  {
+    id: 1,
+    question:
+      "A conversa está boa. A pessoa deixa claro que está interessada em você. Qual merda começa a acontecer na sua cabeça?",
       {
         text: "Começo a pensar no que devo fazer para ela continuar gostando.",
         profile: "ML",
