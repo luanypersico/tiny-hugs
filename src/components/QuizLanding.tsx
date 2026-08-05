@@ -210,7 +210,7 @@ export default function QuizLanding() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-8 max-w-2xl">
               <h1 className="text-4xl md:text-6xl font-black text-white italic uppercase leading-none tracking-tighter">QUAL PERSONAGEM EMOCIONAL ESTÁ SABOTANDO A SUA VIDA?</h1>
               <p className="text-xl italic text-white/70">Responda 14 perguntas e descubra o padrão que faz você se abandonar.</p>
-              <button onClick={() => setStep("quiz")} className="bg-[#8f2f3f] text-white px-12 py-6 rounded-full text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all">COMEÇAR O CONFRONTO</button>
+              <button onClick={() => setStep("quiz")} className="w-full md:w-auto bg-[#8f2f3f] text-white px-10 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_0_30px_-5px_rgba(143,47,63,0.5)]">COMEÇAR O CONFRONTO</button>
             </motion.div>
           )}
 
