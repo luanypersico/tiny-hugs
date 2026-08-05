@@ -86,7 +86,7 @@ function App() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight tracking-tight">
-              <span className="block mb-2 sm:mb-4">14 dias pra se confrontar,</span>
+              <span className="block mb-2 sm:mb-4">Plano de 14 dias pra se confrontar,</span>
               <span className="block mb-2 sm:mb-4">quebrar a porra da</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b98aa8] via-[#d4726a] to-[#b98aa8]">
                 procrastinação emocional
@@ -151,13 +151,13 @@ function App() {
                 <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed">
                   <p>Todo mundo diz que você tem "uma energia boa".</p>
                   <p>Mas ninguém te vê quando você tenta se justificar por não conseguir levantar da cama.</p>
-                  <p className="text-[#d4726a] font-semibold text-lg sm:text-xl">Você se ama, mas se odeia em silêncio. Se sabota com classe. Foge quando começa a dar certo.</p>
+                  <p className="text-[#d4726a] font-semibold text-lg sm:text-xl">Você se ama, mas se odeia em silêncio. Se sabota com classe. Foge sempre quando começa a dar certo.</p>
                 </div>
               </div>
               <div className="bg-gradient-to-br from-[#210d15]/30 to-black/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#d4726a]/25 shadow-2xl">
                 <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl text-[#c8c0ba] leading-relaxed">
                   <p>E no fundo, já cansou de viver repetindo os mesmos ciclos de abandono disfarçado de independência.</p>
-                  <p className="text-[#b98aa8] font-semibold text-lg sm:text-xl">Essa porra aqui não é um planner. Não é um PDF com frase fofa.</p>
+                  <p className="text-[#b98aa8] font-semibold text-lg sm:text-xl">Essa porra aqui não é um planner. Não é um PDFZINHO com frase fofa.</p>
                   <p className="text-white font-bold text-xl sm:text-2xl">É UM PROCESSO DE RESSURREIÇÃO.</p>
                 </div>
               </div>
@@ -293,7 +293,7 @@ function App() {
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                   <p className="text-[#c8c0ba] text-base sm:text-lg lg:text-xl leading-relaxed">
-                    <strong className="text-white">O método de 14 dias mais visceral, honesto e sujo de bonito</strong> que você vai ver esse ano
+                    <strong className="text-white">O método de 14 dias mais visceral, honesto e sujo de bonito</strong> que você vai ver ainda esse ano
                   </p>
                 </div>
                 
@@ -541,8 +541,8 @@ function App() {
                   {/* Features */}
                   <div className="space-y-4 sm:space-y-5 mb-8 sm:mb-10">
                     {[
-                      "PDF + comandos diários",
-                      "Acesso vitalício ao e-book", 
+                      "Plano + comandos diários",
+                      "Acesso vitalício\u00a0", 
                       "Reconstrução de autoestima em 5 dias"
                     ].map((feature, index) => (
                       <div key={index} className="flex items-start gap-3 sm:gap-4">
@@ -617,7 +617,7 @@ function App() {
                   <div className="space-y-4 sm:space-y-5 mb-8 sm:mb-10">
                     {[
                       "Tudo da versão básica",
-                      "Acesso vitalício ao e-book",
+                      "Acesso vitalício ao Plano de 14 dias",
                       "Reconstrução de autoestima em 5 dias",
                       "14 dias pra esmurrar sua insegurança emocional",
                       "Método pra parar de correr quando alguém gosta de você",
