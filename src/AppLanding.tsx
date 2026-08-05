@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check, FileText } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Heart, BookOpen, Download, CheckCircle, ArrowRight, Zap, AlertTriangle, Star, Sparkles, Crown, Diamond, ChevronDown, ChevronUp, HelpCircle, Brain, Ban, ShieldAlert, X, Check, FileText, MousePointer2 } from 'lucide-react';
 import { EBOOK_CONTENT } from '@/lib/ebook-content.server';
 import ShaderBackground from '@/components/ShaderBackground';
 import SocialProofSection from '@/components/SocialProofSection';
@@ -30,13 +30,32 @@ const SectionKicker: React.FC<SectionKickerProps> = ({ label, index }) => (
 function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedVersion, setSelectedVersion] = useState<'digital' | 'print' | null>(null);
+  const [activeTab, setActiveTab] = useState<'problema' | 'metodo' | 'bonus'>('problema');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const scrollToAction = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#040308] relative overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#040308] relative overflow-x-hidden selection:bg-[#8f2f3f] selection:text-white">
+      {/* Dynamic Cursor Spotlight */}
+      <div 
+        aria-hidden
+        className="fixed inset-0 pointer-events-none z-[100] opacity-30 mix-blend-soft-light transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 114, 106, 0.15), transparent 80%)`
+        }}
+      />
+
       {/* Animated Shader Background */}
       <ShaderBackground />
 
@@ -100,26 +119,28 @@ function App() {
             </h1>
 
             <Reveal delay={120}>
-              <div className="max-w-4xl mx-auto mb-10 sm:mb-14">
-                <p className="text-xl sm:text-2xl md:text-3xl text-[#c8c0ba] mb-4 sm:mb-6 font-light leading-relaxed">
+              <div className="max-w-4xl mx-auto mb-10 sm:mb-14 px-4">
+                <p className="text-xl sm:text-2xl md:text-4xl text-[#c8c0ba] mb-4 sm:mb-6 font-light leading-tight tracking-tight">
                   Ou você encara seus monstros de frente...
                 </p>
-                <div aria-hidden className="ember-rule mx-auto max-w-md my-6 sm:my-8" />
-                <p className="text-xl sm:text-2xl md:text-3xl text-white font-medium leading-relaxed">
-                  Ou continua chamando de "jeito difícil de amar" só porque tem medo de ser rejeitada por inteiro.
+                <div aria-hidden className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-[#d4726a] to-transparent my-10 sm:my-14" />
+                <p className="text-2xl sm:text-3xl md:text-5xl text-white font-medium leading-tight tracking-tighter">
+                  Ou continua chamando de <span className="text-[#d4726a] italic">"jeito difícil de amar"</span> só porque tem medo de ser rejeitada por inteiro.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={80}>
-              <div className="surface-noir rounded-3xl p-6 sm:p-8 lg:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto">
-                <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              <div className="surface-noir rounded-3xl p-10 sm:p-14 mb-10 sm:mb-14 max-w-4xl mx-auto border-[#d4726a]/10">
+                <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+                  <div className="h-1 w-12 bg-[#d4726a] rounded-full" />
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                     Oi, eu sou você.
                   </h2>
+                  <div className="h-1 w-12 bg-[#d4726a] rounded-full" />
                 </div>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#c8c0ba] leading-relaxed">
-                  <strong className="text-white drop-shadow-sm">Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir.</strong>
+                <p className="text-xl sm:text-2xl lg:text-3xl text-[#c8c0ba] leading-relaxed font-light">
+                  <span className="text-white font-medium italic">"Ou melhor... Eu sou a parte que você esconde. A que pensa merda antes de dormir."</span>
                 </p>
               </div>
             </Reveal>
@@ -128,13 +149,14 @@ function App() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <button
                   onClick={scrollToAction}
-                  className="group relative bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-bold py-6 sm:py-8 px-12 sm:px-20 rounded-full text-xl sm:text-2xl transition-all duration-700 transform hover:scale-[1.03] shadow-[0_20px_50px_-10px_rgba(143,47,63,0.6)] border border-white/20 w-full sm:w-auto"
+                  className="group relative overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 sm:py-10 px-16 sm:px-24 rounded-2xl text-2xl sm:text-3xl transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_80px_-10px_rgba(143,47,63,0.5)] border border-white/20 w-full sm:w-auto uppercase tracking-tighter"
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    QUERO ME CONFRONTAR AGORA
-                    <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:translate-x-2 transition-transform duration-300" />
+                  <span className="relative z-10 flex items-center justify-center gap-4">
+                    COMEÇAR O CONFRONTO
+                    <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
                   </span>
-                  <div aria-hidden className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  {/* Glossy sweep effect */}
+                  <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-[45deg] -translate-x-[200%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
                 </button>
               </div>
             </Reveal>
@@ -307,13 +329,16 @@ function App() {
               },
             ].map((card, index) => (
               <Reveal key={card.title} delay={index * 110}>
-                <div className="group relative surface-noir rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full overflow-hidden transition-all duration-700 hover:-translate-y-2">
-                  <span aria-hidden className="index-numeral pointer-events-none absolute -right-2 -top-4 text-7xl sm:text-8xl select-none opacity-70">
+                <div className="group relative surface-noir rounded-2xl sm:rounded-3xl p-8 sm:p-10 h-full overflow-hidden transition-all duration-700 hover:-translate-y-2 border-white/5 hover:border-[#d4726a]/30">
+                  <span aria-hidden className="index-numeral pointer-events-none absolute -right-2 -top-4 text-8xl sm:text-9xl select-none opacity-40">
                     {card.numeral}
                   </span>
-                  <div aria-hidden className="absolute inset-x-0 -top-24 h-40 bg-[radial-gradient(ellipse_at_center,rgba(212,114,106,0.22),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#8f2f3f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="relative">
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">{card.title}</h3>
+                    <div className="mb-6 sm:mb-8 text-[#d4726a] group-hover:scale-110 transition-transform duration-500 origin-left">
+                      {card.icon}
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-black text-white mb-6 uppercase tracking-tight">{card.title}</h3>
                     {card.body}
                   </div>
                 </div>
@@ -555,104 +580,87 @@ function App() {
               </Reveal>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              {/* Versão Única */}
+            <div className="max-w-4xl mx-auto">
+              {/* Versão Única - Ultra Premium */}
               <Reveal from="up">
-                <div className="group relative surface-noir rounded-3xl border-2 border-[#d4726a]/30 hover:border-[#d4726a]/50 transition-all duration-700 hover:-translate-y-1 overflow-hidden">
-                  <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-[#a9414a]/15 via-[#5b3a63]/10 to-[#a9414a]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-                  <div className="relative p-8 sm:p-10 lg:p-12">
-                    {/* Header */}
-                    <div className="text-center mb-8 sm:mb-10">
-                      <div className="relative mb-6 sm:mb-8">
-                        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#a9414a]/30 to-[#5b3a63]/30 rounded-full blur-xl ember-breathe"></div>
-                        <BookOpen className="relative w-16 h-16 sm:w-20 sm:h-20 text-[#d4726a] mx-auto" />
-                      </div>
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                        PLANO COMPLETO - 14 DIAS
-                      </h3>
-                      <p className="text-base sm:text-lg text-[#9a908a] mb-6 sm:mb-8">Para quem não aceita mais migalhas emocionais</p>
-
-                      {/* Price */}
-                      <div className="relative">
-                        <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4726a] via-[#b98aa8] to-[#d4726a] mb-2 ember-glow">
-                          R$ 29,90
-                        </div>
-                        <div className="text-sm sm:text-base text-[#7a716c] tracking-[0.18em] uppercase">pagamento único</div>
+                <div className="group/card relative surface-noir rounded-3xl border border-white/10 hover:border-[#8f2f3f]/50 transition-all duration-700 shadow-[0_0_100px_-30px_rgba(143,47,63,0.3)] overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#8f2f3f]/30 to-transparent blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000" />
+                  
+                  <div className="relative p-8 sm:p-12 lg:p-16">
+                    {/* Badge */}
+                    <div className="absolute top-8 right-8 hidden sm:block">
+                      <div className="bg-[#8f2f3f] text-white px-6 py-2 rounded-full text-xs font-black tracking-[0.2em] uppercase shadow-2xl">
+                        OFERTA EXCLUSIVA
                       </div>
                     </div>
 
-                    <div aria-hidden className="ember-rule mb-8" />
+                    <div className="flex flex-col lg:flex-row gap-12 items-center">
+                      {/* Left: Product Info */}
+                      <div className="flex-1 text-center lg:text-left">
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 uppercase tracking-tighter leading-none">
+                          PLANO COMPLETO <br className="hidden lg:block" /> 14 DIAS
+                        </h3>
+                        <p className="text-[#c8c0ba] text-lg lg:text-xl mb-8 font-light italic">
+                          "O fim da personagem 'mulher legal'."
+                        </p>
 
-                    {/* Features */}
-                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-8 sm:mb-10">
-                      {[
-                        "Plano + comandos diários (100+ págs)",
-                        "Acesso vitalício ao conteúdo",
-                        "Reconstruction de autoestima",
-                        "Esmurre sua insegurança emocional",
-                        "Método para parar de fugir",
-                        "Tarefas de alto impacto",
-                        "Perguntas que desmontam o medo",
-                        "Reforço comportamental",
-                        "Declaração da Nova Identidade"
-                      ].map((feature, index) => (
-                        <div key={index} className="flex items-start gap-3 sm:gap-4">
-                          <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r from-[#d4726a] to-[#5b3a63] rounded-full flex items-center justify-center mt-0.5">
-                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                          </div>
-                          <span className="text-[#c8c0ba] text-base sm:text-lg leading-relaxed">{feature}</span>
+                        <div className="flex items-center justify-center lg:justify-start gap-4 mb-2">
+                          <span className="text-[#c8c0ba] text-2xl line-through opacity-40">R$ 97,00</span>
+                          <span className="text-5xl sm:text-6xl lg:text-8xl font-black text-white tracking-tighter ember-glow">
+                            R$ 29,90
+                          </span>
                         </div>
-                      ))}
+                        <div className="text-[#d4726a] font-black tracking-[0.3em] text-xs uppercase mb-10">pagamento único e acesso vitalício</div>
+                        
+                        <button
+                          onClick={() => window.open('https://pay.hotmart.com/YOUR_LINK', '_blank')}
+                          className="group relative w-full overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 rounded-2xl text-xl sm:text-2xl transition-all duration-500 shadow-[0_20px_60px_-15px_rgba(143,47,63,0.6)] uppercase tracking-tighter"
+                        >
+                          <span className="relative z-10 flex items-center justify-center gap-4">
+                            QUERO ME TORNAR IRRECONHECÍVEL
+                            <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
+                          </span>
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                        </button>
+                      </div>
+
+                      {/* Right: Feature List */}
+                      <div className="flex-1 w-full sm:w-auto">
+                        <div className="space-y-4">
+                          {[
+                            "Plano + comandos diários (100+ págs)",
+                            "Acesso vitalício ao conteúdo",
+                            "Reconstruction de autoestima",
+                            "Esmurre sua insegurança emocional",
+                            "Método para parar de fugir",
+                            "Tarefas de alto impacto",
+                            "Perguntas que desmontam o medo",
+                            "Reforço comportamental",
+                            "Declaração da Nova Identidade"
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-4 group/item">
+                              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#8f2f3f]/10 flex items-center justify-center group-hover/item:bg-[#8f2f3f]/30 transition-colors duration-500">
+                                <Check className="w-4 h-4 text-[#d4726a]" strokeWidth={3} />
+                              </div>
+                              <span className="text-[#c8c0ba] text-lg font-light group-hover/item:text-white transition-colors duration-300">
+                                {feature}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
 
-                    {/* CTA Button */}
-                    <button
-                      onClick={() => setSelectedVersion('print')}
-                      className={`w-full relative overflow-hidden rounded-2xl font-bold text-base sm:text-lg py-4 sm:py-5 px-6 sm:px-8 transition-all duration-500 transform hover:scale-[1.02] ${
-                        selectedVersion === 'print'
-                          ? 'bg-gradient-to-r from-[#a9414a] to-[#4a2350] text-white shadow-2xl shadow-[#a9414a]/50 scale-[1.02]'
-                          : 'bg-gradient-to-r from-[#8f2f3f]/80 to-[#4a2350]/80 text-white hover:from-[#a9414a] hover:to-[#5b3a63] shadow-xl hover:shadow-[#a9414a]/30'
-                      }`}
-                    >
-                      <span className="relative z-10 inline-flex items-center justify-center gap-2">
-                        {selectedVersion === 'print' && <Check className="w-5 h-5" strokeWidth={2} />}
-                        {selectedVersion === 'print' ? 'SELECIONADO!' : 'QUERO ME TORNAR IRRECONHECÍVEL'}
-                      </span>
-                      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-
-                    {/* Footer */}
-                    <div className="mt-6 sm:mt-8 text-center border-t border-white/10 pt-6 sm:pt-8">
-                      <p className="text-[#9a908a] text-sm sm:text-base italic mb-3 sm:mb-4 leading-relaxed">
-                        "Para quem não quer mais fingir que está bem."
-                      </p>
+                    {/* Trust Badges */}
+                    <div className="mt-16 flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-[#9a908a]">
+                      <div className="flex items-center gap-3"><ShieldAlert className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Pagamento 100% Seguro</span></div>
+                      <div className="flex items-center gap-3"><Zap className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Acesso Imediato</span></div>
+                      <div className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-[#d4726a]" /> <span className="text-[10px] font-black tracking-[0.2em] uppercase">Garantia Incondicional</span></div>
                     </div>
                   </div>
                 </div>
               </Reveal>
             </div>
-
-            {/* Trust indicators */}
-            <Reveal delay={80}>
-              <div className="text-center mt-14 sm:mt-20">
-                <div className="inline-flex items-center gap-4 sm:gap-6 lg:gap-8 surface-noir rounded-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-4xl mx-auto flex-wrap justify-center">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-3 h-3 bg-[#7fae8e] rounded-full"></div>
-                    <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Pagamento Seguro</span>
-                  </div>
-                  <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#7fae8e]" />
-                    <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Acesso Imediato</span>
-                  </div>
-                  <div className="w-px h-6 bg-[#3a3439] hidden sm:block"></div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <span className="text-[#c8c0ba] text-sm sm:text-base font-medium">Garantia Total</span>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
@@ -799,12 +807,15 @@ function App() {
             </Reveal>
 
             <Reveal delay={40}>
-              <button className="group relative bg-gradient-to-r from-[#8f2f3f] via-[#4a2350] to-[#8f2f3f] hover:from-[#a9414a] hover:via-[#5b3a63] hover:to-[#a9414a] text-white font-bold py-6 sm:py-8 px-8 sm:px-16 rounded-full text-xl sm:text-2xl transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-[#a9414a]/50 mb-10 sm:mb-14 border border-[#d4726a]/30">
-                <span className="relative z-10 flex items-center gap-3 sm:gap-4">
+              <button 
+                onClick={scrollToAction}
+                className="group relative overflow-hidden bg-[#8f2f3f] hover:bg-[#a9414a] text-white font-black py-8 sm:py-10 px-12 sm:px-20 rounded-2xl text-xl sm:text-3xl transition-all duration-500 transform hover:scale-[1.02] shadow-[0_0_80px_-10px_rgba(143,47,63,0.5)] border border-white/20 w-full sm:w-auto uppercase tracking-tighter"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-4">
                   ME ENTREGA ESSE ESTALO AGORA
-                  <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 group-hover:translate-x-3 transition-transform duration-300" />
+                  <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" />
                 </span>
-                <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#d4726a]/30 to-[#b98aa8]/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
             </Reveal>
 
