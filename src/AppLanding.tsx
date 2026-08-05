@@ -46,7 +46,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#040308] relative overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#040308] relative overflow-x-hidden selection:bg-[#8f2f3f] selection:text-white">
+      {/* Dynamic Cursor Spotlight */}
+      <div 
+        aria-hidden
+        className="fixed inset-0 pointer-events-none z-[100] opacity-30 mix-blend-soft-light transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 114, 106, 0.15), transparent 80%)`
+        }}
+      />
+
       {/* Animated Shader Background */}
       <ShaderBackground />
 
