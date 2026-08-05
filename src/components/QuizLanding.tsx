@@ -1093,8 +1093,8 @@ export default function QuizLanding() {
                           </div>
                           <p className="text-white/70 leading-relaxed italic whitespace-pre-line">{result.desc}</p>
                          <div className="pt-6 border-t border-white/5 space-y-4">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-[#8f2f3f] font-black">Padrão Central</p>
-                            <p className="text-white font-bold italic text-lg">{result.pattern}</p>
+                             <p className="text-[10px] uppercase tracking-[0.2em] text-[#A8283D] font-black">A DESCULPA PODRE</p>
+                             <p className="text-white font-bold italic text-lg">{result.pattern}</p>
                          </div>
                        </div>
 
