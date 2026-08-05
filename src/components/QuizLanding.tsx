@@ -746,7 +746,11 @@ export default function QuizLanding() {
 
   return (
     <div className="min-h-screen bg-[#090909] text-[#F2EDE5] font-sans selection:bg-[#9B2636] selection:text-white">
-      <main className="mx-auto w-full max-w-[520px] px-6 py-12 sm:px-8 sm:py-16">
+      <main
+        className={`mx-auto w-full px-6 py-12 sm:px-8 sm:py-16 ${
+          step === "result" ? "max-w-[1120px]" : "max-w-[520px]"
+        }`}
+      >
         <AnimatePresence mode="wait">
           {step === "intro" && (
             <motion.div 
@@ -1060,7 +1064,7 @@ export default function QuizLanding() {
                  const result = content[resCode] || content.ER;
 
                  return (
-                    <div className="space-y-16">
+                    <div className="mx-auto w-full max-w-4xl space-y-12 pb-20">
                       <div className="flex justify-center">
                         <button onClick={restartQuiz} className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/30 hover:text-[#8f2f3f] transition-colors font-black">
                           <RotateCcw className="w-3 h-3" />
@@ -1300,7 +1304,7 @@ export default function QuizLanding() {
                          </div>
                        </div>
 
-                       // TODO: adicionar condição de acesso, preço e checkout após aprovação completa da oferta.
+                       
                        
                        <section className="space-y-12 pt-16 border-t border-white/5">
                          <div className="space-y-6">
@@ -1534,7 +1538,7 @@ export default function QuizLanding() {
                            </div>
 
                            <div className="space-y-12 pt-16 border-t border-white/5">
-                             // TODO: conectar o checkout somente após a criação e revisão final da apostila.
+                             {/* TODO: conectar o checkout somente após a criação e revisão final da apostila. */}
                              <div className="space-y-6">
                                <p className="text-sm text-[#A8283D] font-black uppercase tracking-[0.2em]">CONDIÇÃO DE ACESSO</p>
                                <h3 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter leading-none">
