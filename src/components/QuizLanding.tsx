@@ -174,7 +174,7 @@ export default function QuizLanding() {
   const [activeTransition, setActiveTransition] = useState<any>(null);
 
   const handleAnswer = (option: any) => {
-    setScores(prev => ({ ...prev, [option.code]: prev[option.code] + option.points }));
+    setScores(prev => ({ ...prev, [option.code]: (prev as any)[option.code] + option.points }));
     
     const nextQ = currentQuestion + 1;
     const transition = TRANSITIONS.find(t => t.after === nextQ);
