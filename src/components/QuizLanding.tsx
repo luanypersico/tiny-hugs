@@ -749,34 +749,54 @@ export default function QuizLanding() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0807] text-[#c8c0ba] font-sans selection:bg-[#8f2f3f] selection:text-white overflow-x-hidden overflow-y-auto">
-      <div className="fixed inset-0 z-0"><ShaderBackground /></div>
-      <main className="relative z-10 min-h-screen flex items-center justify-center p-4 md:p-6 w-full max-w-full py-20">
+    <div className="relative min-h-screen bg-[#090909] text-[#F2EDE5] font-sans selection:bg-[#9B2636] selection:text-white">
+      <main className="relative z-10 min-h-screen w-full flex flex-col items-center pt-16 pb-20 px-6">
         <AnimatePresence mode="wait">
           {step === "intro" && (
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-10 max-w-2xl px-4">
-              <div className="space-y-4">
-                <span className="kicker !text-[#8f2f3f]">UM CONFRONTO PARA QUEM ESTÁ CANSADA DE RECOMEÇAR</span>
-                <h1 className="text-4xl md:text-7xl font-black text-white italic uppercase leading-[0.85] tracking-tighter">
-                  VOCÊ MONTA UMA VIDA NOVA TODA SEGUNDA-FEIRA. <br />
-                  <span className="text-white/40">E ENTERRA A PORRA TODA ANTES DE CHEGAR NO FIM DA SEMANA.</span>
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              className="w-full max-w-[520px] text-left space-y-8"
+            >
+              <div className="space-y-2">
+                <span className="block text-[11px] font-sans font-bold uppercase tracking-[0.15em] text-[#9B2636]">
+                  CANSADA DE RECOMEÇAR?
+                </span>
+                <h1 className="text-[clamp(38px,10vw,54px)] font-serif font-bold text-[#F2EDE5] leading-[0.98] tracking-tight">
+                  VOCÊ MONTA UMA VIDA NOVA TODA SEGUNDA-FEIRA.
                 </h1>
+                <h2 className="text-[clamp(28px,8vw,42px)] font-sans font-bold text-[#9B2636] leading-[1.02] tracking-tight">
+                  E ENTERRA A PORRA TODA ANTES DE SEXTA.
+                </h2>
               </div>
               
-              <div className="space-y-6 max-w-lg mx-auto">
-                <p className="text-lg md:text-xl italic text-white/70 leading-tight">
-                  Você planeja. Organiza. Salva vídeo. Monta rotina. Promete que agora vai. Então chega a hora de fazer. Você adia por dez minutos. Pega o celular. Espera a vontade aparecer. Perde um dia. E transforma um dia ruim em mais uma semana jogada no lixo.
+              <div className="space-y-6">
+                <p className="text-[18px] leading-[1.55] text-[#F2EDE5]">
+                  Você planeja, organiza e promete que agora vai.
                 </p>
-                <p className="text-sm uppercase tracking-widest text-[#8f2f3f] font-black">
-                  Depois diz que está sem autoestima. Mas como você vai confiar em si mesma se vive quebrando a própria palavra? Este quiz não vai perguntar qual rotina combina com sua personalidade. Ele vai mostrar qual hábito podre continua enterrando seus planos.
+                <p className="text-[18px] leading-[1.55] text-[#F2EDE5]">
+                  Aí adia por dez minutos, pega o celular e transforma um dia ruim em outra semana perdida.
+                </p>
+                <p className="text-[18px] leading-[1.55] text-[#A59F98] font-bold">
+                  Este quiz revela qual hábito podre está enterrando seus planos.
                 </p>
               </div>
 
-              <div className="pt-6 space-y-4">
-                <button onClick={() => setStep("quiz")} className="w-full md:w-auto bg-[#8f2f3f] text-white px-12 py-7 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]">
+              <div className="pt-4 space-y-6">
+                <button 
+                  onClick={() => setStep("quiz")} 
+                  className="w-full h-[60px] bg-[#9B2636] text-white rounded-md text-lg uppercase font-bold tracking-tight hover:brightness-110 transition-all active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white outline-none flex items-center justify-center px-4 text-center"
+                >
                   DESCOBRIR QUAL MERDA EU REPITO
                 </button>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white/20">14 situações reais. Menos de quatro minutos. Isso não é avaliação psicológica ou médica.</p>
+                <div className="space-y-2 text-center">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#A59F98]">
+                    14 situações reais • menos de 4 minutos
+                  </p>
+                  <p className="text-[10px] text-[#A59F98]/50 uppercase tracking-widest">
+                    Isso não é avaliação psicológica ou médica.
+                  </p>
+                </div>
               </div>
             </motion.div>
           )}
