@@ -38,6 +38,22 @@ type QuizAnswer = {
   regulated: boolean;
 };
 
+const PROFILE_NAMES: Record<Profile, string> = {
+  ML: "A ARQUITETA DE SEGUNDA-FEIRA",
+  IF: "A PERFECCIONISTA PARALISADA",
+  SE: "A VICIADA EM ALÍVIO IMEDIATO",
+  FE: "A RECOMEÇADORA COMPULSIVA",
+  ER: "A MULHER QUE ESTÁ RECONSTRUINDO A PRÓPRIA PALAVRA",
+};
+
+const PROFILE_HEADLINES: Record<Profile, string> = {
+  ML: "Você planeja uma vida foda e executa uma desculpa por dia.",
+  IF: "Você chama de perfeccionismo. Muitas vezes é medo usando roupa bonita.",
+  SE: "Você troca o próprio futuro por alguns minutos de alívio.",
+  FE: "Você não aprendeu a continuar. Só ficou muito boa em recomeçar.",
+  ER: "Você está começando a provar que sua palavra ainda vale alguma coisa.",
+};
+
 type QuizProgress = {
   step: "intro" | "quiz" | "transition" | "processing" | "lead" | "result";
   currentQuestion: number;
@@ -53,30 +69,30 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question:
-      "A conversa está boa. A pessoa deixa claro que está interessada em você. Qual merda começa a acontecer na sua cabeça?",
+      "Segunda-feira chegou. Você decidiu que agora sua vida vai mudar. O que costuma acontecer primeiro?",
     options: [
       {
-        text: "Começo a pensar no que devo fazer para ela continuar gostando.",
+        text: "“Eu monto uma rotina perfeita, escolho aplicativo, cor, horário e nome para o projeto.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Desconfio. Ninguém se interessa assim sem querer alguma coisa.",
+        text: "“Eu percebo que ainda preciso pesquisar mais antes de começar direito.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Perco um pouco da vontade e começo a demorar para responder.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Tento descobrir os problemas dela e onde posso ser útil.",
+        text: "“Eu faço uma coisinha, sinto que mereço descansar e desapareço no celular.”",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Fico ansiosa, mas não viro outra pessoa nem invento um teste.",
+        text: "“Eu começo com força total porque dessa vez preciso compensar tudo o que não fiz.”",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "“Eu escolho uma ação pequena e começo antes de transformar isso em um evento.”",
         profile: "ER",
         points: 0,
       },
@@ -85,30 +101,30 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 2,
     question:
-      "Você recebe uma mensagem carinhosa de alguém de quem gosta. O que costuma fazer?",
+      "Existe uma tarefa importante que levaria vinte minutos. O que você faz?",
     options: [
       {
-        text: "Leio procurando uma intenção escondida.",
-        profile: "IF",
-        points: 3,
-      },
-      {
-        text: "Respondo do jeito mais agradável possível, mesmo sem estar bem.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Recebo o carinho sem transformar aquilo em dívida.",
-        profile: "ER",
-        points: 0,
-      },
-      {
-        text: "Já penso no que posso fazer para retribuir em dobro.",
+        text: "“Abro o celular por cinco minutos e volto quarenta minutos depois.”",
         profile: "SE",
         points: 3,
       },
       {
-        text: "Gosto, mas deixo para responder depois porque ficou íntimo demais.",
+        text: "“Espero ter silêncio, energia e concentração suficientes para fazer bem.”",
+        profile: "IF",
+        points: 3,
+      },
+      {
+        text: "“Organizo a lista de tarefas antes de começar a tarefa.”",
+        profile: "ML",
+        points: 3,
+      },
+      {
+        text: "“Faço uma versão simples, mesmo sem estar com vontade.”",
+        profile: "ER",
+        points: 0,
+      },
+      {
+        text: "“Penso que agora já está tarde e decido começar amanhã cedo.”",
         profile: "FE",
         points: 3,
       },
@@ -117,62 +133,62 @@ const QUESTIONS: QuizQuestion[] = [
   {
     id: 3,
     question:
-      "Alguma coisa incomodou você. A pessoa pergunta se está tudo bem. Sua resposta real costuma ser:",
+      "Você falhou um dia na rotina. Qual é sua reação automática?",
     options: [
       {
-        text: "Está tudo bem.",
-        profile: "ML",
-        points: 3,
-      },
-      {
-        text: "Eu desapareço por algumas horas ou dias.",
+        text: "“Já que estraguei hoje, segunda-feira eu recomeço direito.”",
         profile: "FE",
         points: 3,
       },
       {
-        text: "Digo que não foi nada e fico fria.",
+        text: "“Procuro alguma coisa para me distrair da culpa.”",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "“Concluo que o plano não estava bom o suficiente.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Não sei explicar perfeitamente, mas digo que alguma coisa me pegou.",
-        profile: "ER",
-        points: 0,
+        text: "“Crio uma rotina nova para substituir a rotina que eu não cumpri.”",
+        profile: "ML",
+        points: 3,
       },
       {
-        text: "Esqueço o que senti e começo a tentar entender o lado da pessoa.",
-        profile: "SE",
-        points: 3,
+        text: "“Retomo na próxima ação sem transformar o erro em funeral.”",
+        profile: "ER",
+        points: 0,
       },
     ],
   },
   {
     id: 4,
     question:
-      "Quando você percebe que está gostando mais do que planejava, você:",
+      "Quando chega a hora de começar algo que realmente importa, qual palhaçada sua cabeça costuma inventar?",
     options: [
       {
-        text: "Reduzo o contato antes de parecer emocionada demais.",
-        profile: "FE",
-        points: 3,
-      },
-      {
-        text: "Começo a fazer muito pela pessoa.",
-        profile: "SE",
-        points: 3,
-      },
-      {
-        text: "Procuro um defeito que prove que isso vai acabar mal.",
+        text: "“Eu ainda não estou pronta.”",
         profile: "IF",
         points: 3,
       },
       {
-        text: "Escondo o que quero para não assustar.",
+        text: "“Preciso organizar tudo primeiro.”",
         profile: "ML",
         points: 3,
       },
       {
-        text: "Admito para mim mesma que estou envolvida e continuo observando os fatos.",
+        text: "“Só vou descansar um pouco para começar melhor.”",
+        profile: "SE",
+        points: 3,
+      },
+      {
+        text: "“Hoje já não conta. Amanhã faço do jeito certo.”",
+        profile: "FE",
+        points: 3,
+      },
+      {
+        text: "“Posso começar mal e melhorar enquanto faço.”",
         profile: "ER",
         points: 0,
       },
@@ -502,10 +518,10 @@ const TRANSITIONS = [
   {
     afterQuestion: 4,
     title:
-      "VOCÊ NÃO RESPONDEU SOBRE AMOR. RESPONDEU SOBRE O QUE FAZ QUANDO ELE CHEGA PERTO.",
+      "VOCÊ NÃO ESTÁ COM FALTA DE PLANO. ESTÁ USANDO O PLANO PARA NÃO ENCOSTAR NA EXECUÇÃO.",
     text:
-      "Até aqui já apareceu uma coisa importante: quando existe risco de alguém conhecer você de verdade, você tenta agradar, controlar, salvar ou sumir. Agora a desculpa começa a ficar mais difícil.",
-    button: "CONTINUAR",
+      "Até aqui já apareceu uma coisa feia: Você planeja para sentir que está avançando. Adia para sentir alívio. E recomeça para fingir que o abandono anterior nunca aconteceu. Agora vamos descobrir onde sua palavra começou a perder valor.",
+    button: "CONTINUAR O CONFRONTO",
   },
   {
     afterQuestion: 8,
@@ -740,27 +756,27 @@ export default function QuizLanding() {
           {step === "intro" && (
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-10 max-w-2xl px-4">
               <div className="space-y-4">
-                <span className="kicker !text-[#8f2f3f]">Diagnóstico Comportamental</span>
+                <span className="kicker !text-[#8f2f3f]">UM CONFRONTO PARA QUEM ESTÁ CANSADA DE RECOMEÇAR</span>
                 <h1 className="text-4xl md:text-7xl font-black text-white italic uppercase leading-[0.85] tracking-tighter">
-                  Você é realmente independente… <br />
-                  <span className="text-white/40">ou só aprendeu a fugir antes que alguém pudesse abandoná-la?</span>
+                  VOCÊ MONTA UMA VIDA NOVA TODA SEGUNDA-FEIRA. <br />
+                  <span className="text-white/40">E ENTERRA A PORRA TODA ANTES DE CHEGAR NO FIM DA SEMANA.</span>
                 </h1>
               </div>
               
               <div className="space-y-6 max-w-lg mx-auto">
                 <p className="text-lg md:text-xl italic text-white/70 leading-tight">
-                  Talvez todo mundo ache você forte, segura e resolvida. Mas ninguém vê o que acontece quando você começa a gostar de alguém.
+                  Você planeja. Organiza. Salva vídeo. Monta rotina. Promete que agora vai. Então chega a hora de fazer. Você adia por dez minutos. Pega o celular. Espera a vontade aparecer. Perde um dia. E transforma um dia ruim em mais uma semana jogada no lixo.
                 </p>
                 <p className="text-sm uppercase tracking-widest text-[#8f2f3f] font-black">
-                  Este teste vai revelar qual personagem emocional você criou para sobreviver.
+                  Depois diz que está sem autoestima. Mas como você vai confiar em si mesma se vive quebrando a própria palavra? Este quiz não vai perguntar qual rotina combina com sua personalidade. Ele vai mostrar qual hábito podre continua enterrando seus planos.
                 </p>
               </div>
 
               <div className="pt-6 space-y-4">
                 <button onClick={() => setStep("quiz")} className="w-full md:w-auto bg-[#8f2f3f] text-white px-12 py-7 rounded-2xl text-xl uppercase font-black tracking-tighter hover:bg-[#a9414a] transition-all active:scale-95 shadow-[0_20px_40px_-10px_rgba(143,47,63,0.5)]">
-                  COMEÇAR O CONFRONTO
+                  DESCOBRIR QUAL MERDA EU REPITO
                 </button>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white/20">Leva menos de 4 minutos. As respostas são confidenciais.</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/20">14 situações reais. Menos de quatro minutos. Isso não é avaliação psicológica ou médica.</p>
               </div>
             </motion.div>
           )}
@@ -833,11 +849,11 @@ export default function QuizLanding() {
                      className="space-y-8"
                    >
                      <div className="p-6 border-l-2 border-[#8f2f3f] bg-white/[0.02] italic text-white/90 text-lg">
-                       {selectedOption.profile === "ML" && "“Você não evita conflito. Você evita o risco de desagradar.”"}
-                       {selectedOption.profile === "IF" && "“Nem toda distância é paz. Às vezes é medo bem vestido.”"}
-                       {selectedOption.profile === "SE" && "“Ser necessária não é a mesma coisa que ser amada.”"}
-                       {selectedOption.profile === "FE" && "“Sumir dá sensação de controle. Também mata qualquer chance de profundidade.”"}
-                       {selectedOption.profile === "ER" && "“Isso não é perfeição. É conseguir ficar presente sem se abandonar.”"}
+                        {selectedOption.profile === "ML" && "“Você não está organizando a execução. Está decorando a fuga.”"}
+                        {selectedOption.profile === "IF" && "“Perfeccionismo é medo com vocabulário bonito.”"}
+                        {selectedOption.profile === "SE" && "“Você compra alguns minutos de alívio e paga com dias de culpa.”"}
+                        {selectedOption.profile === "FE" && "“Recomeçar dá esperança. Continuar é o que realmente muda a vida.”"}
+                        {selectedOption.profile === "ER" && "“Autoestima também é conseguir acreditar no que você promete para si.”"}
                      </div>
 
                      <button 
