@@ -1133,36 +1133,36 @@ export default function QuizLanding() {
                         </div>
                         <div className="grid gap-4">
                           {(() => {
-                            const primaryAnswers = answers.filter(a => a.profile === primaryResult);
-                            let displayedAnswers = [...primaryAnswers];
-                            
-                            if (primaryResult === "ER") {
-                              const regulated = answers.filter(a => a.regulated);
-                              const nonRegulated = answers.filter(a => !a.regulated);
-                              displayedAnswers = [...regulated];
-                              if (displayedAnswers.length < 3) {
-                                nonRegulated.forEach(item => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                    displayedAnswers.push({...item, secondaryLabel: "Padrão que ainda aparece"} as any);
-                                  }
-                                });
-                              }
-                            } else {
-                              if (displayedAnswers.length < 3 && secondaryResult) {
-                                answers.filter(a => a.profile === secondaryResult).forEach(item => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                    displayedAnswers.push({...item, secondaryLabel: "Traço secundário"} as any);
-                                  }
-                                });
-                              }
-                              if (displayedAnswers.length < 3) {
-                                answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(item => {
-                                  if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
-                                    displayedAnswers.push(item);
-                                  }
-                                });
-                              }
-                            }
+                             const primaryAnswers = answers.filter(a => a.profile === primaryResult);
+                             let displayedAnswers = [...primaryAnswers].map(a => ({...a, label: "VOCÊ ADMITIU QUE:"}));
+                             
+                             if (primaryResult === "ER") {
+                               const regulated = answers.filter(a => a.regulated);
+                               const nonRegulated = answers.filter(a => !a.regulated);
+                               displayedAnswers = regulated.map(a => ({...a, label: "VOCÊ ADMITIU QUE:"}));
+                               if (displayedAnswers.length < 3) {
+                                 nonRegulated.forEach(item => {
+                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                     displayedAnswers.push({...item, label: "UMA DESCULPA QUE AINDA TENTA VOLTAR:"} as any);
+                                   }
+                                 });
+                               }
+                             } else {
+                               if (displayedAnswers.length < 3 && secondaryResult) {
+                                 answers.filter(a => a.profile === secondaryResult).forEach(item => {
+                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                     displayedAnswers.push({...item, label: "OUTRO HÁBITO QUE APARECEU:"} as any);
+                                   }
+                                 });
+                               }
+                               if (displayedAnswers.length < 3) {
+                                 answers.filter(a => a.profile !== primaryResult && a.profile !== secondaryResult && !a.regulated).forEach(item => {
+                                   if (displayedAnswers.length < 3 && !displayedAnswers.find(da => da.questionId === item.questionId)) {
+                                     displayedAnswers.push({...item, label: "UMA DESCULPA QUE AINDA TENTA VOLTAR:"});
+                                   }
+                                 });
+                               }
+                             }
 
                             return displayedAnswers.slice(0, 3).map((ans, idx) => (
                               <div key={idx} className="surface-noir p-6 rounded-2xl border-white/5 space-y-2">
