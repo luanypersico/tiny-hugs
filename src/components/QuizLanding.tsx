@@ -810,8 +810,6 @@ export default function QuizLanding() {
               </div>
             </motion.div>
           )}
-            </motion.div>
-          )}
 
           {step === "quiz" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-xl space-y-10 px-4 md:px-0">
