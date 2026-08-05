@@ -998,16 +998,33 @@ export default function QuizLanding() {
                  const result = content[resCode] || content.ER;
 
                  return (
-                   <div className="space-y-16">
-                     <header className="space-y-6 text-center">
-                        <span className="kicker !text-[#8f2f3f]">Seu Perfil Revelado</span>
-                        <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase leading-[0.8] tracking-tighter">
-                          {result.name}
-                        </h2>
-                        <p className="text-2xl md:text-3xl text-white/90 italic font-light max-w-2xl mx-auto leading-tight">
-                          “{result.headline}”
-                        </p>
-                     </header>
+                    <div className="space-y-16">
+                      <div className="flex justify-center">
+                        <button onClick={restartQuiz} className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/30 hover:text-[#8f2f3f] transition-colors font-black">
+                          <RotateCcw className="w-3 h-3" />
+                          RECOMEÇAR O CONFRONTO
+                        </button>
+                      </div>
+                      <header className="space-y-6 text-center">
+                         <span className="kicker !text-[#8f2f3f]">Seu Perfil Revelado</span>
+                         <h2 className="text-5xl md:text-7xl font-black text-white italic uppercase leading-[0.8] tracking-tighter">
+                           {result.name}
+                         </h2>
+                         {secondaryResult && (
+                           <div className="space-y-2 mt-4">
+                             <p className="text-[10px] uppercase tracking-[0.3em] text-[#8f2f3f] font-black">Você também apresenta traços fortes de:</p>
+                             <p className="text-xl md:text-2xl text-white/60 font-black italic uppercase tracking-tighter">
+                               {secondaryResult === "ML" && "A MULHER LEGAL QUE SE ABANDONA"}
+                               {secondaryResult === "IF" && "A INDEPENDENTE FERIDA"}
+                               {secondaryResult === "SE" && "A SALVADORA EXAUSTA"}
+                               {secondaryResult === "FE" && "A FUGITIVA EMOCIONAL"}
+                             </p>
+                           </div>
+                         )}
+                         <p className="text-2xl md:text-3xl text-white/90 italic font-light max-w-2xl mx-auto leading-tight pt-4">
+                           “{result.headline}”
+                         </p>
+                      </header>
 
                      <div className="grid md:grid-cols-2 gap-8">
                        <div className="surface-noir p-8 rounded-3xl space-y-6 border-[#8f2f3f]/20">
