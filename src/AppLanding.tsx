@@ -142,8 +142,9 @@ function App() {
                 </button>
                 <button
                   onClick={async () => {
-                    const { generateProfessionalPDF } = await import('@/lib/pdf-generator.client');
-                    const doc = generateProfessionalPDF(EBOOK_CONTENT);
+                    // @ts-ignore - dynamic import for client-only logic
+                    const pdfLib = await import('./lib/pdf-generator.client');
+                    const doc = pdfLib.generateProfessionalPDF(EBOOK_CONTENT);
                     doc.save("ME_AMO_MAS_ME_ODEIO_PLANO_104_PAGINAS.pdf");
                   }}
                   className="group relative bg-white/5 hover:bg-white/10 text-white font-medium py-6 px-12 rounded-full text-lg transition-all duration-500 border border-white/10 flex items-center gap-3"
