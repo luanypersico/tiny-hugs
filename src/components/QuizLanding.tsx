@@ -849,11 +849,11 @@ export default function QuizLanding() {
                      className="space-y-8"
                    >
                      <div className="p-6 border-l-2 border-[#8f2f3f] bg-white/[0.02] italic text-white/90 text-lg">
-                       {selectedOption.profile === "ML" && "“Você não evita conflito. Você evita o risco de desagradar.”"}
-                       {selectedOption.profile === "IF" && "“Nem toda distância é paz. Às vezes é medo bem vestido.”"}
-                       {selectedOption.profile === "SE" && "“Ser necessária não é a mesma coisa que ser amada.”"}
-                       {selectedOption.profile === "FE" && "“Sumir dá sensação de controle. Também mata qualquer chance de profundidade.”"}
-                       {selectedOption.profile === "ER" && "“Isso não é perfeição. É conseguir ficar presente sem se abandonar.”"}
+                        {selectedOption.profile === "ML" && "“Você não está organizando a execução. Está decorando a fuga.”"}
+                        {selectedOption.profile === "IF" && "“Perfeccionismo é medo com vocabulário bonito.”"}
+                        {selectedOption.profile === "SE" && "“Você compra alguns minutos de alívio e paga com dias de culpa.”"}
+                        {selectedOption.profile === "FE" && "“Recomeçar dá esperança. Continuar é o que realmente muda a vida.”"}
+                        {selectedOption.profile === "ER" && "“Autoestima também é conseguir acreditar no que você promete para si.”"}
                      </div>
 
                      <button 
